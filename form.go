@@ -17,8 +17,10 @@ type Date struct {
 }
 
 type Time struct {
-	hour int
-	minute int
+	startHour int
+	startMinute int
+	endHour int
+	endMinute int
 }
 
 type Session struct {
@@ -28,8 +30,7 @@ type Session struct {
 
 type Day struct {
 	day byte
-	startTime Time
-	endTime Time
+	times []Time
 	location Location
 }
 
@@ -47,6 +48,7 @@ type Instructor struct {
 
 type Course struct {
 	term int // 202015 = spring 2020, 202025 = summer 2020, 202035 = fall 2020
+	action string
 	section Section
 	session Session
 	days []Day
@@ -65,28 +67,51 @@ type Form struct {
 	reqDepartment string
 	comments string
 	contact Contact
-	course Course
+	courses []Course
 }
 
+func exampleContact() *Contact {
+	c := &Contact{ "Bill", "Johnson", "6728", "bjohnso@siue.edu", "14457 siue" }
+	return c
+}
 
-func (c *Contact) exampleContact() *Contact {
+func exampleCourse() *Course {
 
-	c.first = "Bill"
-	c.last = "Johnson"
-	c.phoneExtension = "6728"
-	c.email = "bjohnso@siue.edu"
-	c.box = "14457 siue"
+	section := Section{ "50054", "CS", "425", "001", 25, 99, "Lecture" }
+
+	sessionStart := Date{ 16, 8, 2020 }
+	sessionEnd := Date{ 15, 12, 2020 }
+
+	session := Session{ sessionStart, sessionEnd }
+
+	time := Time{ 12, 30, 1, 45 }
+	times := [] Time{ time }
+
+	location := Location{ "Engineering", "1234", "Edwardsville" }
+
+	day1 := Day{ 'M',  times, location}
+	day2 := Day{ 'W',  times, location}
+
+	days := [] Day{ day1, day2  }
+
+	instructor := Instructor{ "John", "Clark", "800544784"}
+
+	c := &Course{ 202025, "add", section, session, days, instructor}
 
 	return c
 }
 
-func (c *Course) exampleCourse() *Course {
+func exampleForm() *Form {
 
-	c.term = 202025
-	c.section = Section{ "50054", "CS", "425", "001", 25, 99, "Lecture"}
-	c.session = Session{ Date{16, 8, 2020}, Date{15, 12, 2020} }
-	c.days = append(c.days, Day{'M', Time{12, 30}, Time{1, 45}, Location{ "Engineering", "1234", "Edwardsville"} } )
-	c.instructor = Instructor{ "John", "Clark", "800544784"}
+	course := exampleCourse()
+	contact := exampleContact()
+	courses := [] Course{ *course }
 
-	return c
+	f := &Form {
+		reqDepartment: "Computer Science",
+		comments: "Adding this course in place of CS 330.",
+		contact: *contact,
+		courses: courses,
+	}
+	return f
 }

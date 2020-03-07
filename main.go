@@ -8,7 +8,6 @@ import (
 )
 
 
-
 // prints a formatted date and time. pass everything as an int except "am" or "pm"
 func printDate(year, month, day, hour, minute, second int, ampm string) {
 
@@ -33,18 +32,7 @@ func printDate(year, month, day, hour, minute, second int, ampm string) {
 
 func main() {
 
-	course := &Course {}
-	course = course.exampleCourse()
-
-	contact := &Contact {}
-	contact = contact.exampleContact()
-
-	form := Form {
-		"Computer Science",
-		"",
-		*contact,
-		*course,
-	}
+	form := *exampleForm()
 
 	fmt.Println(form)
 
