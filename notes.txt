@@ -1,0 +1,50 @@
+LOCAL REPO ___________________________________________________________________________
+
+$ git init          // initialize local git repo - necessary setup
+
+$ git add <file>    // add file to index (staging area) to prepare for committing
+$ git add *.html    // add all files with html extension to staging area
+$ git add .         // add all files to staging area
+
+$ git rm --cached <file>    // remove file from staging area
+
+$ git status        // shows differences between staged files and current files
+
+$ git commit -m 'Message'   // take staged files and put them into local repository with a message about the commit
+
+/*  Add a file called .gitignore. In this file, Write filenames and directories that you don't 
+    want to be added when using the 'git add .' command. Type one filename/directory per line. 
+*/
+
+$ git branch <branchname>   // creates a branch named login, does NOT move us to that branch
+$ git checkout <branchname> // moves us to the branch specified by <branchname>
+
+$ git merge --no-ff <branchname>    // merges files from <branchname> into the current branch. --no-ff makes it easier to visibly track branch checkouts and merges 
+
+/* 'git init' always starts the project on 'master' branch. If we want to make a new branch called 'dev',
+    type 'git branch dev'. To move to 'dev' type git checkout 'dev'. While on the 'dev' branch we can make
+    files, delete files, and to edit existing files. After we have made changes on the 'dev' branch, we need 
+    to stage all the files with 'git add .' then commit the staged files with 'git commit -m 'message''.
+    We can then switch back to the 'master' branch with 'git checkout master'. All of the changes we made
+    to 'dev' branch will disappear when we switch to 'master'. To update the 'master' branch to the 'dev',
+    we type 'git merge dev'. We have to currently be on the master branch for this to work.
+*/ 
+
+REMOTE REPO ___________________________________________________________________________
+
+/*  On github, create new repository. Don't need to initialize with read me. Can add .gitignore later.
+    Click create repository. Copy paste the line 'git remote...' line into the terminal to add the remote 
+    repo. That line should look something like the one below 
+*/
+
+$ git remote add origin https://github.com/<username>/<projectname>.git // add the github repo (named origin) as our remote repo
+
+$ git push -u origin master // pushes master branch to the remote repo
+
+$ git remote        // lists the remote repositories we have for the project
+
+$ git push          // take files in local repo and put them on remote repo
+$ git pull          // updates local repo with any changes in remote repo
+$ git clone         // completely copies all files from a remote repo to your machine
+
+
