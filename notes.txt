@@ -27,7 +27,7 @@ $ git merge --no-ff <branchname>    // merges files from <branchname> into the c
     to stage all the files with 'git add .' then commit the staged files with 'git commit -m 'message''.
     We can then switch back to the 'master' branch with 'git checkout master'. All of the changes we made
     to 'dev' branch will disappear when we switch to 'master'. To update the 'master' branch to the 'dev',
-    we type 'git merge dev'. We have to currently be on the master branch for this to work.
+    we type 'git merge dev'. We have to currently be on the master branch for this to work correctly.
 */ 
 
 REMOTE REPO ___________________________________________________________________________
