@@ -46,5 +46,3 @@ $ git remote        // lists the remote repositories we have for the project
 $ git push          // take files in local repo and put them on remote repo
 $ git pull          // updates local repo with any changes in remote repo
 $ git clone         // completely copies all files from a remote repo to your machine
-
-
