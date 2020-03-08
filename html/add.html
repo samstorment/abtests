@@ -1,0 +1,115 @@
+<html>  
+    <head>  
+        <title>{{.Title}}</title>
+    </head>  
+    <body>  
+        <div class="container">
+            <br />  
+            <br />  
+            <h2 align="center">{{.Header}}</h2>
+            <div class>  
+                <form name="add_name" id="add_name">  
+                    <div>  
+                        <table>  
+                            <tbody id="dynamic_body">
+                                <tr>  
+                                    <td>
+                                        <label for="date">Date</label>
+                                        <input type="date" name="date">
+                                    </td>  
+                                    <td>
+                                        <label for="start">Start Time</label>
+                                        <input type="time" name="start">
+                                    </td>  
+                                    <td>
+                                        <label for="end">End Time</label>
+                                        <input type="time" name="end">
+                                    </td>  
+
+                                    <td>
+                                        <br>
+                                        <button type="button" name="add" id="add" >New</button>
+                                    </td>  
+                                </tr> 
+                            </tbody>
+                        </table>  
+                        <input type="button" name="submit" id="submit" value="Submit">  
+                    </div>  
+                </form>  
+            </div>  
+        </div>  
+    </body>  
+</html> 
+
+<!-- <script>  
+$(document).ready(function(){  
+    var i=1;  
+    $('#add').click(function(){  
+        i++;  
+        $('#dynamic_field').append('<tr id="row'+i+'">  <td><input type="date" name="date" class="form-control name_list" /></td>  <td><input type="time" name="startTime" class="form-control name_list" /></td>   <td><input type="time" name="endTime" class="form-control name_list" /></td>    <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+    });  
+    $(document).on('click', '.btn_remove', function(){  
+        var button_id = $(this).attr("id");   
+        $('#row'+button_id+'').remove();  
+    });  
+    $('#submit').click(function(){            
+        $.ajax({  
+            url:"name.php",  
+            method:"POST",  
+            data:$('#add_name').serialize(),  
+            success:function(data)  
+            {  
+                alert(data);  
+                $('#add_name')[0].reset();
+            }  
+        });  
+    });  
+});  
+</script> -->
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+       
+        let i = 1;
+        let addButton = document.querySelector('#add');
+
+        addButton.addEventListener('click', e => {
+            i++;
+            let table = document.querySelector('#dynamic_body');
+
+            let row = document.createElement('tr');
+            row.setAttribute('id', 'row'+i);
+
+            let rowInnerHTML;
+            {
+                rowInnerHTML = 
+                `<td>
+                    <label for="date${i}">Date</label>
+                    <input type="date" name="date${i}">
+                </td>
+                <td>
+                    <label for="start${i}">Start Time</label>
+                    <input type="time" name="start${i}">
+                </td>
+                <td>
+                    <label for="end${i}">End Time</label>
+                    <input type="time" name="end${i}">
+                </td>
+                <td>
+                    <br>
+                    <button type="button" name="delete${i}" id="add${i}" >Delete</button>
+                </td>`;
+            }
+
+            row.innerHTML = rowInnerHTML;
+
+
+            table.appendChild(row);
+        });
+        
+
+    });
+
+</script>

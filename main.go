@@ -39,7 +39,7 @@ type Page struct {
 func addHandler(w http.ResponseWriter, r *http.Request) {
 
 	page := Page{ "Add", "Add Dates and Times"}
-	temp, err := template.ParseFiles("add.html")
+	temp, err := template.ParseFiles("html/add.html")
 
 	if err != nil { fmt.Println("Err", err) }
 
@@ -51,7 +51,7 @@ func addHandler(w http.ResponseWriter, r *http.Request) {
 func inputHandler(w http.ResponseWriter, r *http.Request) {
 
 	page := Page{ "Gimme a name", "Any name"}
-	temp, err := template.ParseFiles("input.html")
+	temp, err := template.ParseFiles("html/input.html")
 
 	if err != nil { fmt.Println("Err", err) }
 

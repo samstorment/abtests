@@ -11,20 +11,4 @@
     <textarea id="comment" style="font-family:Arial, Helvetica, sans-serif;" name="comment" rows="10" cols="50" placeholder="type something in" required></textarea><br>
 
     <input type="submit" value="DO IT!">
-    
 </form>
-
-<script>
-// the required html attribute is easier
-function require() {
-    
-    let x = document.getElementById("name").value;
-    let y = document.getElementById("comment").value;
-
-    if (x == "" || y == "" ) {
-        alert("Type something in both fields you dummy");
-        return false
-    };
-    return true;
-}
-</script>
