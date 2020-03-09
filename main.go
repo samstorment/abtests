@@ -39,7 +39,7 @@ type Page struct {
 func addHandler(w http.ResponseWriter, r *http.Request) {
 
 	page := Page{ "Add", "Add Dates and Times"}
-	temp, err := template.ParseFiles("html/add.html")
+	temp, err := template.ParseFiles("templates/add.html")
 
 	if err != nil { fmt.Println("Err", err) }
 
@@ -51,7 +51,7 @@ func addHandler(w http.ResponseWriter, r *http.Request) {
 func inputHandler(w http.ResponseWriter, r *http.Request) {
 
 	page := Page{ "Gimme a name", "Any name"}
-	temp, err := template.ParseFiles("html/input.html")
+	temp, err := template.ParseFiles("templates/input.html")
 
 	if err != nil { fmt.Println("Err", err) }
 
@@ -67,13 +67,20 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(comment)
 
 	http.Redirect(w, r, "/input", http.StatusFound)
+}
+
+func saveDateHandler(w http.ResponseWriter, r *http.Request) {
+	
+	for key, values := range r.Form {   // range over map
+		for _, value := range values {    // range over []string
+			fmt.Println(key, value)
+		}
+	}
 
 }
 
-
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hey dudes how we doin")
-
 }
 
 func main() {
@@ -82,6 +89,10 @@ func main() {
 	http.HandleFunc("/add", addHandler)
 	http.HandleFunc("/input", inputHandler)
 	http.HandleFunc("/save", saveHandler)
+	http.HandleFunc("/saveDate", saveDateHandler)
+
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
 	http.ListenAndServe(":8080", nil)
 
 }

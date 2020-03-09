@@ -1,0 +1,42 @@
+<html>  
+    <head>  
+        <title>{{.Title}}</title>
+        <script src="../static/add.js"></script>
+    </head>  
+    <body>  
+        <div class="container">
+            <br />  
+            <br />  
+            <h2 align="center">{{.Header}}</h2>
+            <div class>  
+                <form action="/saveDate" method="POST">
+                    <div>  
+                        <table>  
+                            <tbody id="dynamic_body">
+                                <tr class="table-row">  
+                                    <td>
+                                        <label for="date">Date</label>
+                                        <input type="date" name="date">
+                                    </td>  
+                                    <td>
+                                        <label for="start">Start Time</label>
+                                        <input type="time" name="start">
+                                    </td>  
+                                    <td>
+                                        <label for="end">End Time</label>
+                                        <input type="time" name="end">
+                                    </td>  
+
+                                    <td>
+                                        <button type="button" name="add" id="add" >New</button>
+                                    </td>  
+                                </tr> 
+                            </tbody>
+                        </table>  
+                        <input type="button" name="submit" id="submit" value="Submit">  
+                    </div>  
+                </form>  
+            </div>  
+        </div>  
+    </body>  
+</html> 
