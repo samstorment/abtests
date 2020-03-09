@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"		// Formatting - Nice printing
 	"time"	
+	"strings"
 	"strconv"	// string conversion
 	"net/http"
 	"html/template"
@@ -70,13 +71,38 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func saveDateHandler(w http.ResponseWriter, r *http.Request) {
-	
-	for key, values := range r.Form {   // range over map
-		for _, value := range values {    // range over []string
-			fmt.Println(key, value)
+
+	r.ParseForm()
+
+	dates := make(map[int]Date)
+
+	for key, values := range r.Form { 
+		for _, value := range values {
+			
+			if key != "submit" && value != "" {
+
+				typeNum := strings.Split(key, "-")
+				typ := typeNum[0]
+				num := typeNum[1]
+
+				if (typ == "date") {
+
+					date := strings.Split(value, "-")
+
+					year, _ := strconv.Atoi(date[0])
+					month, _ := strconv.Atoi(date[1])
+					day, _ := strconv.Atoi(date[2])
+					n, _ := strconv.Atoi(num)
+
+					dates[n] = Date{ day: day, month: month, year: year }
+				}
+			}
 		}
 	}
 
+	fmt.Println(dates)
+
+	http.Redirect(w, r, "/add", http.StatusFound)
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {

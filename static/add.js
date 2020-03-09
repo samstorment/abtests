@@ -26,20 +26,12 @@
 
 function deleteRow(id) {
     let table = document.querySelector('#dynamic_body');
-    let rowToDelete = document.querySelector(`#row${id}`);
+    let rowToDelete = document.querySelector(`#row-${id}`);
     table.removeChild(rowToDelete);
 }
 
-function submitRow() {
-    let rows = document.getElementsByClassName("table-row");
-
-    for (r in rows) {
-        console.log(r);
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     let i = 1;
     let addButton = document.querySelector('#add');
 
@@ -47,25 +39,24 @@ document.addEventListener("DOMContentLoaded", () => {
         i++;
         let table = document.querySelector('#dynamic_body');
         let row = document.createElement('tr');
-        row.setAttribute('class', 'table-row');
 
-        row.setAttribute('id', `row${i}`);
+        row.setAttribute('id', `row-${i}`);
         {
             var rowInnerHTML = 
             `<td>
-                <label for="date${i}">Date</label>
-                <input type="date" name="date${i}">
+                <label for="date-${i}">Date</label>
+                <input type="date" name="date-${i}">
             </td>
             <td>
-                <label for="start${i}">Start Time</label>
-                <input type="time" name="start${i}">
+                <label for="start-${i}">Start Time</label>
+                <input type="time" name="start-${i}">
             </td>
             <td>
-                <label for="end${i}">End Time</label>
-                <input type="time" name="end${i}">
+                <label for="end-${i}">End Time</label>
+                <input type="time" name="end-${i}">
             </td>
             <td>
-                <button type="button" name="delete${i}" id="${i}" onClick="deleteRow(this.id)">Delete</button>
+                <button type="button" name="delete${i}" id="delete${i}" onClick="deleteRow(${i})">Delete</button>
             </td>`;
         }
         row.innerHTML = rowInnerHTML;
