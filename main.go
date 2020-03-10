@@ -1,36 +1,12 @@
-// build with "go build". execute with "./First_Try.exe"
+// build with "go build -o a". execute with "./a"
 package main
 
 import (
-	"fmt"		// Formatting - Nice printing
-	"time"	
-	"strings"
-	"strconv"	// string conversion
+	"fmt"		// Formatting - Nice printing	
 	"net/http"
 	"html/template"
 )
 
-
-// prints a formatted date and time. pass everything as an int except "am" or "pm"
-func printDate(year, month, day, hour, minute, second int, ampm string) {
-
-	start := time.Date(year, time.Month(month), day, hour, minute, second, 0, time.UTC)
-
-	yr := start.Year()
-	mon := start.Month()
-	// convert the four below to strings for easier printing
-	dy := strconv.Itoa(start.Day())
-	hr := strconv.Itoa(start.Hour())
-	min := strconv.Itoa(start.Minute())
-	sec := strconv.Itoa(start.Second())
-
-	// if the seconds is less than 10, it prints weird: ex - 12:45:9
-	if start.Second() < 10 {
-		sec = "0" + sec // here we want that to be 12:45:09
-	}
-	// print a formatted date and time
-	fmt.Println(mon, dy + ",", yr, hr + ":" + min + ":" + sec, ampm)
-}
 
 type Page struct {
 	Title string
@@ -39,7 +15,7 @@ type Page struct {
 
 func addHandler(w http.ResponseWriter, r *http.Request) {
 
-	page := Page{ "Add", "Add Dates and Times"}
+	page := Page{ "Add", "Add a Meeting"}
 	temp, err := template.ParseFiles("templates/add.html")
 
 	if err != nil { fmt.Println("Err", err) }
@@ -47,60 +23,9 @@ func addHandler(w http.ResponseWriter, r *http.Request) {
 	temp.Execute(w, page)
 }
 
+func submitHandler(w http.ResponseWriter, r *http.Request) {
 
-
-func inputHandler(w http.ResponseWriter, r *http.Request) {
-
-	page := Page{ "Gimme a name", "Any name"}
-	temp, err := template.ParseFiles("templates/input.html")
-
-	if err != nil { fmt.Println("Err", err) }
-
-	temp.Execute(w, page)
-}
-
-func saveHandler(w http.ResponseWriter, r *http.Request) {
-
-	name := r.FormValue("name")
-	comment := r.FormValue("comment")
-
-	fmt.Println(name)
-	fmt.Println(comment)
-
-	http.Redirect(w, r, "/input", http.StatusFound)
-}
-
-func saveDateHandler(w http.ResponseWriter, r *http.Request) {
-
-	r.ParseForm()
-
-	dates := make(map[int]Date)
-
-	for key, values := range r.Form { 
-		for _, value := range values {
-			
-			if key != "submit" && value != "" {
-
-				typeNum := strings.Split(key, "-")
-				typ := typeNum[0]
-				num := typeNum[1]
-
-				if (typ == "date") {
-
-					date := strings.Split(value, "-")
-
-					year, _ := strconv.Atoi(date[0])
-					month, _ := strconv.Atoi(date[1])
-					day, _ := strconv.Atoi(date[2])
-					n, _ := strconv.Atoi(num)
-
-					dates[n] = Date{ day: day, month: month, year: year }
-				}
-			}
-		}
-	}
-
-	fmt.Println(dates)
+	parseForm(r)
 
 	http.Redirect(w, r, "/add", http.StatusFound)
 }
@@ -113,12 +38,9 @@ func main() {
 
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/add", addHandler)
-	http.HandleFunc("/input", inputHandler)
-	http.HandleFunc("/save", saveHandler)
-	http.HandleFunc("/saveDate", saveDateHandler)
+	http.HandleFunc("/saveDate", submitHandler)
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	http.ListenAndServe(":8080", nil)
-
 }

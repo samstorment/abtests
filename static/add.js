@@ -1,27 +1,25 @@
 
-// $(document).ready(function(){  
-//     var i=1;  
-//     $('#add').click(function(){  
-//         i++;  
-//         $('#dynamic_field').append('<tr id="row'+i+'">  <td><input type="date" name="date" class="form-control name_list" /></td>  <td><input type="time" name="startTime" class="form-control name_list" /></td>   <td><input type="time" name="endTime" class="form-control name_list" /></td>    <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
-//     });  
-//     $(document).on('click', '.btn_remove', function(){  
-//         var button_id = $(this).attr("id");   
-//         $('#row'+button_id+'').remove();  
-//     });  
-//     $('#submit').click(function(){            
-//         $.ajax({  
-//             url:"name.php",  
-//             method:"POST",  
-//             data:$('#add_name').serialize(),  
-//             success:function(data)  
-//             {  
-//                 alert(data);  
-//                 $('#add_name')[0].reset();
-//             }  
-//         });  
-//     });  
-// });  
+var min = new Date();
+var max = new Date();
+var dd = min.getDate();
+var mm = min.getMonth()+1; //January is 0!
+var yyyy = min.getFullYear();
+
+var minyyyy = yyyy - 1;
+var maxyyyy = yyyy + 1;
+
+if(dd < 10){
+    dd='0'+dd
+} 
+if(mm < 10){
+    mm='0'+mm
+} 
+
+min = minyyyy + '-' + mm + '-' + dd;
+max = maxyyyy + '-' + mm + '-' + dd;
+
+document.querySelector("#date-1").setAttribute("min", min);
+document.querySelector("#date-1").setAttribute("max", max);
 
 
 function deleteRow(id) {
@@ -31,7 +29,6 @@ function deleteRow(id) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
     let i = 1;
     let addButton = document.querySelector('#add');
 
@@ -44,22 +41,20 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             var rowInnerHTML = 
             `<td>
-                <label for="date-${i}">Date</label>
-                <input type="date" name="date-${i}">
+                <input type="date" class="form-control" name="date-${i}" min="${min}" max="${max}" required>
             </td>
             <td>
-                <label for="start-${i}">Start Time</label>
-                <input type="time" name="start-${i}">
+                <input type="time" class="form-control" name="start-${i}" required>
             </td>
             <td>
-                <label for="end-${i}">End Time</label>
-                <input type="time" name="end-${i}">
+                <input type="time" class="form-control" name="end-${i}" required>
             </td>
             <td>
-                <button type="button" name="delete${i}" id="delete${i}" onClick="deleteRow(${i})">Delete</button>
+                <button type="button" class="btn btn-danger" name="delete${i}" id="delete${i}" onClick="deleteRow(${i})"><i class="fa fa-minus"></i></button>
             </td>`;
         }
         row.innerHTML = rowInnerHTML;
+
         table.appendChild(row);
     });
 });

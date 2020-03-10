@@ -1,7 +1,6 @@
 <html>  
     <head>  
         <title>{{.Title}}</title>
-        <script src="../static/add.js"></script>
     </head>  
     <body>  
         <div class="container">
@@ -9,34 +8,38 @@
             <br />  
             <h2 align="center">{{.Header}}</h2>
             <div class>  
-                <form action="/saveDate" method="POST">
+                <form action="/saveDate" class="form-group" method="POST">
                     <div>  
-                        <table>  
+                        <table class="table table-borderless">  
                             <tbody id="dynamic_body">
-                                <tr class="table-row">  
+                                <tr>  
                                     <td>
                                         <label for="date-1">Date</label>
-                                        <input type="date" name="date-1">
+                                        <input type="date" class="form-control" id="date-1" name="date-1" required>
                                     </td>  
                                     <td>
                                         <label for="start-1">Start Time</label>
-                                        <input type="time" name="start-1">
+                                        <input type="time" class="form-control" name="start-1" required>
                                     </td>  
                                     <td>
                                         <label for="end-1">End Time</label>
-                                        <input type="time" name="end-1">
+                                        <input type="time" class="form-control" name="end-1" required> 
                                     </td>  
-
                                     <td>
-                                        <button type="button" name="add" id="add" >New</button>
+                                        <button type="button" style="margin-top: 30px;" class="btn btn-success" name="add" id="add" ><i class="fa fa-plus"></i></button>
                                     </td>  
                                 </tr> 
                             </tbody>
                         </table>  
-                        <input type="submit" name="submit" id="submit" value="Submit">  
+                        <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">  
                     </div>  
                 </form>  
             </div>  
         </div>  
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="../static/add.js"></script>
     </body>  
 </html> 
