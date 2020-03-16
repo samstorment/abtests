@@ -23,7 +23,7 @@ document.querySelector("#date-1").setAttribute("max", max);
 
 
 function deleteRow(id) {
-    let table = document.querySelector('#dynamic_body');
+    let table = document.querySelector('#dynamic-body');
     let rowToDelete = document.querySelector(`#row-${id}`);
     table.removeChild(rowToDelete);
 }
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     addButton.addEventListener('click', e => {
         i++;
-        let table = document.querySelector('#dynamic_body');
+        let table = document.querySelector('#dynamic-body');
         let row = document.createElement('tr');
 
         row.setAttribute('id', `row-${i}`);

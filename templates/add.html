@@ -1,17 +1,18 @@
 <html>  
     <head>  
         <title>{{.Title}}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>  
     <body>  
         <div class="container">
-            <br />  
-            <br />  
-            <h2 align="center">{{.Header}}</h2>
+        
+            <h2 style="text-align:center">{{.Header}}</h2>
             <div class>  
                 <form action="/saveDate" class="form-group" method="POST">
-                    <div>  
+                    <div id="table-dropdown" style="display: block;">
                         <table class="table table-borderless">  
-                            <tbody id="dynamic_body">
+                            <tbody id="dynamic-body">
                                 <tr>  
                                     <td>
                                         <label for="date-1">Date</label>
@@ -38,8 +39,6 @@
         </div>  
 
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="../static/add.js"></script>
     </body>  
 </html> 
