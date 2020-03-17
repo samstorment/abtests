@@ -32,22 +32,38 @@
         <div class="body">
 
             <div class="topbar">
-                <h1>Add</h1>
+                <h2>Add</h2>
             </div>
 
-            <div class="form-container">
-                
-                <form class="form" action="">
-
-                    <div class="section-info-container">
-                        <h1>Section Info</h1>
-                        <input type="text">
+            
+            <form class="form" action="" method="">
+                <div class="section-info-container">
+                    <div class="dropdown" style="float:left;">
+                        <button class="term-button">
+                            Term
+                            <div class="dropdown-content" style="left:0;">
+                                <a href="#">Spring</a>
+                                <a href="#">Summer</a>
+                                <a href="#">Fall</a>
+                            </div>
+                        </button>
                     </div>
+                    <h2>Section Info</h2>
+                    <div class="input">
+                        <label for="subject">Subject</label>
+                        <input id="subject" type="text">
+                    </div>
+                    <div class="input">
+                        <label for="course">Course</label>
+                        <input id="course" type="text">
+                    </div>
+                    <div class="input">
+                        <label for="section">Section</label>
+                        <input id="section" type="text">
+                    </div>
+                </div>
+            </form>
 
-
-                </form>
-
-            </div>
 
         </div>
 
