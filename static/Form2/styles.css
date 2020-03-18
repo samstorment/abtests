@@ -1,0 +1,38 @@
+
+/* CSS properties for entire page layout - Main grid management */
+
+* {
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 180px auto;
+    grid-template-rows: 40px auto;
+}
+
+.navbar {
+    background-color: aquamarine;
+    grid-column: 1 / -1;
+}
+
+.sidebar {
+    background-color: antiquewhite;
+}
+
+.content {
+    background-color: rgb(233, 248, 167);
+    grid-column: 2 / -1;
+}

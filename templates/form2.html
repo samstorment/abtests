@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 2</title>
+    <link rel="stylesheet" href="../static/Form2/styles.css">
+    <link rel="stylesheet" href="../static/Form2/navbar.css">
+    <link rel="stylesheet" href="../static/Form2/sidebar.css">
+    <link rel="stylesheet" href="../static/Form2/content.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <ul class="navlinks">
+                <li class="name"><a href="#">AB Form</a></li>
+                <li class="profile"><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar">
+            <nav class="side-nav">
+                <ul class="side-navlinks">
+                    <li class="new"><button class="new-button">+ New</button></li>
+                    <li class="sent"><a href="">Sent</a></li>
+                    <li class="drafts"><a href="">Drafts</a></li>
+                    <li class="inbox"><a href="">Inbox</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <div class="topbar">Add</div>
+            <form class="form-container" autocomplete="off">
+                <div class="term-button"><button>Term</button></div>
+
+                <div class="info section-info">
+                    <h2>Section</h2>
+                    <div class="input">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject">
+                    </div>
+                    <div class="input">
+                        <label for="course">Course</label>
+                        <input type="text" id="course">
+                    </div>
+                    <div class="input">
+                        <label for="section">Section</label>
+                        <input type="text" id="section">
+                    </div>
+                    <div class="input">
+                        <label for="max-students">Capacity</label>
+                        <input type="text" id="max-students">
+                    </div>
+                    <div class="input">
+                        <label for="max-waitlist">Waitlist</label>
+                        <input type="text" id="max-waitlist">
+                    </div>
+                    <div class="input">
+                        <label for="instruction-method">Method</label>
+                        <input type="text" id="instruction-method">
+                    </div>
+                    <div class="input">
+                        <label for="style">Style</label>
+                        <input type="text" id="style">
+                    </div>
+                    <div class="input last">
+                        <label for="credits">Credits</label>
+                        <input type="text" id="credits">
+                    </div>
+                </div>
+
+                <div class="info time-info">
+                    <h2>Times</h2>
+                    <div class="input">
+                        <label for="days">Days</label>
+                        <input type="text" id="days">
+                    </div>
+                    <div class="input last">
+                        <label for="session">Session</label>
+                        <input type="text" id="session">
+                    </div>
+                </div>
+
+                <div class="info location-info">
+                    <h2>Location</h2>
+                    <div class="input">
+                        <label for="campus">Campus</label>
+                        <input type="text" id="campus">
+                    </div>
+                    <div class="input">
+                        <label for="building">Building</label>
+                        <input type="text" id="building">
+                    </div>
+                    <div class="input last">
+                        <label for="room">Room</label>
+                        <input type="text" id="room">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
