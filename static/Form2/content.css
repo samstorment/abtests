@@ -4,52 +4,105 @@
 }
 
 
-.topbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: rgb(252, 255, 89);
-    height: 40px;
-    font-size: large;
-    border-bottom: 1px solid gray;
-}
 
 .form-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows: 60px 315px 120px;
-    background-color: rgb(152, 247, 149);
+    grid-template-rows: auto 1fr;
     height: 100%;
     margin: 10px;
     border: 1px solid gray;
     border-radius: 10px;
 }
 
-.term-button {
+.topbar {
     display: flex;
-    grid-column: 1 / -1;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    height: 40px;
+    font-size: large;
+    border-bottom: 1px solid gray;
+    font-weight: 750;
+    grid-column: 1 / -1;
+    padding: 0px 20px;
+}
+
+.topbar-dropdown {
+    margin-left: auto;
+    border-radius: 20px;
+    border: 1px solid gray;
+    padding: 0px 15px;
+    box-shadow: 0px 0px 1px gray;
+}
+
+.topbar-dropdown:hover {
+    background-color: white;
+}
+
+.topbar-dropdown:active {
+    box-shadow: inset 0px 0px 3px gray;
+}
+
+.term-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 5px 5px 5px;
 }
 
 .term-button button {
+    display: flex;
     font-size: large;
-    border-radius: 25px;
-    padding: 8px 28px;
+    border-radius: 28px;
+    padding: 5px 28px;
     border: 1px solid gray;
+    align-items: center;
+    box-shadow: 0px 0px 1px gray;
+}
+
+.term-button button:hover {
+    background-color: white;
+}
+
+.term-button button:active {
+    box-shadow: inset 0px 0px 3px gray;
+}
+
+.term-dropdown-content {
+    display: none;
+    position: absolute;
+    margin-top: 68px;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+.term-dropdown-content div {
+    padding: 5px 5px;
+    display: block;
+}
+
+.term-dropdown-content div:hover {
+    background-color: lightblue;
+}
+
+.term-button button:hover .term-dropdown-content {
+    display: block;
+}
+
+
+.form-content-container {
+    grid-column: 2 / 3;
 }
 
 .info {
     display: flex;
     flex-direction: column;
     border: 1px solid gray;
-    margin-bottom: 10px;
+    margin: 5px;
     padding: 10px 10px 0px 10px;
     border-radius: 20px;
     height: fit-content;
-    grid-column: 2 / 3;
+    background-color: white;
 }
 
 .input {
@@ -63,15 +116,12 @@
     padding-left: 15px;
     flex: 1;
     border: none;
-    background-color: rgb(152, 247, 149);
-    border-radius: 15px;
 }
 
 
 .input input:hover {    
-    background-color: rgb(187, 255, 209);
+    background-color: lightblue;
 }
-
 
 .last {
     border-bottom: none;

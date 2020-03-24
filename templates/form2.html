@@ -8,96 +8,146 @@
     <link rel="stylesheet" href="../static/Form2/navbar.css">
     <link rel="stylesheet" href="../static/Form2/sidebar.css">
     <link rel="stylesheet" href="../static/Form2/content.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="container">
-        <nav class="navbar">
+        <nav class="navbar alt-color">
             <ul class="navlinks">
-                <li class="name"><a href="#">AB Form</a></li>
-                <li class="profile"><a href="#">Profile</a></li>
+                <li class="form-name"><a href="#">AB Form</a></li>
+                <li class="profile"><a href="#"><i class="fa fa-user-circle fa-lg"></i></a></li>
             </ul>
         </nav>
-        <div class="sidebar">
+        <div class="sidebar alt-color">
             <nav class="side-nav">
                 <ul class="side-navlinks">
-                    <li class="new"><button class="new-button">+ New</button></li>
-                    <li class="sent"><a href="">Sent</a></li>
-                    <li class="drafts"><a href="">Drafts</a></li>
-                    <li class="inbox"><a href="">Inbox</a></li>
+                    <li class="new"><button class="new-button"> <i class="fa fa-plus"></i> New</button></li>
+                    <li class="sent"><a href=""><i class="fa fa-send"></i> Sent</a></li>
+                    <li class="drafts"><a href=""><i class="fa fa-file-o"></i> Drafts</a></li>
+                    <li class="inbox"><a href=""><i class="fa fa-inbox"></i> Inbox</a></li>
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <div class="topbar">Add</div>
-            <form class="form-container" autocomplete="off">
-                <div class="term-button"><button>Term</button></div>
+            <form class="form-container alt-color" autocomplete="off">
 
-                <div class="info section-info">
-                    <h2>Section</h2>
-                    <div class="input">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject">
-                    </div>
-                    <div class="input">
-                        <label for="course">Course</label>
-                        <input type="text" id="course">
-                    </div>
-                    <div class="input">
-                        <label for="section">Section</label>
-                        <input type="text" id="section">
-                    </div>
-                    <div class="input">
-                        <label for="max-students">Capacity</label>
-                        <input type="text" id="max-students">
-                    </div>
-                    <div class="input">
-                        <label for="max-waitlist">Waitlist</label>
-                        <input type="text" id="max-waitlist">
-                    </div>
-                    <div class="input">
-                        <label for="instruction-method">Method</label>
-                        <input type="text" id="instruction-method">
-                    </div>
-                    <div class="input">
-                        <label for="style">Style</label>
-                        <input type="text" id="style">
-                    </div>
-                    <div class="input last">
-                        <label for="credits">Credits</label>
-                        <input type="text" id="credits">
-                    </div>
+                <div class="topbar">
+                    Add
+                    <button type="button" class="topbar-dropdown"><i class="fa fa-angle-down fa-lg"></i></button>
                 </div>
 
-                <div class="info time-info">
-                    <h2>Times</h2>
-                    <div class="input">
-                        <label for="days">Days</label>
-                        <input type="text" id="days">
+
+                <div class="form-content-container">
+                    <div class="term-button">
+                        <button>
+                            Term <br>
+                            <i class="fa fa-angle-down fa-lg"></i>
+                            <div class="term-dropdown-content">
+                                <div class="spring">Spring</div>
+                                <div class="summer">Summer</div>
+                                <div class="fall">Fall</div>
+                            </div>
+                        </button>
                     </div>
-                    <div class="input last">
-                        <label for="session">Session</label>
-                        <input type="text" id="session">
+
+
+                    <div class="info contact-info">
+                        <h2>Department Contact</h2>
+                        <div class="input">
+                            <label for="department">Department</label>
+                            <input type="text" id="department">
+                        </div>
+                        <div class="input">
+                            <label for="name">Name</label>
+                            <input type="text" id="name">
+                        </div>
+                        <div class="input">
+                            <label for="extension">Extension</label>
+                            <input type="text" id="extension">
+                        </div>
+                        <div class="input">
+                            <label for="email">Email</label>
+                            <input type="email" id="email">
+                        </div>
+                        <div class="input last">
+                            <label for="campus-box">Campus Box</label>
+                            <input type="text" id="campus-box">
+                        </div>
                     </div>
+
+                    <div class="info section-info">
+                        <h2>Section</h2>
+                        <div class="input">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject">
+                        </div>
+                        <div class="input">
+                            <label for="course">Course</label>
+                            <input type="text" id="course">
+                        </div>
+                        <div class="input">
+                            <label for="section">Section</label>
+                            <input type="text" id="section">
+                        </div>
+                        <div class="input">
+                            <label for="max-students">Capacity</label>
+                            <input type="text" id="max-students">
+                        </div>
+                        <div class="input">
+                            <label for="max-waitlist">Waitlist</label>
+                            <input type="text" id="max-waitlist">
+                        </div>
+                        <div class="input">
+                            <label for="instruction-method">Method</label>
+                            <input type="text" id="instruction-method">
+                        </div>
+                        <div class="input">
+                            <label for="style">Style</label>
+                            <input type="text" id="style">
+                        </div>
+                        <div class="input last">
+                            <label for="credits">Credits</label>
+                            <input type="text" id="credits">
+                        </div>
+                    </div>
+
+                    <div class="info time-info">
+                        <h2>Times</h2>
+                        <div class="input">
+                            <label for="days">Days</label>
+                            <input type="text" id="days">
+                        </div>
+                        <div class="input last">
+                            <label for="session">Session</label>
+                            <input type="text" id="session">
+                        </div>
+                    </div>
+
+                    <div class="info location-info">
+                        <h2>Location</h2>
+                        <div class="input">
+                            <label for="campus">Campus</label>
+                            <input type="text" id="campus">
+                        </div>
+                        <div class="input">
+                            <label for="building">Building</label>
+                            <input type="text" id="building">
+                        </div>
+                        <div class="input last">
+                            <label for="room">Room</label>
+                            <input type="text" id="room">
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="info location-info">
-                    <h2>Location</h2>
-                    <div class="input">
-                        <label for="campus">Campus</label>
-                        <input type="text" id="campus">
-                    </div>
-                    <div class="input">
-                        <label for="building">Building</label>
-                        <input type="text" id="building">
-                    </div>
-                    <div class="input last">
-                        <label for="room">Room</label>
-                        <input type="text" id="room">
-                    </div>
-                </div>
-
+                
             </form>
+            
         </div>
     </div>
+
+
+    <script src="../static/Form2/app.js"></script>
 </body>
 </html>

@@ -8,13 +8,18 @@
     flex-direction: column;
 }
 
+.side-navlinks .new {
+    padding-left: 5px;
+}
+
 .side-navlinks .new:hover {
-    background-color: antiquewhite;
+    background-color: rgb(233, 233, 233);
 }
 
 .side-navlinks .new:active {
     box-shadow: none;
 }
+
 
 .new-button {
     margin: 5px 0px 0px 0px;
@@ -25,6 +30,7 @@
     box-shadow: 0px 0px 3px gray;
 }
 
+
 .new-button:hover {
     background-color: white;
 }
@@ -34,9 +40,8 @@
 }
 
 .side-navlinks li {
-    width: 80%;
-    padding: 5px 5px;
-    margin: 0px 0px;
+    width: 70%;
+    padding: 5px 15px;
 }
 
 .side-navlinks li:hover {

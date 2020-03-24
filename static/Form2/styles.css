@@ -10,10 +10,15 @@
 
 html, body {
     height: 100%;
+    background-color: white;
 }
 
 a {
     text-decoration: none;
+}
+
+.alt-color {
+    background-color: rgb(233, 233, 233);
 }
 
 .container {
@@ -24,15 +29,9 @@ a {
 }
 
 .navbar {
-    background-color: aquamarine;
     grid-column: 1 / -1;
 }
 
-.sidebar {
-    background-color: antiquewhite;
-}
-
 .content {
-    background-color: rgb(233, 248, 167);
     grid-column: 2 / -1;
 }

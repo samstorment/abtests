@@ -20,7 +20,7 @@
 }
 
 .navlinks li:hover {
-    background-color: rgb(231, 253, 246);
+    background-color: lightblue;
     cursor: pointer;
 }
 
