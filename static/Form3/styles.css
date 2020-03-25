@@ -1,6 +1,3 @@
-
-/* CSS properties for entire page layout - Main grid management */
-
 * {
     margin: 0;
     padding: 0;
@@ -12,22 +9,14 @@ html, body {
     height: 100%;
 }
 
-a {
-    text-decoration: none;
-}
-
-.alt-color {
-    background-color: rgb(233, 233, 233);
-}
-
 .container {
-    height: 100%;
     display: grid;
     grid-template-columns: 180px auto;
     grid-template-rows: 40px auto;
+    height: 100%;
 }
 
-.navbar {
+.topbar {
     grid-column: 1 / -1;
 }
 

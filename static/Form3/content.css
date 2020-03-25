@@ -1,0 +1,45 @@
+.content {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    background-color: aquamarine;
+}
+
+.action-container {
+    margin: 15px;
+    grid-column: 1 / -1;
+    background-color: khaki;
+    justify-content: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.action-topbar {
+    display: flex;
+    border-bottom: 1px solid gray;
+    justify-content: space-between;
+}
+
+.action-topbar span {
+    padding: 0px 10px;
+    margin: 10px;
+}
+
+.action-topbar .dropdown:hover {
+    border-radius: 10px;
+    background-color: lightblue;
+}
+
+.action-content-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto 1fr;
+}
+
+.action-content {
+    display: flex;
+    grid-column: 2 / 3;
+    justify-content: center;
+    border: 1px solid gray;
+    margin: 5px;
+}
