@@ -26,13 +26,16 @@
         <div class="content">
             <form>
                 <div class="action-container">
-                    <div class="action-topbar">
+                    <div class="action-topbar" id="topbar">
                         <span>Add</span>
-                        <span class="dropdown">-</span>
+                        <button type="button" class="dropdown-button" id="toggle">Toggle</button>
                     </div>
-                    <div class="action-content-container">
+                    <div class="action-content-container" id="content">
                         <div class="action-content">
-                            Content
+                            <h2>Section</h2>
+                            <div class="input"><label for="subject">Subject</label><input type="text" id="subject"></div>
+                            <div class="input"><label for="course">Course</label><input type="text" id="course"></div>
+                            <div class="input"><label for="section">Section Number</label><input type="text" id="section"></div>
                         </div>
                         <div class="action-content">
                             Content
@@ -43,11 +46,11 @@
                 <div class="action-container">
                     <div class="action-topbar">
                         <span>Add</span>
-                        <span class="dropdown">-</span>
+                        <button type="button" class="dropdown-button">Toggle</button>
                     </div>
                     <div class="action-content-container">
                         <div class="action-content">
-                            Content
+                            <h1>Section</h1>
                         </div>
                         <div class="action-content">
                             Content
@@ -59,5 +62,6 @@
         </div>
     </div>
 
+    <script src="../static/Form3/app.js"></script>
 </body>
 </html>
