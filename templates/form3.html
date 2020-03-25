@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="../static/Form3/styles.css">
     <link rel="stylesheet" href="../static/Form3/topbar.css">
     <link rel="stylesheet" href="../static/Form3/sidebar.css">
-    <link rel="stylesheet" href="../static/Form3/content.css">
-    <link rel="stylesheet" href="../static/Form3/actionbuttons.css">
+    <link rel="stylesheet" href="../static/Form3/actiontopbar.css">
+    <link rel="stylesheet" href="../static/Form3/actioncontent.css">
     <title>Form 3</title>
 </head>
 <body>
@@ -27,45 +27,44 @@
         <div class="content">
             <form autocomplete="off">
                 <div id="actions">
-
                     <div class="action-container" id="action-container-0">
+                        <!-- action topbar -->
                         <div class="action-topbar" id="action-topbar-0">
                             <span>Add</span>
                             <button type="button" class="toggle-button" id="toggle-button-0" onclick="toggleActionContent(this.id)">Toggle</button>
                             <button type="button" class="delete-button" id="delete-button-0" onclick="deleteAction(this.id)">Delete</button>
                         </div>
+                        <!-- action content -->
                         <div class="action-content-container" id="action-content-container-0">
                             <div class="action-content">
                                 <h2>Section</h2>
-                                <div class="input"><label for="subject">Subject</label><input type="text" id="subject-0"></div>
-                                <div class="input"><label for="course">Course</label><input type="text" id="course-0"></div>
-                                <div class="input last"><label for="section">Section Number</label><input type="text" id="section-0"></div>
+                                <div><label for="subject">Subject</label><input type="text" id="subject-0"></div>
+                                <div><label for="course">Course</label><input type="text" id="course-0"></div>
+                                <div class="last"><label for="section">Section Number</label><input type="text" id="section-0"></div>
                             </div>
                             <div class="action-content">
                                 Content
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                <div class="action-container-buttons">
+                <div class="button-container">
  
-       
-                    <div id="new-action-button">
-                        New
-                        <div class="dropdown-content">
-                            <div id="add">Add</div>
-                            <div id="change">Change</div>
-                            <div id="cancel">Cancel</div>
-                        </div>
+                    <div class="button-bar">
+                        <input type="submit" id="submit"></input>
+                        <button type="button" id="new-button">New</button>
                     </div>
 
+                    <div class="dropdown-content">
+                        <div class="add" id="add">Add</div>
+                        <div id="change">Change</div>
+                        <div id="cancel">Cancel</div>
+                    </div>
+                    
                 </div>
-                <div class="action-container-buttons">
-                    <input type="submit" id="submit"></input>
-                </div>
-                
+
+        
             </form>
         </div>
     </div>

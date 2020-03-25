@@ -1,3 +1,10 @@
+// all of this is performed after the page is loaded
+document.addEventListener("DOMContentLoaded", () => { 
+    let dropdownContent = document.querySelector(".dropdown-content");
+    dropdownContent.style.display = "none";
+});
+
+// just grabs the number off of an id and returns the number
 function getIdNumber(id) {
     let array = id.split("-");
     return array[array.length - 1];
@@ -30,17 +37,19 @@ function deleteAction(id) {
     actions.removeChild(actionContainer);
 }
 
-let newActionButton = document.querySelector("#new-action-button");
+let newActionButton = document.querySelector("#new-button");
 newActionButton.addEventListener("click", e => {
     
     let dropdownContent = document.querySelector(".dropdown-content");
-    dropdownContent.style.display = "block";
 
+    if (dropdownContent.style.display === "none") {
+        dropdownContent.style.display = "flex";
+    }
 });
 
 // if the dropdown list is clicked off of, turn of its display
 window.onclick = e => {
-    if (!event.target.matches("#new-action-button")) {
+    if (!event.target.matches("#new-button")) {
         let dropdownContent = document.querySelector(".dropdown-content");
         dropdownContent.style.display = "none";
 
@@ -48,6 +57,8 @@ window.onclick = e => {
 }
 
 let contentCounter = 0;
+
+// create new action container for an add
 let addButton = document.querySelector("#add");
 addButton.addEventListener("click", e => {
 
@@ -79,6 +90,7 @@ addButton.addEventListener("click", e => {
     actions.appendChild(actionContainer);
 });
 
+// create new action container for a change
 let changeButton = document.querySelector("#change");
 changeButton.addEventListener("click", e => {
 
@@ -111,6 +123,7 @@ changeButton.addEventListener("click", e => {
 
 }); 
 
+// create new action container for a cancel
 let cancelButton = document.querySelector("#cancel");
 cancelButton.addEventListener("click", e => {
     contentCounter++;

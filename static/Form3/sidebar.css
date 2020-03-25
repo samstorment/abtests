@@ -36,6 +36,7 @@
 }
 
 .sidebar .new-button button:hover {
+    cursor: pointer;
     background-color: white;
 }
 
