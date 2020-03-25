@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/Form3/topbar.css">
     <link rel="stylesheet" href="../static/Form3/sidebar.css">
     <link rel="stylesheet" href="../static/Form3/content.css">
+    <link rel="stylesheet" href="../static/Form3/actionbuttons.css">
     <title>Form 3</title>
 </head>
 <body>
@@ -24,38 +25,45 @@
         </div>
 
         <div class="content">
-            <form>
-                <div class="action-container">
-                    <div class="action-topbar" id="topbar">
-                        <span>Add</span>
-                        <button type="button" class="dropdown-button" id="toggle">Toggle</button>
-                    </div>
-                    <div class="action-content-container" id="content">
-                        <div class="action-content">
-                            <h2>Section</h2>
-                            <div class="input"><label for="subject">Subject</label><input type="text" id="subject"></div>
-                            <div class="input"><label for="course">Course</label><input type="text" id="course"></div>
-                            <div class="input"><label for="section">Section Number</label><input type="text" id="section"></div>
+            <form autocomplete="off">
+                <div id="actions">
+
+                    <div class="action-container" id="action-container-0">
+                        <div class="action-topbar" id="action-topbar-0">
+                            <span>Add</span>
+                            <button type="button" class="toggle-button" id="toggle-button-0" onclick="toggleActionContent(this.id)">Toggle</button>
+                            <button type="button" class="delete-button" id="delete-button-0" onclick="deleteAction(this.id)">Delete</button>
                         </div>
-                        <div class="action-content">
-                            Content
+                        <div class="action-content-container" id="action-content-container-0">
+                            <div class="action-content">
+                                <h2>Section</h2>
+                                <div class="input"><label for="subject">Subject</label><input type="text" id="subject-0"></div>
+                                <div class="input"><label for="course">Course</label><input type="text" id="course-0"></div>
+                                <div class="input last"><label for="section">Section Number</label><input type="text" id="section-0"></div>
+                            </div>
+                            <div class="action-content">
+                                Content
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-                <div class="action-container">
-                    <div class="action-topbar">
-                        <span>Add</span>
-                        <button type="button" class="dropdown-button">Toggle</button>
-                    </div>
-                    <div class="action-content-container">
-                        <div class="action-content">
-                            <h1>Section</h1>
-                        </div>
-                        <div class="action-content">
-                            Content
+                <div class="action-container-buttons">
+ 
+       
+                    <div id="new-action-button">
+                        New
+                        <div class="dropdown-content">
+                            <div id="add">Add</div>
+                            <div id="change">Change</div>
+                            <div id="cancel">Cancel</div>
                         </div>
                     </div>
+
+                </div>
+                <div class="action-container-buttons">
+                    <input type="submit" id="submit"></input>
                 </div>
                 
             </form>
