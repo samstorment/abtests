@@ -27,41 +27,75 @@
         <div class="content">
             <form autocomplete="off">
                 <div id="actions">
-                    <div class="action-container" id="action-container-0">
-                        <!-- action topbar -->
-                        <div class="action-topbar" id="action-topbar-0">
-                            <span>Add</span>
-                            <button type="button" class="toggle-button" id="toggle-button-0" onclick="toggleActionContent(this.id)">Toggle</button>
-                            <button type="button" class="delete-button" id="delete-button-0" onclick="deleteAction(this.id)">Delete</button>
+                    
+                    <!-- Term button -->
+                    <div class="button-container">
+ 
+                        <div class="button-bar">
+                            <input type="button" id="term-button" value="Term">
                         </div>
-                        <!-- action content -->
+    
+                        <div class="dropdown-content" id="term-dropdown">
+                            <div id="Spring" onclick="changeTerm(this.id)">Spring</div>
+                            <div id="Summer" onclick="changeTerm(this.id)">Summer</div>
+                            <div id="Fall" onclick="changeTerm(this.id)">Fall</div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="action-container" id="action-container-0">
+                        <div class="action-topbar" id="action-topbar-0">
+                            <span>Contact</span>
+                            <button type="button" class="toggle-button" id="toggle-button-0" onclick="toggleActionContent(this.id)">Toggle</button>
+                        </div>
                         <div class="action-content-container" id="action-content-container-0">
                             <div class="action-content">
+                                <h2>Your Info</h2>
+                                <div><label for="contact-name">Name</label><input type="text" id="contact-name"></div>
+                                <div><label for="contact-department">Department</label><input type="text" id="contact-department"></div>
+                                <div><label for="contact-email">Email</label><input type="text" id="contact-email"></div>
+                                <div class="last"><label for="contact-phone">Phone Extension</label><input type="text" id="contact-phone"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-container" id="action-container-1">
+                        <!-- action topbar -->
+                        <div class="action-topbar" id="action-topbar-1">
+                            <span>Add</span>
+                            <button type="button" class="toggle-button" id="toggle-button-1" onclick="toggleActionContent(this.id)">Toggle</button>
+                            <button type="button" class="delete-button" id="delete-button-1" onclick="deleteAction(this.id)">Delete</button>
+                        </div>
+                        <!-- action content -->
+                        <div class="action-content-container" id="action-content-container-1">
+                            <div class="action-content">
                                 <h2>Section</h2>
-                                <div><label for="subject">Subject</label><input type="text" id="subject-0"></div>
-                                <div><label for="course">Course</label><input type="text" id="course-0"></div>
-                                <div class="last"><label for="section">Section Number</label><input type="text" id="section-0"></div>
+                                <div><label for="subject">Subject</label><input type="text" id="subject-1"></div>
+                                <div><label for="course">Course</label><input type="text" id="course-1"></div>
+                                <div class="last"><label for="section">Section Number</label><input type="text" id="section-1"></div>
                             </div>
                             <div class="action-content">
                                 Content
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 
+                <!-- Submit button and New button -->
                 <div class="button-container">
- 
+
                     <div class="button-bar">
                         <input type="submit" id="submit"></input>
                         <button type="button" id="new-button">New</button>
                     </div>
 
-                    <div class="dropdown-content">
-                        <div class="add" id="add">Add</div>
+                    <div class="dropdown-content" id="new-dropdown">
+                        <div id="add">Add</div>
                         <div id="change">Change</div>
                         <div id="cancel">Cancel</div>
                     </div>
-                    
                 </div>
 
         

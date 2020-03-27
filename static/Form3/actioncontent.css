@@ -68,12 +68,13 @@
 
 .button-bar button, .button-bar input {
     padding: 5px 10px;
-    width: 70px;
+    width: 80px;
     margin: 10px;
     border-radius: 3px;
     border: 1px solid gray;
     box-shadow: 0px 0px 2px gray;
     font-size: 16px;
+    text-align: center;
 }
 
 .button-bar button:hover, .button-bar input:hover {
@@ -104,7 +105,3 @@
     border-radius: 5px;
     cursor: pointer;
 }
-
-
-
-  

@@ -1,7 +1,9 @@
 // all of this is performed after the page is loaded
 document.addEventListener("DOMContentLoaded", () => { 
-    let dropdownContent = document.querySelector(".dropdown-content");
-    dropdownContent.style.display = "none";
+    let newDropdownnContent = document.querySelector("#new-dropdown");
+    newDropdownnContent.style.display = "none";
+    let termDropdownnContent = document.querySelector("#term-dropdown");
+    termDropdownnContent.style.display = "none";
 });
 
 // just grabs the number off of an id and returns the number
@@ -40,24 +42,44 @@ function deleteAction(id) {
 let newActionButton = document.querySelector("#new-button");
 newActionButton.addEventListener("click", e => {
     
-    let dropdownContent = document.querySelector(".dropdown-content");
+    let dropdownContent = document.querySelector("#new-dropdown");
 
     if (dropdownContent.style.display === "none") {
         dropdownContent.style.display = "flex";
     }
 });
 
-// if the dropdown list is clicked off of, turn of its display
+let termButton = document.querySelector("#term-button");
+termButton.addEventListener("click", e => {
+    
+    let dropdownContent = document.querySelector("#term-dropdown");
+
+    if (dropdownContent.style.display === "none") {
+        dropdownContent.style.display = "flex";
+    }
+});
+
+// if the dropdown list is clicked off of, turn off its display
 window.onclick = e => {
     if (!event.target.matches("#new-button")) {
-        let dropdownContent = document.querySelector(".dropdown-content");
+        let dropdownContent = document.querySelector("#new-dropdown");
         dropdownContent.style.display = "none";
-
     }
+    if (!event.target.matches("#term-button")) {
+        let dropdownContent = document.querySelector("#term-dropdown");
+        dropdownContent.style.display = "none";
+    }
+
 }
 
-let contentCounter = 0;
+function changeTerm(term) {
+    let termButton = document.querySelector("#term-button");
+    termButton.value = term;
+} 
 
+
+
+let contentCounter = 1;
 // create new action container for an add
 let addButton = document.querySelector("#add");
 addButton.addEventListener("click", e => {
