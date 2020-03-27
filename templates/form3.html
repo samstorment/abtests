@@ -32,7 +32,8 @@
                     <div class="button-container">
  
                         <div class="button-bar">
-                            <input type="button" id="term-button" value="Term">
+                            <span class="description">Select a term</span>
+                            <input type="button" class="far-right" id="term-button" value="Term">
                         </div>
     
                         <div class="dropdown-content" id="term-dropdown">
@@ -50,6 +51,7 @@
                             <button type="button" class="toggle-button" id="toggle-button-0" onclick="toggleActionContent(this.id)">Toggle</button>
                         </div>
                         <div class="action-content-container" id="action-content-container-0">
+                            <div class="action-descriptor">Enter your contact info</div>
                             <div class="action-content">
                                 <h2>Your Info</h2>
                                 <div><label for="contact-name">Name</label><input type="text" id="contact-name"></div>
@@ -60,15 +62,17 @@
                         </div>
                     </div>
                     
+                    <!-- Add
                     <div class="action-container" id="action-container-1">
-                        <!-- action topbar -->
+      
                         <div class="action-topbar" id="action-topbar-1">
                             <span>Add</span>
                             <button type="button" class="toggle-button" id="toggle-button-1" onclick="toggleActionContent(this.id)">Toggle</button>
                             <button type="button" class="delete-button" id="delete-button-1" onclick="deleteAction(this.id)">Delete</button>
                         </div>
-                        <!-- action content -->
+      
                         <div class="action-content-container" id="action-content-container-1">
+                            <div class="action-descriptor">Enter new class info</div>
                             <div class="action-content">
                                 <h2>Section</h2>
                                 <div><label for="subject">Subject</label><input type="text" id="subject-1"></div>
@@ -79,22 +83,21 @@
                                 Content
                             </div>
                         </div>
-                    </div>
-                    
+                    </div> -->
                 </div>
 
                 <!-- Submit button and New button -->
                 <div class="button-container">
 
                     <div class="button-bar">
-                        <input type="submit" id="submit"></input>
+                        <input type="submit" class="far-right" id="submit"></input>
                         <button type="button" id="new-button">New</button>
                     </div>
 
                     <div class="dropdown-content" id="new-dropdown">
-                        <div id="add">Add</div>
-                        <div id="change">Change</div>
-                        <div id="cancel">Cancel</div>
+                        <div id="add" onclick="createAction(this.id)">Add</div>
+                        <div id="change" onclick="createAction(this.id)">Change</div>
+                        <div id="cancel" onclick="createAction(this.id)">Cancel</div>
                     </div>
                 </div>
 

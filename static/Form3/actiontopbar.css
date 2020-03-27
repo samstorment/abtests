@@ -4,6 +4,7 @@
     background-color: antiquewhite;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    align-items: center;
 }
 
 .action-topbar span, .action-topbar button {
@@ -12,9 +13,14 @@
 }
 
 .action-topbar button {
+    padding: 5px 10px;
+    width: 80px;
+    margin: 10px;
     border-radius: 3px;
     border: 1px solid gray;
     box-shadow: 0px 0px 2px gray;
+    font-size: 16px;
+    text-align: center;
 }
 
 .action-topbar button:hover {

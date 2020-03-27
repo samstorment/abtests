@@ -39,6 +39,12 @@ function deleteAction(id) {
     actions.removeChild(actionContainer);
 }
 
+// scroll the page to the very bottom so that all of the new content is visible
+function scrollToBottom() {
+    let scrollingElement = (document.scrollingElement || document.body);
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
+}
+
 let newActionButton = document.querySelector("#new-button");
 newActionButton.addEventListener("click", e => {
     
@@ -46,12 +52,12 @@ newActionButton.addEventListener("click", e => {
 
     if (dropdownContent.style.display === "none") {
         dropdownContent.style.display = "flex";
+        scrollToBottom();
     }
 });
 
 let termButton = document.querySelector("#term-button");
 termButton.addEventListener("click", e => {
-    
     let dropdownContent = document.querySelector("#term-dropdown");
 
     if (dropdownContent.style.display === "none") {
@@ -78,12 +84,69 @@ function changeTerm(term) {
 } 
 
 
+function getActionHtml(action) {
+    if (action === "add") {
+        return `<div class="action-topbar" id="action-topbar-${contentCounter}">
+                    <span>Add</span>
+                    <button type="button" class="toggle-button" id="toggle-button-${contentCounter}" onclick="toggleActionContent(this.id)">Toggle</button>
+                    <button type="button" class="delete-button" id="delete-button-${contentCounter}" onclick="deleteAction(this.id)">Delete</button>
+                </div>
+                <div class="action-content-container" id="action-content-container-${contentCounter}">
+                    <div class="action-descriptor">Enter new class info</div>
+                    <div class="action-content">
+                        <h2>Section</h2>
+                        <div class="input"><label for="subject">Subject</label><input type="text" id="subject-${contentCounter}"></div>
+                        <div class="input"><label for="course">Course</label><input type="text" id="course-${contentCounter}"></div>
+                        <div class="input last"><label for="section">Section Number</label><input type="text" id="section-${contentCounter}"></div>
+                    </div>
+                    <div class="action-content">
+                        Content
+                    </div>
+                </div>`;
+    } 
+    else if (action === "change") {
+        return `<div class="action-topbar" id="action-topbar-${contentCounter}">
+                    <span>Change</span>
+                    <button type="button" class="toggle-button" id="toggle-button-${contentCounter}" onclick="toggleActionContent(this.id)">Toggle</button>
+                    <button type="button" class="delete-button" id="delete-button-${contentCounter}" onclick="deleteAction(this.id)">Delete</button>
+                </div>
+                <div class="action-content-container" id="action-content-container-${contentCounter}">
+                    <div class="action-descriptor">Enter changes</div>
+                    <div class="action-content">
+                        <h2>Section</h2>
+                        <div class="input"><label for="subject">Subject</label><input type="text" id="subject-${contentCounter}"></div>
+                        <div class="input"><label for="course">Course</label><input type="text" id="course-${contentCounter}"></div>
+                        <div class="input last"><label for="section">Section Number</label><input type="text" id="section-${contentCounter}"></div>
+                    </div>
+                    <div class="action-content">
+                        Content
+                    </div>
+                </div>`;
+    }
+    else if (action === "cancel") {
+        return `<div class="action-topbar" id="action-topbar-${contentCounter}">
+                    <span>Cancel</span>
+                    <button type="button" class="toggle-button" id="toggle-button-${contentCounter}" onclick="toggleActionContent(this.id)">Toggle</button>
+                    <button type="button" class="delete-button" id="delete-button-${contentCounter}" onclick="deleteAction(this.id)">Delete</button>
+                </div>
+                <div class="action-content-container" id="action-content-container-${contentCounter}">
+                    <div class="action-descriptor">Enter cancellation reason</div>
+                    <div class="action-content">
+                        <h2>Section</h2>
+                        <div class="input"><label for="subject">Subject</label><input type="text" id="subject-${contentCounter}"></div>
+                        <div class="input"><label for="course">Course</label><input type="text" id="course-${contentCounter}"></div>
+                        <div class="input last"><label for="section">Section Number</label><input type="text" id="section-${contentCounter}"></div>
+                    </div>
+                    <div class="action-content">
+                        Content
+                    </div>
+                </div>`;
+    }
+}
+
 
 let contentCounter = 1;
-// create new action container for an add
-let addButton = document.querySelector("#add");
-addButton.addEventListener("click", e => {
-
+function createAction(action) {
     contentCounter++;
     let actions = document.querySelector("#actions");
     let actionContainer = document.createElement("div");
@@ -91,87 +154,8 @@ addButton.addEventListener("click", e => {
     actionContainer.setAttribute("class", "action-container");
     actionContainer.setAttribute("id", `action-container-${contentCounter}`);
 
-    actionContainer.innerHTML = 
-    `<div class="action-topbar" id="action-topbar-${contentCounter}">
-        <span>Add</span>
-        <button type="button" class="toggle-button" id="toggle-button-${contentCounter}" onclick="toggleActionContent(this.id)">Toggle</button>
-        <button type="button" class="delete-button" id="delete-button-${contentCounter}" onclick="deleteAction(this.id)">Delete</button>
-    </div>
-    <div class="action-content-container" id="action-content-container-${contentCounter}">
-        <div class="action-content">
-            <h2>Section</h2>
-            <div class="input"><label for="subject">Subject</label><input type="text" id="subject-${contentCounter}"></div>
-            <div class="input"><label for="course">Course</label><input type="text" id="course-${contentCounter}"></div>
-            <div class="input last"><label for="section">Section Number</label><input type="text" id="section-${contentCounter}"></div>
-        </div>
-        <div class="action-content">
-            Content
-        </div>
-    </div>`;
-
+    actionContainer.innerHTML = getActionHtml(action);
+    
     actions.appendChild(actionContainer);
-});
-
-// create new action container for a change
-let changeButton = document.querySelector("#change");
-changeButton.addEventListener("click", e => {
-
-    contentCounter++;
-    let actions = document.querySelector("#actions");
-    let actionContainer = document.createElement("div");
-
-    actionContainer.setAttribute("class", "action-container");
-    actionContainer.setAttribute("id", `action-container-${contentCounter}`);
-
-    actionContainer.innerHTML = 
-    `<div class="action-topbar" id="action-topbar-${contentCounter}">
-        <span>Change</span>
-        <button type="button" class="toggle-button" id="toggle-button-${contentCounter}" onclick="toggleActionContent(this.id)">Toggle</button>
-        <button type="button" class="delete-button" id="delete-button-${contentCounter}" onclick="deleteAction(this.id)">Delete</button>
-    </div>
-    <div class="action-content-container" id="action-content-container-${contentCounter}">
-        <div class="action-content">
-            <h2>Section</h2>
-            <div class="input"><label for="subject">Subject</label><input type="text" id="subject-${contentCounter}"></div>
-            <div class="input"><label for="course">Course</label><input type="text" id="course-${contentCounter}"></div>
-            <div class="input last"><label for="section">Section Number</label><input type="text" id="section-${contentCounter}"></div>
-        </div>
-        <div class="action-content">
-            Content
-        </div>
-    </div>`;
-
-    actions.appendChild(actionContainer);
-
-}); 
-
-// create new action container for a cancel
-let cancelButton = document.querySelector("#cancel");
-cancelButton.addEventListener("click", e => {
-    contentCounter++;
-    let actions = document.querySelector("#actions");
-    let actionContainer = document.createElement("div");
-
-    actionContainer.setAttribute("class", "action-container");
-    actionContainer.setAttribute("id", `action-container-${contentCounter}`);
-
-    actionContainer.innerHTML = 
-    `<div class="action-topbar" id="action-topbar-${contentCounter}">
-        <span>Cancel</span>
-        <button type="button" class="toggle-button" id="toggle-button-${contentCounter}" onclick="toggleActionContent(this.id)">Toggle</button>
-        <button type="button" class="delete-button" id="delete-button-${contentCounter}" onclick="deleteAction(this.id)">Delete</button>
-    </div>
-    <div class="action-content-container" id="action-content-container-${contentCounter}">
-        <div class="action-content">
-            <h2>Section</h2>
-            <div class="input"><label for="subject">Subject</label><input type="text" id="subject-${contentCounter}"></div>
-            <div class="input"><label for="course">Course</label><input type="text" id="course-${contentCounter}"></div>
-            <div class="input last"><label for="section">Section Number</label><input type="text" id="section-${contentCounter}"></div>
-        </div>
-        <div class="action-content">
-            Content
-        </div>
-    </div>`;
-
-    actions.appendChild(actionContainer);
-});
+    scrollToBottom();
+}
