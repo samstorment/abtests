@@ -5,6 +5,7 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     align-items: center;
+    cursor: move;
 }
 
 .action-topbar span, .action-topbar button {
@@ -41,4 +42,7 @@
 }
 
 
+.dragging {
+    opacity: 0.5;
+}
 

@@ -177,15 +177,26 @@ actions.forEach(action => {
 function handleDrag(actionContainer) {
 
     actionContainer.addEventListener("dragstart", () => {
-        actionContainer.querySelector(".action-content-container").style.display = "none";
-        let topbar = actionContainer.querySelector(".action-topbar");
-        topbar.style.borderBottom = "none";
-        topbar.style.borderBottomLeftRadius = "10px";
-        topbar.style.borderBottomRightRadius = "10px";
         actionContainer.classList.add("dragging");
+
+        // DUMMY
+        let actionContentContainer = actionContainer.querySelector(".action-content-container");
+        let contentContainerHeight = actionContentContainer.offsetHeight;
+        actionContentContainer.style.display = "none";
+
+        let dummyContainer = document.createElement("div");
+        dummyContainer.setAttribute("class", "action-content-container dummy");
+
+        dummyContainer.style.height = `${contentContainerHeight}px`;
+
+        actionContainer.appendChild(dummyContainer);
+
+        console.log("Added Dummy");       
     });
 
+
     actionContainer.addEventListener("dragend", () => {
+
         let contentContainer = actionContainer.querySelector(".action-content-container");
         let topbar = actionContainer.querySelector(".action-topbar");
         // we want to display the contentContainer as grid ONLY if the container was open when we started dragging
@@ -194,6 +205,13 @@ function handleDrag(actionContainer) {
         topbar.style.borderBottomLeftRadius = "0px";
         topbar.style.borderBottomRightRadius = "0px";
         actionContainer.classList.remove("dragging");
+
+        console.log(actionContainer.lastChild);
+
+        let dummy = actionContainer.querySelector(".dummy");
+
+        actionContainer.removeChild(dummy);
+        console.log("Removed Dummy");
     });
 
     actions = document.querySelector("#actions");
@@ -216,8 +234,8 @@ function getDragAfterElement(container, y) {
     return draggableElements.reduce((closest, child) => {
         const box = child.getBoundingClientRect();
 
-        // normally, midpoint would be calculated as height / 2 but we want to always ue the height of the topbar since we can toggle the box's height 
-        //const midpoint = box.height / 2;
+        // normally, midpoint would be calculated as height / 2 but we want to always ue the height of the topbar since we can toggle the box's height to a variable number
+        // const midpoint = box.height / 2;
         const midpoint = 55 / 2; // topbar has a height of 55
 
         const offset = y - box.top - midpoint;
