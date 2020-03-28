@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../static/Form3/sidebar.css">
     <link rel="stylesheet" href="../static/Form3/actiontopbar.css">
     <link rel="stylesheet" href="../static/Form3/actioncontent.css">
+    <link rel="stylesheet" href="../static/Form3/dragdrop.css">
+    <script src="../static/Form3/app.js" defer></script>
     <title>Form 3</title>
 </head>
 <body>
@@ -37,9 +39,9 @@
                         </div>
     
                         <div class="dropdown-content" id="term-dropdown">
-                            <div id="Spring" onclick="changeTerm(this.id)">Spring</div>
-                            <div id="Summer" onclick="changeTerm(this.id)">Summer</div>
-                            <div id="Fall" onclick="changeTerm(this.id)">Fall</div>
+                            <div class="term" id="Spring">Spring</div>
+                            <div class="term" id="Summer">Summer</div>
+                            <div class="term" id="Fall">Fall</div>
                         </div>
                         
                     </div>
@@ -48,7 +50,7 @@
                     <div class="action-container" id="action-container-0">
                         <div class="action-topbar" id="action-topbar-0">
                             <span>Contact</span>
-                            <button type="button" class="toggle-button" id="toggle-button-0" onclick="toggleActionContent(this.id)">Toggle</button>
+                            <button type="button" class="toggle-button" id="toggle-button-0">Toggle</button>
                         </div>
                         <div class="action-content-container" id="action-content-container-0">
                             <div class="action-descriptor">Enter your contact info</div>
@@ -95,9 +97,9 @@
                     </div>
 
                     <div class="dropdown-content" id="new-dropdown">
-                        <div id="add" onclick="createAction(this.id)">Add</div>
-                        <div id="change" onclick="createAction(this.id)">Change</div>
-                        <div id="cancel" onclick="createAction(this.id)">Cancel</div>
+                        <div class="action" id="add">Add</div>
+                        <div class="action" id="change">Change</div>
+                        <div class="action" id="cancel">Cancel</div>
                     </div>
                 </div>
 
@@ -105,7 +107,5 @@
             </form>
         </div>
     </div>
-
-    <script src="../static/Form3/app.js"></script>
 </body>
 </html>
