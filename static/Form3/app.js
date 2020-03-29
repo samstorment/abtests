@@ -10,20 +10,21 @@ function toggleActionContent(id) {
     let toggleButton = document.querySelector(`#toggle-button-${id}`);
     toggleButton.addEventListener("click", e => {
     
-        let actionContainer = document.querySelector(`#action-container-${id}`);
-        let actionContentContainer = document.querySelector(`#action-content-container-${id}`);
+        let contentContainer = document.querySelector(`#action-content-container-${id}`);
         let actionTopbar = document.querySelector(`#action-topbar-${id}`);
 
-        if (actionContentContainer.style.display === "none") {
-            actionContentContainer.style.display = "grid";
-            actionTopbar.style.borderBottom = "1px solid gray";
-            actionTopbar.style.borderBottomLeftRadius = "0px";
-            actionTopbar.style.borderBottomRightRadius = "0px";
+        if (contentContainer.style.display === "none") {
+
+            contentContainer.classList.add("open");
+            contentContainer.style.display = "grid";
+            actionTopbar.classList.remove("collapse");
+
         } else {
-            actionContentContainer.style.display = "none";
-            actionTopbar.style.borderBottomLeftRadius = "10px";
-            actionTopbar.style.borderBottomRightRadius = "10px";
-            actionTopbar.style.borderBottom = "none";
+
+            contentContainer.classList.remove("open");
+            contentContainer.style.display = "none";
+            actionTopbar.classList.add("collapse");
+
         }
     });
 }
@@ -95,7 +96,7 @@ function getActionHtml(action) {
                     <button type="button" class="toggle-button" id="toggle-button-${contentCounter}">Toggle</button>
                     <button type="button" class="delete-button" id="delete-button-${contentCounter}">Delete</button>
                 </div>
-                <div class="action-content-container" id="action-content-container-${contentCounter}">
+                <div class="action-content-container open" id="action-content-container-${contentCounter}">
                     <div class="action-descriptor">Enter new class info</div>
                     <div class="action-content">
                         <h2>Section</h2>
@@ -114,7 +115,7 @@ function getActionHtml(action) {
                     <button type="button" class="toggle-button" id="toggle-button-${contentCounter}">Toggle</button>
                     <button type="button" class="delete-button" id="delete-button-${contentCounter}">Delete</button>
                 </div>
-                <div class="action-content-container" id="action-content-container-${contentCounter}">
+                <div class="action-content-container open" id="action-content-container-${contentCounter}">
                     <div class="action-descriptor">Enter changes</div>
                     <div class="action-content">
                         <h2>Section</h2>
@@ -133,7 +134,7 @@ function getActionHtml(action) {
                     <button type="button" class="toggle-button" id="toggle-button-${contentCounter}">Toggle</button>
                     <button type="button" class="delete-button" id="delete-button-${contentCounter}">Delete</button>
                 </div>
-                <div class="action-content-container" id="action-content-container-${contentCounter}">
+                <div class="action-content-container open" id="action-content-container-${contentCounter}">
                     <div class="action-descriptor">Enter cancellation reason</div>
                     <div class="action-content">
                         <h2>Section</h2>
@@ -148,7 +149,7 @@ function getActionHtml(action) {
     }
 }
 
-// Event listeners for Add, Change, and Cancel buttons
+// Create an action. Event listeners for Add, Change, and Cancel buttons
 let contentCounter = 1;
 let actions = document.querySelectorAll(".action");
 actions.forEach(action => {
@@ -178,40 +179,30 @@ function handleDrag(actionContainer) {
 
     actionContainer.addEventListener("dragstart", () => {
         actionContainer.classList.add("dragging");
-
         // DUMMY
-        let actionContentContainer = actionContainer.querySelector(".action-content-container");
-        let contentContainerHeight = actionContentContainer.offsetHeight;
-        actionContentContainer.style.display = "none";
+        let contentContainer = actionContainer.querySelector(".action-content-container");
+        let contentContainerHeight = contentContainer.offsetHeight;
+        contentContainer.style.display = "none";
 
         let dummyContainer = document.createElement("div");
         dummyContainer.setAttribute("class", "action-content-container dummy");
-
         dummyContainer.style.height = `${contentContainerHeight}px`;
 
-        actionContainer.appendChild(dummyContainer);
-
-        console.log("Added Dummy");       
+        actionContainer.appendChild(dummyContainer);    
     });
-
 
     actionContainer.addEventListener("dragend", () => {
 
         let contentContainer = actionContainer.querySelector(".action-content-container");
-        let topbar = actionContainer.querySelector(".action-topbar");
-        // we want to display the contentContainer as grid ONLY if the container was open when we started dragging
-        contentContainer.style.display = "grid";
-        topbar.style.borderBottom = "1px solid gray";
-        topbar.style.borderBottomLeftRadius = "0px";
-        topbar.style.borderBottomRightRadius = "0px";
-        actionContainer.classList.remove("dragging");
-
-        console.log(actionContainer.lastChild);
-
         let dummy = actionContainer.querySelector(".dummy");
 
+        // if contentContainer was open when we picked it up, re-display it
+        if (contentContainer.classList.contains("open")) {
+            contentContainer.style.display = "grid";
+        }
+        // we're no longer dragging and we don't want the dummy anymore
+        actionContainer.classList.remove("dragging");
         actionContainer.removeChild(dummy);
-        console.log("Removed Dummy");
     });
 
     actions = document.querySelector("#actions");
@@ -234,6 +225,7 @@ function getDragAfterElement(container, y) {
     return draggableElements.reduce((closest, child) => {
         const box = child.getBoundingClientRect();
 
+        console.log("Reducing");
         // normally, midpoint would be calculated as height / 2 but we want to always ue the height of the topbar since we can toggle the box's height to a variable number
         // const midpoint = box.height / 2;
         const midpoint = 55 / 2; // topbar has a height of 55

@@ -19,7 +19,6 @@
     padding: 0px 5px;
 }
 
-
 .action-content {
     display: flex;
     flex-direction: column;
@@ -119,4 +118,8 @@
     background-color: lightblue;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.dragging {
+    opacity: 0.5;
 }
