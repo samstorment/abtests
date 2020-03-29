@@ -207,16 +207,8 @@ function handleDrag(actionContainer) {
 
     actions = document.querySelector("#actions");
 
-    actions.addEventListener("dragover", e => {
-        e.preventDefault()
-        const afterElement = getDragAfterElement(actions, e.clientY)
-        const draggable = document.querySelector('.dragging')
-        if (afterElement == null) {
-            actions.appendChild(draggable)
-        } else {
-            actions.insertBefore(draggable, afterElement)
-        }
-    });
+
+    actions.addEventListener("dragover", e => debounced(20000, dragHandler(e, actions)));
 }
 
 function getDragAfterElement(container, y) {
@@ -238,3 +230,41 @@ function getDragAfterElement(container, y) {
         }
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
+
+const dragHandler = (e, actions) => {
+
+    e.preventDefault();
+    const afterElement = getDragAfterElement(actions, e.clientY);
+    const draggable = document.querySelector('.dragging');
+    if (afterElement == null) {
+        actions.appendChild(draggable);
+    } else {
+        actions.insertBefore(draggable, afterElement);
+    }
+}
+
+
+function throttled(delay, fn) {
+    let lastCall = 0;
+    return function (...args) {
+        const now = (new Date).getTime();
+        if (now - lastCall < delay) {
+            return;
+        }
+        lastCall = now;
+        return fn(...args); 
+    }
+}
+
+function debounced(delay, fn) {
+    let timerId;
+    return function (...args) {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+      timerId = setTimeout(() => {
+        fn(...args);
+        timerId = null;
+      }, delay);
+    }
+  }
