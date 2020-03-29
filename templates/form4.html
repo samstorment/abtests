@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,13 +8,13 @@
     <link rel="stylesheet" href="../static/Form4/actiontopbar.css">
     <link rel="stylesheet" href="../static/Form4/actioncontent.css">
     <script src="../static/Form4/app.js" defer></script>
-    <title>Form 4</title>
+    <title>{{.Title}}</title>
 </head>
 <body>
     <div class="container">
 
         <div class="topbar">
-            <span>AB Form</span>
+            <span>{{.Header}}</span>
             <span>Profile</span>
         </div>
 
@@ -27,7 +26,7 @@
         </div>
 
         <div class="content">
-            <form autocomplete="off">
+            <form method="POST" action="/submit" autocomplete="off">
                     
                 <!-- Term button -->
                 <div class="button-container">
@@ -54,10 +53,10 @@
                         <div class="action-descriptor">Enter your contact info</div>
                         <div class="action-content">
                             <h2>Your Info</h2>
-                            <div><label for="contact-name">Name</label><input type="text" id="contact-name"></div>
-                            <div><label for="contact-department">Department</label><input type="text" id="contact-department"></div>
-                            <div><label for="contact-email">Email</label><input type="text" id="contact-email"></div>
-                            <div class="last"><label for="contact-phone">Phone Extension</label><input type="text" id="contact-phone"></div>
+                            <div><label for="contact-name">Name</label><input type="text" id="contact-name" name="contact-name"></div>
+                            <div><label for="contact-department">Department</label><input type="text" id="contact-department" name="contact-department"></div>
+                            <div><label for="contact-email">Email</label><input type="text" id="contact-email" name="contact-email"></div>
+                            <div class="last"><label for="contact-phone">Phone Extension</label><input type="text" id="contact-phone" name="contact-phone"></div>
                         </div>
                     </div>
                 </div>
