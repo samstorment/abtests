@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#term-dropdown").style.display = "none";
 });
 
+// move the action container down
 function moveUp(actionContainer) {
     let topbar = actionContainer.querySelector(".action-topbar");
     let button = actionContainer.querySelector(".action-topbar #move-up");
@@ -17,6 +18,7 @@ function moveUp(actionContainer) {
     });
 }
 
+// move the action container down
 function moveDown(actionContainer) {
     let topbar = actionContainer.querySelector(".action-topbar");
     let button = actionContainer.querySelector(".action-topbar #move-down");
@@ -32,6 +34,7 @@ function moveDown(actionContainer) {
     });
 }
 
+// find the previous or next sibling based on the direction
 function findSwap(actionContainer, direction) {
     do {
         if (direction == "up") { actionContainer = actionContainer.previousSibling; }
@@ -109,7 +112,6 @@ window.onclick = e => {
         let dropdownContent = document.querySelector("#term-dropdown");
         dropdownContent.style.display = "none";
     }
-
 }
 
 // Event listeners for Spring, Summer, and Fall buttons
