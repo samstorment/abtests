@@ -14,17 +14,29 @@ type Page struct {
 }
 
 func formHandler(w http.ResponseWriter, r *http.Request) {
-	page := Page{ "Form", "AB Form"}
+
+	r.ParseForm()
+	username := r.FormValue("username")
+	password := r.FormValue("password")
+
+	page := Page{ username, password }
 	temp, err := template.ParseFiles("templates/form.html")
 
-	if err != nil { fmt.Println("Err", err) }
+	if err != nil { fmt.Println("Error", err) }
 
 	temp.Execute(w, page)
 }
 
-func submit(w http.ResponseWriter, r *http.Request) {
+func submitForm(w http.ResponseWriter, r *http.Request) {
 	parseForm(r)
 	http.Redirect(w, r, "/form", http.StatusFound)
+}
+
+func loginHandler(w http.ResponseWriter, r *http.Request) {
+
+	temp, err := template.ParseFiles("templates/login.html")
+	if err != nil { fmt.Println("Error", err) }
+	temp.Execute(w, nil)
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -35,7 +47,9 @@ func main() {
 
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/form", formHandler)
-	http.HandleFunc("/submit", submit)
+	http.HandleFunc("/submit", submitForm)
+	http.HandleFunc("/login", loginHandler)
+
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
