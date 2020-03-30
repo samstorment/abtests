@@ -14,7 +14,7 @@ type Page struct {
 }
 
 func formHandler(w http.ResponseWriter, r *http.Request) {
-	page := Page{ "Add", "Add a Meeting"}
+	page := Page{ "Form", "AB Form"}
 	temp, err := template.ParseFiles("templates/form.html")
 
 	if err != nil { fmt.Println("Err", err) }

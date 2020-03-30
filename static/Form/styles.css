@@ -21,9 +21,5 @@ html, body {
 }
 
 .content {
-    /* grid-column: 2 / -1;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr; */
     background-color: aquamarine;
 }
