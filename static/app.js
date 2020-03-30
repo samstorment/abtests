@@ -23,9 +23,7 @@ function moveDown(actionContainer) {
     let topbar = actionContainer.querySelector(".action-topbar");
     let button = actionContainer.querySelector(".action-topbar #move-down");
     button.addEventListener("click", e => {
-
         if (actionContainer === actionContainer.parentNode.lastElementChild) {
-            console.log("WHOOPS")
             return;
         }
         let next = findSwap(actionContainer, "down");
@@ -136,9 +134,9 @@ function getActionHtml(action, id) {
                     <div class="action-descriptor">Enter changes</div>
                     <div class="action-content">
                         <h2>Section</h2>
-                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}"></div>
-                        <div class="input"><label for="course-${id}">Course</label><input type="text" id="course-${id}"></div>
-                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}"></div>
+                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}" name="subject-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" id="course-${id}" name="course-${id}"></div>
+                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}" name="section-${id}"></div>
                     </div>
                     <div class="action-content">
                         Content
@@ -157,9 +155,9 @@ function getActionHtml(action, id) {
                     <div class="action-descriptor">Enter changes</div>
                     <div class="action-content">
                         <h2>Section</h2>
-                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}"></div>
-                        <div class="input"><label for="course-${id}">Course</label><input type="text" id="course-${id}"></div>
-                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}"></div>
+                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}" name="subject-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" id="course-${id}" name="course-${id}"></div>
+                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}" name="section-${id}"></div>
                     </div>
                     <div class="action-content">
                         Content
@@ -179,7 +177,7 @@ function getActionHtml(action, id) {
                     <div class="action-content">
                         <h2>Section</h2>
                         <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}"></div>
-                        <div class="input"><label for="course-${id}">Course</label><input type="text" id="course-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" id="course-${id}"></div>
                         <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}"></div>
                     </div>
                     <div class="action-content">

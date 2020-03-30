@@ -2,12 +2,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/Form4/styles.css">
-    <link rel="stylesheet" href="../static/Form4/topbar.css">
-    <link rel="stylesheet" href="../static/Form4/sidebar.css">
-    <link rel="stylesheet" href="../static/Form4/actiontopbar.css">
-    <link rel="stylesheet" href="../static/Form4/actioncontent.css">
-    <script src="../static/Form4/app.js" defer></script>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/topbar.css">
+    <link rel="stylesheet" href="../static/sidebar.css">
+    <link rel="stylesheet" href="../static/actiontopbar.css">
+    <link rel="stylesheet" href="../static/actioncontent.css">
+    <script src="../static/app.js" defer></script>
     <title>{{.Title}}</title>
 </head>
 <body>
@@ -19,10 +19,12 @@
         </div>
 
         <div class="sidebar">
-            <div class="new-button"><button type="button">New</button></div>
-            <div class="sent">Sent</div>
-            <div class="drafts">Drafts</div>
-            <div class="inbox">Inbox</div>
+            <a href="/add" class="new-button" type="button">
+                New
+            </a>
+            <a href="/add" class="sent">Sent</a>
+            <a href="#" class="drafts">Drafts</a>
+            <a href="#" class="inbox">Inbox</a>
         </div>
 
         <div class="content">
@@ -32,7 +34,7 @@
                 <div class="button-container">
                     <div class="button-bar">
                         <span class="description">Select a term</span>
-                        <input type="button" class="far-right" id="term-button" value="Term">
+                        <input readonly type="text" class="far-right" id="term-button" name="term" value="Term">
                     </div>
 
                     <div class="dropdown-content" id="term-dropdown">

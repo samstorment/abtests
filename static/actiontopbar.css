@@ -5,7 +5,6 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     align-items: center;
-    cursor: move;
 }
 
 .action-topbar span, .action-topbar button {
@@ -24,6 +23,10 @@
     text-align: center;
 }
 
+.action-topbar span {
+    margin-right: auto;
+}
+
 .action-topbar button:hover {
    background-color: white;
 }
@@ -37,13 +40,19 @@
     box-shadow: inset 0px 0px 4px gray;
 }
 
-.action-topbar .toggle-button {
-    margin-left: auto;
-}
-
 .collapse {
     border-bottom: none;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.move {
+    animation-name: moved;
+    animation-duration: 4s;
+}
+
+@keyframes moved {
+    from { background-color: rgb(204, 171, 127); }
+    to { background-color: antiquewhite; }
 }
 

@@ -5,41 +5,39 @@
     border-right: 1px solid gray;
 }
 
-.sidebar div {
+.sidebar a {
     padding: 5px;
+    text-decoration: none;
+    padding-left: 20px;
+    margin-right: 35px;
 }
 
-.sidebar div:hover {
+.sidebar a:hover {
     background-color: lightblue;
-    width: 75%;
     border-radius: 0px 15px 15px 0px;
 }
 
-.sidebar div:active {
+.sidebar a:active {
     box-shadow: inset 0px 0px 2px gray;
 }
 
-.sidebar .new-button:hover {
-    background-color: cornflowerblue;
-}
-
-.sidebar .new-button:active {
-    box-shadow: none;
-}
-
-.sidebar .new-button button {
-    padding: 8px 28px;
+.sidebar .new-button {
+    margin: 10px 60px 5px 8px;
+    padding: 5px 10px;
+    font-size: x-large;
     border: 1px solid gray;
-    border-radius: 28px;
-    font-size: 20px;
+    border-radius: 3px;
     box-shadow: 0px 0px 3px gray;
+    background-color: rgb(233, 233, 233);
 }
 
-.sidebar .new-button button:hover {
-    cursor: pointer;
+
+.sidebar .new-button:hover {
     background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-.sidebar .new-button button:active {
+.new-button:active {
     box-shadow: inset 0px 0px 3px gray;
 }

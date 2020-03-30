@@ -90,6 +90,7 @@
     box-shadow: 0px 0px 2px gray;
     font-size: 16px;
     text-align: center;
+    background-color: rgb(233, 233, 233);
 }
 
 .button-bar button:hover, .button-bar input:hover {
