@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	// "encoding/json"
 	"fmt"
 )
 
@@ -11,7 +10,7 @@ func parseForm(r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		fmt.Println("Something messed up", err)
 	} else {
-		fmt.Println(r.PostForm)
+		fmt.Println("Form:", r.PostForm)
 	}
 }
 
