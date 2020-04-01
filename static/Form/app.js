@@ -73,6 +73,40 @@ function deleteAction(actions, actionContainer) {
 let contactContainer = document.querySelector("#contact-container");
 toggleActionContent(contactContainer);
 
+// adds the class info to the top of the Add, Change, Cancel container 1 second after user stops typing
+function setActionText(actionContainer) {
+    let textToEdit = actionContainer.querySelector(".action-topbar span");
+    let subjectInput = actionContainer.querySelector(".action-content-container .action-content div .subject-input")
+    let courseInput = actionContainer.querySelector(".action-content-container .action-content div .course-input")
+    let sectionInput = actionContainer.querySelector(".action-content-container .action-content div .section-input")
+
+    let currentText = textToEdit.innerHTML;
+    let subjectText = "";
+    let courseText = "";
+    let sectionText = "";
+
+    let timeout = null;
+
+    let textChangeListener = e => {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            subjectText = subjectInput.value;
+            courseText = courseInput.value;
+            sectionText = sectionInput.value;
+            if (subjectText == "") {
+                textToEdit.innerHTML =  currentText;
+            } else {
+                textToEdit.innerHTML = "<strong>" + currentText + "</strong> " + subjectText + " " + courseText + " "  + sectionText + "</em>";
+            }
+        }, 1000);
+    }
+
+    subjectInput.addEventListener("keyup", textChangeListener);
+    courseInput.addEventListener("keyup", textChangeListener);
+    sectionInput.addEventListener("keyup", textChangeListener);
+
+}
+
 // scroll the page to the very bottom so that all of the new content is visible
 function scrollToBottom() {
     let scrollingElement = (document.scrollingElement || document.body);
@@ -134,9 +168,9 @@ function getActionHtml(action, id) {
                     <div class="action-descriptor">Enter changes</div>
                     <div class="action-content">
                         <h2>Section</h2>
-                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}" name="subject-${id}"></div>
-                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" id="course-${id}" name="course-${id}"></div>
-                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}" name="section-${id}"></div>
+                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" class="subject-input" id="subject-${id}" name="subject-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" class="course-input" id="course-${id}" name="course-${id}"></div>
+                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" class="section-input" id="section-${id}" name="section-${id}"></div>
                     </div>
                     <div class="action-content">
                         Content
@@ -155,9 +189,9 @@ function getActionHtml(action, id) {
                     <div class="action-descriptor">Enter changes</div>
                     <div class="action-content">
                         <h2>Section</h2>
-                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}" name="subject-${id}"></div>
-                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" id="course-${id}" name="course-${id}"></div>
-                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}" name="section-${id}"></div>
+                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" class="subject-input" id="subject-${id}" name="subject-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" class="course-input" id="course-${id}" name="course-${id}"></div>
+                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" class="section-input" id="section-${id}" name="section-${id}"></div>
                     </div>
                     <div class="action-content">
                         Content
@@ -176,9 +210,9 @@ function getActionHtml(action, id) {
                     <div class="action-descriptor">Enter changes</div>
                     <div class="action-content">
                         <h2>Section</h2>
-                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" id="subject-${id}"></div>
-                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" id="course-${id}"></div>
-                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" id="section-${id}"></div>
+                        <div class="input"><label for="subject-${id}">Subject</label><input type="text" class="subject-input" id="subject-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input type="text" class="course-input" id="course-${id}"></div>
+                        <div class="input last"><label for="section-${id}">Section Number</label><input type="text" class="section-input" id="section-${id}"></div>
                     </div>
                     <div class="action-content">
                         Content
@@ -206,6 +240,7 @@ actions.forEach(action => {
         deleteAction(actions, actionContainer);
         moveUp(actionContainer);
         moveDown(actionContainer);
+        setActionText(actionContainer);
 
         scrollToBottom();
     });
