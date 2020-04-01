@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/Form/styles.css">
+    <link rel="stylesheet" href="../static/Form/topbar.css">
+    <link rel="stylesheet" href="../static/Form/sidebar.css">
+    <link rel="stylesheet" href="../static/Form/actiontopbar.css">
+    <link rel="stylesheet" href="../static/Form/actioncontent.css">
+    <link rel="stylesheet" href="../static/Form/sent.css">
+    <script src="../static/Form/sent.js" defer></script>
+    <title>Sent</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="topbar">
+            <span>AB Form</span>
+            <span>{{.Title}}</span>
+        </div>
+
+        <div class="sidebar">
+            <a href="/add" class="new-button" type="button">
+                New
+            </a>
+            <a href="/add" class="sent">Sent</a>
+            <a href="#" class="drafts">Drafts</a>
+            <a href="#" class="inbox">Inbox</a>
+        </div>
+
+        <div class="content">
+            
+            <div class="button-container">
+                <div class="button-bar">
+                    <span>Sent Items</span>
+                    <button type="button" id="term-button">Term</button>
+                </div>
+                <div class="dropdown-content" id="term-dropdown">
+                    <div class="term" id="Spring">Spring</div>
+                    <div class="term" id="Summer">Summer</div>
+                    <div class="term" id="Fall">Fall</div>
+                </div>
+            </div>
+
+
+            <div class="table-container">
+                <div class="table-head">
+                    Hello
+                </div>
+            </div>
+
+            <div id="actions"></div>
+        </div>
+    </div>
+</body>
+</html>
