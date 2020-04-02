@@ -1,15 +1,22 @@
 .filter {
     display: inline-block;
-    background-color: lightpink;
     margin: 15px;
 }
 
-#filter-button {
+.filter-button {
     padding: 5px 15px;
     font-size: 20px;
     border: 1px solid gray;
     border-radius: 3px;
-    box-shadow: 0px 0px 3px gray;
+    box-shadow: 0px 0px 5px gray;
+}
+
+.filter-button:focus {
+    border: 1px ;
+}
+
+.filter-button:active {
+    box-shadow: inset 0px 0px 5px gray;
 }
 
 .filter-dropdown {
@@ -23,7 +30,7 @@
     box-shadow: 0px 0px 5px gray;
 }
 
-.filter:hover #filter-button {
+.filter:hover .filter-button {
     background-color: white;
 }
 
@@ -55,7 +62,7 @@
     border-color:rgb(28, 99, 250);
 }
 
-#search-button {
+#filter-search {
     flex: 0;
     padding: 5px 10px;
     font-size: small;
@@ -68,12 +75,12 @@
     cursor: pointer;
 }
 
-#search-button:focus {
+#filter-search:focus {
     border: none;
     box-shadow: 0px 0px 3px gray;
     background-color: rgb(28, 99, 250, .75);
 }
 
-#search-button:active {
+#filter-search:active {
     box-shadow: inset 0px 0px 5px gray;
 }
