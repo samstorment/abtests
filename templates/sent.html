@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="../static/Form/sidebar.css">
     <link rel="stylesheet" href="../static/Form/actiontopbar.css">
     <link rel="stylesheet" href="../static/Form/actioncontent.css">
-    <link rel="stylesheet" href="../static/Form/sent.css">
-    <script src="../static/Form/sent.js" defer></script>
+    <link rel="stylesheet" href="../static/Sent/filter.css">
+    <link rel="stylesheet" href="../static/Sent/table.css">
+    <script src="../static/Sent/sent.js" defer></script>
     <title>Sent</title>
 </head>
 <body>
@@ -30,23 +31,52 @@
 
         <div class="content">
             
-            <div class="button-container">
-                <div class="button-bar">
-                    <span>Sent Items</span>
-                    <button type="button" id="term-button">Term</button>
+            <form class="filter" autocomplete="off">
+                <button type="button" id="filter-button">
+                    Add Filter
+                </button>
+                <div class="filter-dropdown">
+                    <div>
+                        <label for="term">Term</label><input autocomplete="false" id="term">
+                    </div>
+                    <div>
+                        <label for="from">From</label><input id="from">
+                    </div>
+                    <div>
+                        <label for="subject">Subject</label><input id="subject">
+                    </div>
+                    <div>
+                        <label for="course">Course Number</label><input id="course">
+                    </div>
+                    <div>
+                        <label for="instructor">Instructor</label><input id="instructor">
+                    </div>
+                    <div>
+                        <!-- Change type to submit later, button now for testing -->
+                        <input type="submit" value="Search" id="search-button">
+                    </div> 
                 </div>
-                <div class="dropdown-content" id="term-dropdown">
-                    <div class="term" id="Spring">Spring</div>
-                    <div class="term" id="Summer">Summer</div>
-                    <div class="term" id="Fall">Fall</div>
-                </div>
-            </div>
-
+            </form>
 
             <div class="table-container">
-                <div class="table-head">
-                    Hello
-                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Subject</th>
+                        <th onclick="sortColumn('course')">Number</th>
+                        <th>Section</th>
+                        <th>Instructor</th>
+                        <th>From</th>
+                        <th>Term</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="table-data">
+                        
+                    </tbody>
+                </table>
             </div>
 
             <div id="actions"></div>

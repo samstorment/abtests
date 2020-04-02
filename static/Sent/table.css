@@ -1,0 +1,40 @@
+.table-container {
+    padding: 0px 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid gray;
+}
+
+td, th {
+    border-bottom: 1px solid gray;
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+    background-color: lightskyblue;
+}
+
+th:hover {
+    background-color: lavenderblush;
+}
+
+tr {
+    background-color: cornsilk;
+}
+
+tr:nth-child(even) {
+    background-color: floralwhite;
+}
+
+tr:hover {
+    cursor: pointer;
+    background-color: coral;
+}
+
+tr:nth-child(even):hover {
+    background-color: cadetblue;
+}

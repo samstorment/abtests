@@ -1,0 +1,79 @@
+.filter {
+    display: inline-block;
+    background-color: lightpink;
+    margin: 15px;
+}
+
+#filter-button {
+    padding: 5px 15px;
+    font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px gray;
+}
+
+.filter-dropdown {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    background-color: lightcyan;
+    min-width: 80px;
+    max-width: 500px;
+    border-radius: 0px 10px 10px 10px;
+    box-shadow: 0px 0px 5px gray;
+}
+
+.filter:hover #filter-button {
+    background-color: white;
+}
+
+
+.filter-dropdown div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.filter-dropdown div label, input {
+    margin: 5px 8px;
+}
+
+.filter-dropdown div label {
+    width: 120px;
+}
+
+.filter-dropdown div input {
+    border: none;
+    background-color: lightcyan;
+    flex: 1;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    width: 500px;
+}
+
+.filter-dropdown div input:focus {
+    outline: none;
+    border-color:rgb(28, 99, 250);
+}
+
+#search-button {
+    flex: 0;
+    padding: 5px 10px;
+    font-size: small;
+    margin: 0px 8px;
+    border-radius: 3px;
+    margin-left: auto;
+    color: white;
+    background-color: rgb(28, 99, 250);
+    box-shadow: 0px 0px 3px gray;
+    cursor: pointer;
+}
+
+#search-button:focus {
+    border: none;
+    box-shadow: 0px 0px 3px gray;
+    background-color: rgb(28, 99, 250, .75);
+}
+
+#search-button:active {
+    box-shadow: inset 0px 0px 5px gray;
+}
