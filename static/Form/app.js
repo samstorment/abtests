@@ -246,7 +246,7 @@ function getActionHtml(action, id) {
                     </div>
 
                     <div class="divider-line"></div>
-                    <div class="action-descriptor">Enter Changes</div>
+                    <div class="action-descriptor">Enter changes</div>
 
                     <div class="action-content">
                         <h2>Section</h2>
