@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadTable(fullTable);
 });
 
-let filterButton = document.querySelector("#filter-button");
+let filterButton = document.querySelector("#filter-input");
 let filterDropdown = document.querySelector(".filter-dropdown");
 filterButton.addEventListener("click", e => {
     filterDropdown.style.display = "block";
@@ -16,9 +16,10 @@ window.addEventListener("click", e => {
     let inLabel = e.target.matches(".filter-dropdown label");
     let inDiv = e.target.matches(".filter-dropdown div");
     let inClear = e.target.matches("#filter-clear");
+    let inX = e.target.matches("#clear-x")
 
-    if (!e.target.matches("#filter-button")) {
-        if (!inInput && !inDropdown && !inLabel && !inDiv && !inClear) {
+    if (!e.target.matches("#filter-input")) {
+        if (!inInput && !inDropdown && !inLabel && !inDiv && !inClear && !inX) {
             filterDropdown.style.display = "none";
         }
     }
@@ -26,17 +27,17 @@ window.addEventListener("click", e => {
 
 let sortDirection = false;
 let fullTable = [
-    {type: "Add", subject: "CS", number: "445", section: "002", instructor: "Crk, Igor", from: "Robinson, Frank", status: "pending dean", term: "Spring 2020", date: "4/2/2020"},
+    {type: "Add", subject: "CS", number: "445", section: "002", instructor: "Crk, Igor", from: "Robinson, Frank", status: "pending dean", term: "Fall 2020", date: "4/2/2020"},
     {type: "Change", subject: "Math", number: "416", section: "001", instructor: "Wazowski, Mike", from: "Koufax, Sandy", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
-    {type: "Change", subject: "Phil", number: "324", section: "002", instructor: "Thome, Jim", from: "Lajoie, Nap", status: "pending chair", term: "Spring 2020", date: "3/30/2020"},
-    {type: "Cancel", subject: "Eng", number: "162", section: "001", instructor: "Abbott, Jim", from: "Kaline, Mickey", status: "pending dean", term: "Spring 2020", date: "3/24/2020"},
-    {type: "Add", subject: "CS", number: "499", section: "002", instructor: "Feller, Bob", from: "Gibson, Bob", status: "pending chair", term: "Spring 2020", date: "4/2/2020"},
+    {type: "Change", subject: "Phil", number: "324", section: "002", instructor: "Thome, Jim", from: "Lajoie, Nap", status: "pending chair", term: "Summer 2020", date: "3/30/2020"},
+    {type: "Cancel", subject: "Eng", number: "162", section: "001", instructor: "Abbott, Jim", from: "Kaline, Mickey", status: "pending dean", term: "Fall 2020", date: "3/24/2020"},
+    {type: "Add", subject: "CS", number: "499", section: "002", instructor: "Feller, Bob", from: "Gibson, Bob", status: "pending chair", term: "Fall 2020", date: "4/2/2020"},
     {type: "Change", subject: "Math", number: "184", section: "001", instructor: "Herzog, Whitey", from: "Thomas, Frank", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
-    {type: "Change", subject: "Phil", number: "330", section: "002", instructor: "Maris, Roger", from: "Boggs, Wade", status: "pending dean", term: "Spring 2020", date: "3/30/2020"},
+    {type: "Change", subject: "Phil", number: "330", section: "002", instructor: "Maris, Roger", from: "Boggs, Wade", status: "pending dean", term: "Summer 2020", date: "3/30/2020"},
     {type: "Cancel", subject: "Eng", number: "212", section: "001", instructor: "Paige, Satchel", from: "Craig, Allen", status: "pending chair", term: "Spring 2020", date: "3/24/2020"},
     {type: "Add", subject: "CS", number: "145", section: "002", instructor: "Mulder, Mark", from: "Brett, George", status: "pending dean", term: "Spring 2020", date: "4/2/2020"},
     {type: "Change", subject: "Math", number: "284", section: "001", instructor: "Justice, David", from: "McCarver, Tim", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
-    {type: "Change", subject: "Phil", number: "521", section: "002", instructor: "Walker, Larry", from: "Wagner, Honus", status: "pending dean", term: "Spring 2020", date: "3/30/2020"},
+    {type: "Change", subject: "Phil", number: "521", section: "002", instructor: "Walker, Larry", from: "Wagner, Honus", status: "pending dean", term: "Fall 2020", date: "3/30/2020"},
     {type: "Cancel", subject: "Eng", number: "323", section: "001", instructor: "Jackson, Reggie", from: "Williams, Ted", status: "pending chair", term: "Spring 2020", date: "3/24/2020"}
 ]
 

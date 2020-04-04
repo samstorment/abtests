@@ -9,32 +9,29 @@ table {
 }
 
 td, th {
+    text-align: left;
     border-bottom: 1px solid gray;
     padding: 10px;
 }
 
 th {
-    text-align: left;
-    background-color: lightskyblue;
+    background-color: rgb(223, 54, 54);
+    color: white;
 }
 
 th:hover {
-    background-color: lavenderblush;
+    background-color: rgb(221, 112, 112);
 }
 
 tr {
-    background-color: cornsilk;
+    background-color: rgb(255, 255, 255);;
 }
 
 tr:nth-child(even) {
-    background-color: floralwhite;
+    background-color: rgb(241, 241, 241);
 }
 
 tr:hover {
     cursor: pointer;
-    background-color: coral;
-}
-
-tr:nth-child(even):hover {
-    background-color: cadetblue;
+    background-color: rgb(255, 198, 198);;
 }

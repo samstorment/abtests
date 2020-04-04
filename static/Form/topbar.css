@@ -1,20 +1,27 @@
 .topbar {
     display: flex;
     grid-column: 1 / -1;
+    background-color: rgb(223, 54, 54);
     justify-content: space-between;
-    background-color: lightcoral;
     border-bottom: 1px solid gray;
 }
 
-.topbar span {
+.topbar span, .topbar span div {
     display: flex;
     align-items: center;
     padding: 0px 10px;
     height: 100%;
+    color: white;
+    font-weight: 650;
+}
+
+.topbar .home-span {
+    color: white;
+    font-size: 22px;
 }
 
 .topbar span:hover {
-    background-color: lightblue;
+    background-color: rgb(228, 107, 107);
     cursor: pointer;
 }
 

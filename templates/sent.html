@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../static/Form/actioncontent.css">
     <link rel="stylesheet" href="../static/Sent/filter.css">
     <link rel="stylesheet" href="../static/Sent/table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../static/Sent/sent.js" defer></script>
     <title>Sent</title>
 </head>
@@ -16,51 +17,52 @@
     <div class="container">
 
         <div class="topbar">
-            <span>AB Form</span>
-            <span>{{.Title}}</span>
+            <span> <i class="fa fa-home home-span"></i> <div>AB Form</div></span>
+            <span>Profile</span>
         </div>
 
         <div class="sidebar">
-            <a href="/add" class="new-button" type="button">
-                New
-            </a>
-            <a href="/add" class="sent">Sent</a>
-            <a href="#" class="drafts">Drafts</a>
-            <a href="#" class="inbox">Inbox</a>
+            <a href="/templates/form.html" class="new-button" type="button"><i class="fa fa-plus new-plus"></i> <div>New</div></a>
+            <a href="/templates/sent.html" class="sent"><i class="fa fa-send"></i> Sent</a>
+            <a href="/templates/sent.html" class="drafts"><i class="fa fa-file"></i> Drafts</a>
+            <a href="/templates/sent.html" class="inbox"><i class="fa fa-inbox"></i> Inbox</a>
         </div>
 
         <div class="content">
             
-            <form class="filter" autocomplete="off">
-                <button type="button" class="filter-button" id="filter-button">
-                    Add Filter
-                </button>
-                <button type="button" class="filter-button" id="filter-clear">
-                    Clear Filter
-                </button>
-                <div class="filter-dropdown">
-                    <div>
-                        <label for="filter-type">Type</label><input id="filter-type">
+            <form autocomplete="off">
+                <div class="filter-container">
+                    
+                    <div class="filter-button-container">
+                        <input autocomplete="false" class="filter-button" id="filter-input" placeholder="Add a filter"></input>
+                        <button type="button" class="filter-button" id="filter-clear">
+                            <i class="fa fa-close" id="clear-x"></i>
+                        </button>
                     </div>
-                    <div>
-                        <label for="filter-term">Term</label><input id="filter-term">
+        
+                    <div class="filter-dropdown">
+                        <div>
+                            <label for="filter-type">Type</label><input id="filter-type">
+                        </div>
+                        <div>
+                            <label for="filter-term">Term</label><input id="filter-term">
+                        </div>
+                        <div>
+                            <label for="filter-from">From</label><input id="filter-from">
+                        </div>
+                        <div>
+                            <label for="filter-subject">Subject</label><input id="filter-subject">
+                        </div>
+                        <div>
+                            <label for="filter-course">Course Number</label><input id="filter-course">
+                        </div>
+                        <div>
+                            <label for="filter-instructor">Instructor</label><input id="filter-instructor">
+                        </div>
+                        <div>
+                            <input type="submit" value="Search" id="filter-search">
+                        </div> 
                     </div>
-                    <div>
-                        <label for="filter-from">From</label><input id="filter-from">
-                    </div>
-                    <div>
-                        <label for="filter-subject">Subject</label><input id="filter-subject">
-                    </div>
-                    <div>
-                        <label for="filter-course">Course Number</label><input id="filter-course">
-                    </div>
-                    <div>
-                        <label for="filter-instructor">Instructor</label><input id="filter-instructor">
-                    </div>
-                    <div>
-                        <!-- Change type to submit later, button now for testing -->
-                        <input type="submit" value="Search" id="filter-search">
-                    </div> 
                 </div>
             </form>
 

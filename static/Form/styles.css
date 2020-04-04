@@ -11,7 +11,7 @@ html, body {
 
 .container {
     display: grid;
-    grid-template-columns: 180px auto;
+    grid-template-columns: 190px auto;
     grid-template-rows: 40px auto;
     height: 100%;
 }
@@ -21,5 +21,5 @@ html, body {
 }
 
 .content {
-    background-color: aquamarine;
+    background-color: rgb(220, 220, 220);
 }
