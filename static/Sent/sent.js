@@ -1,14 +1,16 @@
+// load the fulltable when the page initially loads
 document.addEventListener("DOMContentLoaded", () => { 
     loadTable(fullTable);
 });
 
+// show the filter dropdown when the button is clicked
 let filterButton = document.querySelector("#filter-input");
 let filterDropdown = document.querySelector(".filter-dropdown");
 filterButton.addEventListener("click", e => {
     filterDropdown.style.display = "block";
 });
 
-
+// close the filter drop down if none of the following items are clicked. This seems like a bad way to solve this problem
 window.addEventListener("click", e => {
 
     let inInput = e.target.matches(".filter-dropdown input");
@@ -25,6 +27,7 @@ window.addEventListener("click", e => {
     }
 });
 
+// Some dummy data for the table
 let sortDirection = false;
 let fullTable = [
     {type: "Add", subject: "CS", number: "445", section: "002", instructor: "Crk, Igor", from: "Robinson, Frank", status: "pending dean", term: "Fall 2020", date: "4/2/2020"},
@@ -41,8 +44,10 @@ let fullTable = [
     {type: "Cancel", subject: "Eng", number: "323", section: "001", instructor: "Jackson, Reggie", from: "Williams, Ted", status: "pending chair", term: "Spring 2020", date: "3/24/2020"}
 ]
 
+// keep track of the table to sort since it can be different from the full table if filters are applied
 let tableToSort = fullTable;
 
+// add a table row with the course content for each object element in the table
 function loadTable(table) {
     const tableBody = document.querySelector("#table-data");
     let tableHtml = "";
@@ -57,14 +62,15 @@ function loadTable(table) {
     tableBody.innerHTML = tableHtml;
 }
 
+// sort the table opposite the direction of the current direction and load the new sorted table
 function sortColumn(table, columnName) {
 
     sortDirection = !sortDirection;
     sortStringColumn(table, sortDirection, columnName);
-
     loadTable(table);
 }
 
+// sort the table by the selected column
 function sortStringColumn(table, sortDirection, columnName) {
     tableToSort = table.sort((a, b) => {
 
@@ -80,6 +86,7 @@ function sortStringColumn(table, sortDirection, columnName) {
     });
 } 
 
+// when a table header is clicked, sort the table by that header
 let headers = document.querySelectorAll(".table-head th");
 headers.forEach(head => {
     head.addEventListener("click", e => {
@@ -87,9 +94,9 @@ headers.forEach(head => {
     });
 });
 
+// this is bad but shows an example
 let filterSearch = document.querySelector("#filter-search");
 filterSearch.addEventListener("click", e => {
-
 
     // This method SHOULD send the filter data to the server, then the server should query the db 
     // with the filter data, and return and array of filtered objects. But i just want to see it work
@@ -135,6 +142,7 @@ filterSearch.addEventListener("click", e => {
     loadTable(tableToSort);
 });
 
+// clear all the filter search terms and load the full tabel again
 let filterClear = document.querySelector("#filter-clear");
 filterClear.addEventListener("click", e => {
     

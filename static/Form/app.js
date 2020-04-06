@@ -42,7 +42,7 @@ function moveDown(actionContainer) {
     });
 }
 
-// find the previous or next sibling based on the direction
+// find the previous or next actionConatiner sibling based on the direction
 function findSwap(actionContainer, direction) {
     do {
         if (direction == "up") { actionContainer = actionContainer.previousSibling; }
@@ -58,6 +58,7 @@ function toggleActionContent(actionContainer) {
     let actionTopbar = actionContainer.querySelector(".action-topbar");
     let toggleButton = actionTopbar.querySelector(".toggle-button");
 
+    // when button is clicked, show the content if the content wasn't displayed, hide it if it was displayed
     toggleButton.addEventListener("click", e => {
         if (contentContainer.style.display === "none") {
             toggleButton.innerHTML = `<i class="fa fa-chevron-up"></i>`;
@@ -72,7 +73,7 @@ function toggleActionContent(actionContainer) {
 }
 
 
-// delete button
+// delete button, delete the Add/drop/change when delete button is clicked
 function deleteAction(actions, actionContainer) {
     let deleteButton = actionContainer.querySelector(".action-topbar .delete-button");
     deleteButton.addEventListener("click", e => {
@@ -86,7 +87,8 @@ let contactContainer = document.querySelector("#contact-container");
 toggleActionContent(contactContainer);
 setInputTextRight(contactContainer);
 
-// adds the class info to the top of the Add, Change, Cancel container 1 second after user stops typing
+// adds the class info to the top of the Add, Change, Cancel container 1 second after user stops typing.
+// This function is currently a sloppy mess with some stupid use of if statements
 function setActionText(type, actionContainer) {
     
     let textToEdit = actionContainer.querySelector(".action-topbar span");
@@ -130,6 +132,7 @@ function setActionText(type, actionContainer) {
 
 }
 
+// sets the text tp the right when user leaves the input field, sets it left when user clicks on a field
 function setInputTextRight(actionContainer) {
     let inputs = actionContainer.querySelectorAll(".action-content-container .action-content div input")
 
@@ -143,15 +146,13 @@ function setInputTextRight(actionContainer) {
     });
 }
 
-
-
 // scroll the page to the very bottom so that all of the new content is visible
 function scrollToBottom() {
     let scrollingElement = (document.scrollingElement || document.body);
     scrollingElement.scrollTop = scrollingElement.scrollHeight;
 }
 
-// Event listener for new button's dropdown content
+// Event listener for new button's dropdown content (Add, change, cancel)
 let newActionButton = document.querySelector("#new-button");
 newActionButton.addEventListener("click", e => {
     let dropdownContent = document.querySelector("#new-dropdown");
@@ -162,7 +163,7 @@ newActionButton.addEventListener("click", e => {
     }
 });
 
-// Event listener for term button's dropdown content
+// Event listener for term button's dropdown content (Spring, summer, fall)
 let termButton = document.querySelector("#term-button");
 termButton.addEventListener("click", e => {
     let dropdownContent = document.querySelector("#term-dropdown");
@@ -172,7 +173,7 @@ termButton.addEventListener("click", e => {
     }
 });
 
-// if the dropdown list is clicked off of, turn off its display
+// if a dropdown list is clicked off of, turn off its display
 window.onclick = e => {
     if (!event.target.matches("#new-button")) {
         let dropdownContent = document.querySelector("#new-dropdown");
@@ -188,11 +189,12 @@ window.onclick = e => {
 let terms = document.querySelectorAll(".term");
 terms.forEach(term => {
     term.addEventListener("click", e => {
+        // make the term button's value spring, summer, or fall. This button is actually a form input so it gets sent to the server
         termButton.value = term.id;
     });
 });
 
-// returns the inner html for the appropriate action
+// returns the inner html for the appropriate action. This is a damn mess, idk how to do it better
 function getActionHtml(action, id) {
     if (action === "add") {
         return `<div class="action-topbar">
@@ -300,7 +302,7 @@ function getActionHtml(action, id) {
     }
 }
 
-// Create an action. Event listeners for Add, Change, and Cancel buttons
+// Create an action. Event listeners for Add, Change, and Cancel buttons in the new dropdown
 let contentCounter = 1;
 let actions = document.querySelectorAll(".action");
 actions.forEach(action => {

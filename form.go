@@ -1,3 +1,5 @@
+
+// I put comments rather than changing stuff because I don't have time to change stuff and I don't want to break it yet
 package main
 
 type Section struct {
@@ -16,6 +18,7 @@ type Date struct {
 	year int
 }
 
+// this should just have an hour and minute
 type Time struct {
 	startHour int
 	startMinute int
@@ -28,8 +31,10 @@ type Session struct {
 	endDate Date
 }
 
+// This should probably be called a "Meeting" since it includes the meeting day, time, and location.
 type Day struct {
 	day byte
+	// This shouldnt be a slice, but instead there should be a start time field and an end time field
 	times []Time
 	location Location
 }
@@ -40,6 +45,7 @@ type Location struct {
 	campus string
 }
 
+// Should add a int/float field for contribution
 type Instructor struct {
 	first string
 	last string
@@ -48,13 +54,14 @@ type Instructor struct {
 
 type Course struct {
 	term int // 202015 = spring 2020, 202025 = summer 2020, 202035 = fall 2020
-	action string
-	section Section
-	session Session
-	days []Day
+	action string // ADD, DROP, CANCEL
+	section Section 
+	session Session // the active date range of the course
+	days []Day // the days the course meets: If the changes to other comments are implemented this could accomodate weird off grid Meetings
 	instructor Instructor
 }
 
+// Don't think we need the campus box. Put department here
 type Contact struct {
 	first string
 	last string
@@ -63,9 +70,10 @@ type Contact struct {
 	box string
 }
 
+// Remove reqDepartment, put itin contact
 type Form struct {
-	reqDepartment string
-	comments string
+	reqDepartment string // GO AWAY
+	comments string  // these are the special comments at the end of a form
 	contact Contact
 	courses []Course
 }

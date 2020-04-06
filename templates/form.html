@@ -13,13 +13,16 @@
     <title>Form</title>
 </head>
 <body>
+    <!-- Main container that gives us grid organization -->
     <div class="container">
 
+        <!-- topbar -->
         <div class="topbar">
             <span> <i class="fa fa-home home-span"></i> <div>AB Form</div></span>
             <span>Profile</span>
         </div>
 
+        <!-- Sidebar -->
         <div class="sidebar">
             <a href="/templates/form.html" class="new-button" type="button"><i class="fa fa-plus new-plus"></i> <div>New</div></a>
             <a href="/templates/sent.html" class="sent"><i class="fa fa-send"></i> Sent</a>
@@ -27,10 +30,12 @@
             <a href="#" class="inbox"><i class="fa fa-inbox"></i> Inbox</a>
         </div>
 
+        <!-- Main Content -->
         <div class="content">
-            <!-- THE ACTION WAS /submit and the method WAS POST-->
+            
+            <!-- Form so everything gets sent with one submit button -->
             <form method="GET" action="#" autocomplete="off">
-                    
+
                 <!-- Term button -->
                 <div class="button-container">
                     <div class="button-bar">
@@ -45,8 +50,7 @@
                     </div>
                 </div>
 
-                <!-- Contact -->
-                
+                <!-- Contact Info -->
                 <div class="action-container" id="contact-container">
                     <div class="action-topbar">
                         <span>Contact Info</span>
@@ -64,13 +68,14 @@
                     </div>
                 </div>
 
+                <!-- Straight line seoarating content -->
                 <div class="contact-divider"></div>
 
+                <!-- Container where ADD/CHANGE/CANCELs will go when created -->
                 <div id="actions"></div>
 
                 <!-- Submit button and New button -->
                 <div class="button-container">
-
                     <div class="button-bar">
                         <input type="submit" class="far-right" id="submit"></input>
                         <button type="button" id="new-button">New</button>
