@@ -30,18 +30,18 @@ window.addEventListener("click", e => {
 // Some dummy data for the table
 let sortDirection = false;
 let fullTable = [
-    {type: "Add", subject: "CS", number: "445", section: "002", instructor: "Crk, Igor", from: "Robinson, Frank", status: "pending dean", term: "Fall 2020", date: "4/2/2020"},
-    {type: "Change", subject: "Math", number: "416", section: "001", instructor: "Wazowski, Mike", from: "Koufax, Sandy", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
-    {type: "Change", subject: "Phil", number: "324", section: "002", instructor: "Thome, Jim", from: "Lajoie, Nap", status: "pending chair", term: "Summer 2020", date: "3/30/2020"},
-    {type: "Cancel", subject: "Eng", number: "162", section: "001", instructor: "Abbott, Jim", from: "Kaline, Mickey", status: "pending dean", term: "Fall 2020", date: "3/24/2020"},
-    {type: "Add", subject: "CS", number: "499", section: "002", instructor: "Feller, Bob", from: "Gibson, Bob", status: "pending chair", term: "Fall 2020", date: "4/2/2020"},
-    {type: "Change", subject: "Math", number: "184", section: "001", instructor: "Herzog, Whitey", from: "Thomas, Frank", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
-    {type: "Change", subject: "Phil", number: "330", section: "002", instructor: "Maris, Roger", from: "Boggs, Wade", status: "pending dean", term: "Summer 2020", date: "3/30/2020"},
-    {type: "Cancel", subject: "Eng", number: "212", section: "001", instructor: "Paige, Satchel", from: "Craig, Allen", status: "pending chair", term: "Spring 2020", date: "3/24/2020"},
-    {type: "Add", subject: "CS", number: "145", section: "002", instructor: "Mulder, Mark", from: "Brett, George", status: "pending dean", term: "Spring 2020", date: "4/2/2020"},
-    {type: "Change", subject: "Math", number: "284", section: "001", instructor: "Justice, David", from: "McCarver, Tim", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
-    {type: "Change", subject: "Phil", number: "521", section: "002", instructor: "Walker, Larry", from: "Wagner, Honus", status: "pending dean", term: "Fall 2020", date: "3/30/2020"},
-    {type: "Cancel", subject: "Eng", number: "323", section: "001", instructor: "Jackson, Reggie", from: "Williams, Ted", status: "pending chair", term: "Spring 2020", date: "3/24/2020"}
+    {type: "Add", subject: "CS", number: "445", section: "002", CRN: "52030", from: "Robinson, Frank", status: "pending dean", term: "Fall 2020", date: "4/2/2020"},
+    {type: "Change", subject: "Math", number: "416", section: "001", CRN: "53633", from: "Koufax, Sandy", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
+    {type: "Change", subject: "Phil", number: "324", section: "002", CRN: "51970", from: "Lajoie, Nap", status: "pending chair", term: "Summer 2020", date: "3/30/2020"},
+    {type: "Cancel", subject: "Eng", number: "162", section: "001", CRN: "57764", from: "Kaline, Mickey", status: "pending dean", term: "Fall 2020", date: "3/24/2020"},
+    {type: "Add", subject: "CS", number: "499", section: "002", CRN: "52189", from: "Gibson, Bob", status: "pending chair", term: "Fall 2020", date: "4/2/2020"},
+    {type: "Change", subject: "Math", number: "184", section: "001", CRN: "56639", from: "Thomas, Frank", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
+    {type: "Change", subject: "Phil", number: "330", section: "002", CRN: "54281", from: "Boggs, Wade", status: "pending dean", term: "Summer 2020", date: "3/30/2020"},
+    {type: "Cancel", subject: "Eng", number: "212", section: "001", CRN: "58860", from: "Craig, Allen", status: "pending chair", term: "Spring 2020", date: "3/24/2020"},
+    {type: "Add", subject: "CS", number: "145", section: "002", CRN: "52739",from: "Brett, George", status: "pending dean", term: "Spring 2020", date: "4/2/2020"},
+    {type: "Change", subject: "Math", number: "284", section: "001", CRN: "51230", from: "McCarver, Tim", status: "pending chair", term: "Spring 2020", date: "4/1/2020"},
+    {type: "Change", subject: "Phil", number: "521", section: "002", CRN: "52437", from: "Wagner, Honus", status: "pending dean", term: "Fall 2020", date: "3/30/2020"},
+    {type: "Cancel", subject: "Eng", number: "323", section: "001", CRN: "52470", from: "Williams, Ted", status: "pending chair", term: "Spring 2020", date: "3/24/2020"}
 ]
 
 // keep track of the table to sort since it can be different from the full table if filters are applied
@@ -55,8 +55,8 @@ function loadTable(table) {
     for (let course of table) {
         tableHtml += 
         `<tr>
-            <td>${course.type}</td><td>${course.subject} ${course.number}-${course.section}</td><td>${course.instructor}</td>
-            <td>${course.from}</td><td>${course.status}</td><td>${course.term}</td><td>${course.date}</td>
+            <td>${course.term}</td><td>${course.type}</td><td>${course.subject} ${course.number}-${course.section}</td>
+            <td>${course.CRN}</td><td>${course.status}</td><td>${course.from}</td><td>${course.date}</td>
         </tr>`;
     }
     tableBody.innerHTML = tableHtml;
@@ -68,6 +68,7 @@ function sortColumn(table, columnName) {
     sortDirection = !sortDirection;
     sortStringColumn(table, sortDirection, columnName);
     loadTable(table);
+    return sortDirection;
 }
 
 // sort the table by the selected column
@@ -90,7 +91,14 @@ function sortStringColumn(table, sortDirection, columnName) {
 let headers = document.querySelectorAll(".table-head th");
 headers.forEach(head => {
     head.addEventListener("click", e => {
-        sortColumn(tableToSort, head.id);
+        
+        let headArrows = document.querySelectorAll(".head-arrow");
+        let sorted = sortColumn(tableToSort, head.id);
+
+        headArrows.forEach(arrow => {
+            if (sorted) { arrow.innerHTML = `<i class="fa fa-chevron-up"></i>`; }
+            else { arrow.innerHTML = `<i class="fa fa-chevron-down"></i>`; }
+        });
     });
 });
 
@@ -104,14 +112,14 @@ filterSearch.addEventListener("click", e => {
     e.preventDefault();
     filterDropdown.style.display = "none";
 
-    let type = document.querySelector("#filter-type").value.toLowerCase();
     let term = document.querySelector("#filter-term").value.toLowerCase();
-    let from = document.querySelector("#filter-from").value.toLowerCase();
+    let type = document.querySelector("#filter-type").value.toLowerCase();
     let subject = document.querySelector("#filter-subject").value.toLowerCase();
     let course = document.querySelector("#filter-course").value.toLowerCase();
-    let instructor = document.querySelector("#filter-instructor").value.toLowerCase();
+    let status = document.querySelector("#filter-status").value.toLowerCase();
+    let from = document.querySelector("#filter-from").value.toLowerCase();
 
-    if (type == "" && term == "" && from == "" && subject == "" && course == "" && instructor == "") {
+    if (term == "" && type == "" && subject == "" && course == "" && status == "" && from == "") {
         tableToSort = fullTable;
         loadTable(fullTable);
         return;
@@ -121,15 +129,15 @@ filterSearch.addEventListener("click", e => {
 
     for (let action of fullTable) {
 
-        let thisType = action.type.toLowerCase();
         let thisTerm = action.term.toLowerCase();
-        let thisFrom = action.from.toLowerCase();
+        let thisType = action.type.toLowerCase();
         let thisSubject = action.subject.toLowerCase();
         let thisCourse = action.number.toLowerCase();
-        let thisInstructor = action.instructor.toLowerCase();
+        let thisStatus = action.status.toLowerCase();
+        let thisFrom = action.from.toLowerCase();
 
-        if (thisType.includes(type) && thisTerm.includes(term) && thisFrom.includes(from) && 
-            thisSubject.includes(subject) && thisCourse.includes(course) && thisInstructor.includes(instructor)) {
+        if (thisTerm.includes(term) && thisType.includes(type) && thisSubject.includes(subject) && 
+            thisCourse.includes(course) && thisStatus.includes(status) && thisFrom.includes(from)) {
             newData.push(action);
         }
     }

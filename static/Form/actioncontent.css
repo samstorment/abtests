@@ -105,7 +105,7 @@
 .button-bar button, .button-bar input {
     padding: 5px 10px;
     width: 80px;
-    margin: 10px;
+    margin: 10px 10px 10px 0px;
     border: none;
     color: white;
     background-color: rgb(223, 54, 54);
@@ -115,13 +115,41 @@
     text-align: center;
 }
 
+
 .button-bar button:hover, .button-bar input:hover {
     background-color: rgb(221, 112, 112);
     cursor: pointer;
 }
 
 .button-bar button:active, .button-bar input:active {
-  box-shadow: inset 0px 0px 2px gray;
+    box-shadow: inset 0px 0px 2px gray;
+}
+
+.button-bar #term-button {
+    width: 130px;
+}
+
+.button-bar #save-button {
+    margin-right: 0;
+    padding: 0px;
+    width: 50px;
+    font-size: 30;
+    border: none;
+    background-color: white;
+    box-shadow: none;
+}
+
+.button-bar #save-button:hover i {
+    color: rgb(221, 112, 112);
+}
+
+.button-bar #save-button i {
+    color: rgb(160, 160, 160);
+}
+
+.button-bar #save-button:focus, .button-bar #save-button:focus i {
+    outline: none;
+    color: rgb(221, 112, 112);
 }
 
 .dropdown-content {

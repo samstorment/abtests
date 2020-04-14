@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // move the action container down
 function moveUp(actionContainer) {
+
     let topbar = actionContainer.querySelector(".action-topbar");
     let button = actionContainer.querySelector(".action-topbar #move-up");
     button.addEventListener("click", e => {
@@ -24,6 +25,7 @@ function moveUp(actionContainer) {
 
 // move the action container down
 function moveDown(actionContainer) {
+
     let topbar = actionContainer.querySelector(".action-topbar");
     let button = actionContainer.querySelector(".action-topbar #move-down");
     button.addEventListener("click", e => {
@@ -92,19 +94,16 @@ setInputTextRight(contactContainer);
 function setActionText(type, actionContainer) {
     
     let textToEdit = actionContainer.querySelector(".action-topbar span");
+
     let subjectInput = actionContainer.querySelector(".action-content-container .action-content div .subject-input")
+    let courseInput = actionContainer.querySelector(".action-content-container .action-content div .course-input")
+    let sectionInput = actionContainer.querySelector(".action-content-container .action-content div .section-input")
 
-    let courseInput; let sectionInput;
-
-    if (type === "add") {
-        courseInput = actionContainer.querySelector(".action-content-container .action-content div .course-input")
-        sectionInput = actionContainer.querySelector(".action-content-container .action-content div .section-input")
-    }
+    let subjectText = "";
     let courseText = "";
     let sectionText = "";
 
     let currentText = textToEdit.innerHTML;
-    let subjectText = "";
 
     let timeout = null;
 
@@ -112,10 +111,9 @@ function setActionText(type, actionContainer) {
         clearTimeout(timeout);
         timeout = setTimeout(function () {
             subjectText = subjectInput.value;
-            if (type == "add") {
-                courseText = courseInput.value;
-                sectionText = sectionInput.value;
-            }
+            courseText = courseInput.value;
+            sectionText = sectionInput.value;
+  
             if (subjectText == "") {
                 textToEdit.innerHTML =  currentText;
             } else {
@@ -125,11 +123,8 @@ function setActionText(type, actionContainer) {
     }
 
     subjectInput.addEventListener("keyup", textChangeListener);
-    if (type === "add") {
-        courseInput.addEventListener("keyup", textChangeListener);
-        sectionInput.addEventListener("keyup", textChangeListener); 
-    }
-
+    courseInput.addEventListener("keyup", textChangeListener);
+    sectionInput.addEventListener("keyup", textChangeListener); 
 }
 
 // sets the text tp the right when user leaves the input field, sets it left when user clicks on a field
@@ -166,7 +161,15 @@ newActionButton.addEventListener("click", e => {
 // Event listener for term button's dropdown content (Spring, summer, fall)
 let termButton = document.querySelector("#term-button");
 termButton.addEventListener("click", e => {
+
+    e.preventDefault();
+
     let dropdownContent = document.querySelector("#term-dropdown");
+
+    let terms = dropdownContent.querySelectorAll(".term");
+    terms.forEach(term => {
+        term.innerHTML = term.id + " " + getYearForTerm(term.id);
+    });
 
     if (dropdownContent.style.display === "none") {
         dropdownContent.style.display = "flex";
@@ -190,18 +193,66 @@ let terms = document.querySelectorAll(".term");
 terms.forEach(term => {
     term.addEventListener("click", e => {
         // make the term button's value spring, summer, or fall. This button is actually a form input so it gets sent to the server
-        termButton.value = term.id;
+        termButton.value = term.innerHTML;
     });
 });
+
+
+function getYearForTerm(term) {
+
+    today = new Date();
+    let mm = today.getMonth()+1; //As January is 0.
+    let yyyy = today.getFullYear();
+    let spring, summer, fall;
+
+    // this should be corrected down to the exact DAY
+    if (mm >= 1 && mm <= 5) {
+        spring = yyyy;
+        summer = yyyy;
+        fall = yyyy;
+    } else if (mm >= 6 && mm <= 7 ) {
+        spring = yyyy + 1;
+        summer = yyyy;
+        fall = yyyy;
+    } else {
+        spring = yyyy + 1;
+        summer = yyyy + 1;
+        fall = yyyy;
+    }
+
+    if (term == "Spring") { return spring; }
+    else if (term == "Summer") { return summer; }
+    else { return fall; }
+}
+
+getYearForTerm("spring");
+
+// THIS DOES NOTHING, but it'll be useful in the future
+function printDate() {
+    today = new Date();
+
+    sp = "-";
+
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; //As January is 0.
+    let yyyy = today.getFullYear();
+
+    if(dd<10) dd='0'+dd;
+    if(mm<10) mm='0'+mm;
+
+    let full = mm+sp+dd+sp+yyyy;
+    console.log(full);
+}
 
 // returns the inner html for the appropriate action. This is a damn mess, idk how to do it better
 function getActionHtml(action, id) {
     if (action === "add") {
         return `<div class="action-topbar">
                     <span>Add</span>
+                    <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" class="comment-button action-topbar-button" id="comment-button"><i class="fa fa-comment-o"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-up"><i class="fa fa-arrow-up"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-down"><i class="fa fa-arrow-down"></i></button>
-                    <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
                     <button type="button" class="toggle-button action-topbar-button"><i class="fa fa-chevron-up"></i></button>
                 </div>
                 <div class="action-content-container">
@@ -212,7 +263,8 @@ function getActionHtml(action, id) {
                         <div class="input"><label for="course-${id}">Course Number</label><input class="course-input" id="course-${id}" name="course-${id}"></div>
                         <div class="input"><label for="section-${id}">Section Number</label><input class="section-input" id="section-${id}" name="section-${id}"></div>
                         <div class="input"><label for="schedule-type-${id}">Schedule Type</label><input id="schedule-type-${id}" name="schedule-type-${id}"></div>
-                        <div class="input last"><label for="instruction-method-${id}">Instruction Method</label><input id="instruction-method-${id}" name="instruction-method-${id}"></div>
+                        <div class="input"><label for="instruction-method-${id}">Instruction Method</label><input id="instruction-method-${id}" name="instruction-method-${id}"></div>
+                        <div class="input last"><label for="special-topics-${id}">Special Topics Title</label><input id="special-topics-${id}" name="special-topics-${id}"></div>
                     </div>
                     <div class="action-content">
                         <h2>Enrollment</h2>
@@ -234,17 +286,20 @@ function getActionHtml(action, id) {
     else if (action === "change") {
         return `<div class="action-topbar">
                     <span>Change</span>
+                    <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" class="comment-button action-topbar-button" id="comment-button"><i class="fa fa-comment-o"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-up"><i class="fa fa-arrow-up"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-down"><i class="fa fa-arrow-down"></i></button>
-                    <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
                     <button type="button" class="toggle-button action-topbar-button"><i class="fa fa-chevron-up"></i></button>
                 </div>
                 <div class="action-content-container">
                     <div class="action-descriptor">Choose a class to change</div>
                     <div class="action-content">
                         <h2>Class</h2>
-                        <div class="input"><label for="class-name-${id}">Class Name</label><input class="subject-input" id="class-name-${id}" name="class-name-${id}"></div>
-                        <div class="input last"><label for="crn-${id}">CRN</label><input id="crn-${id}" name="crn-${id}"></div>
+                        <div class="input"><label for="crn-${id}">CRN</label><input id="crn-${id}" name="crn-${id}"></div>
+                        <div class="input"><label for="subject-${id}">Subject</label><input class="subject-input" id="subject-${id}" name="subject-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input class="course-input" id="course-${id}" name="course-${id}"></div>
+                        <div class="input last"><label for="section-lookup-${id}">Section Number</label><input class="section-input" id="section-lookup-${id}" name="section-lookup-${id}"></div>
                     </div>
 
                     <div class="divider-line"></div>
@@ -252,11 +307,10 @@ function getActionHtml(action, id) {
 
                     <div class="action-content">
                         <h2>Section</h2>
-                        <div class="input"><label for="subject-${id}">Subject</label><input class="subject-input" id="subject-${id}" name="subject-${id}"></div>
-                        <div class="input"><label for="course-${id}">Course Number</label><input class="course-input" id="course-${id}" name="course-${id}"></div>
-                        <div class="input"><label for="section-${id}">Section Number</label><input class="section-input" id="section-${id}" name="section-${id}"></div>
+                        <div class="input"><label for="section-${id}">Section Number</label><input id="section-${id}" name="section-${id}"></div>
                         <div class="input"><label for="schedule-type-${id}">Schedule Type</label><input id="schedule-type-${id}" name="schedule-type-${id}"></div>
-                        <div class="input last"><label for="instruction-method-${id}">Instruction Method</label><input id="instruction-method-${id}" name="instruction-method-${id}"></div>
+                        <div class="input "><label for="instruction-method-${id}">Instruction Method</label><input id="instruction-method-${id}" name="instruction-method-${id}"></div>
+                        <div class="input last"><label for="special-topics-${id}">Special Topics Title</label><input id="special-topics-${id}" name="special-topics-${id}"></div>
                     </div>
                     <div class="action-content">
                         <h2>Enrollment</h2>
@@ -278,17 +332,20 @@ function getActionHtml(action, id) {
     else if (action === "cancel") {
         return `<div class="action-topbar">
                     <span>Cancel</span>
+                    <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" class="comment-button action-topbar-button" id="comment-button"><i class="fa fa-comment-o"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-up"><i class="fa fa-arrow-up"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-down"><i class="fa fa-arrow-down"></i></button>
-                    <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
                     <button type="button" class="toggle-button action-topbar-button"><i class="fa fa-chevron-up"></i></button>
                 </div>
                 <div class="action-content-container">
                     <div class="action-descriptor">Choose a class to cancel</div>
                     <div class="action-content">
                         <h2>Class</h2>
-                        <div class="input"><label for="class-name-${id}">Class Name</label><input class="subject-input" id="class-name-${id}" name="class-name-${id}"></div>
-                        <div class="input last"><label for="crn-${id}">CRN</label><input id="crn-${id}" name="crn-${id}"></div>
+                        <div class="input"><label for="crn-${id}">CRN</label><input id="crn-${id}" name="crn-${id}"></div>
+                        <div class="input"><label for="subject-${id}">Subject</label><input class="subject-input" id="subject-${id}" name="subject-${id}"></div>
+                        <div class="input"><label for="course-${id}">Course Number</label><input class="course-input" id="course-${id}" name="course-${id}"></div>
+                        <div class="input last"><label for="section-lookup-${id}">Section Number</label><input class="section-input" id="section-lookup-${id}" name="section-lookup-${id}"></div>
                     </div>
 
                     <div class="divider-line"></div>

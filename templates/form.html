@@ -36,19 +36,6 @@
             <!-- Form so everything gets sent with one submit button -->
             <form method="GET" action="#" autocomplete="off">
 
-                <!-- Term button -->
-                <div class="button-container">
-                    <div class="button-bar">
-                        <span class="description">Select a term</span>
-                        <input readonly type="text" class="far-right" id="term-button" name="term" value="Term">
-                    </div>
-
-                    <div class="dropdown-content" id="term-dropdown">
-                        <div class="term" id="Spring">Spring</div>
-                        <div class="term" id="Summer">Summer</div>
-                        <div class="term" id="Fall">Fall</div>
-                    </div>
-                </div>
 
                 <!-- Contact Info -->
                 <div class="action-container" id="contact-container">
@@ -68,6 +55,21 @@
                     </div>
                 </div>
 
+                
+                <!-- Term button -->
+                <div class="button-container">
+                    <div class="button-bar">
+                        <span class="description">Select a term</span>
+                        <input readonly type="text" class="far-right" id="term-button" name="term" value="Term">
+                    </div>
+
+                    <div class="dropdown-content" id="term-dropdown">
+                        <div class="term" id="Spring">Spring</div>
+                        <div class="term" id="Summer">Summer</div>
+                        <div class="term" id="Fall">Fall</div>
+                    </div>
+                </div>
+
                 <!-- Straight line seoarating content -->
                 <div class="contact-divider"></div>
 
@@ -77,7 +79,8 @@
                 <!-- Submit button and New button -->
                 <div class="button-container">
                     <div class="button-bar">
-                        <input type="submit" class="far-right" id="submit"></input>
+                        <button type="button"  id="save-button"><i class="fa fa-save"></i></button>
+                        <input type="submit" class="far-right" id="submit" value="Submit"></input>
                         <button type="button" id="new-button">New</button>
                     </div>
 

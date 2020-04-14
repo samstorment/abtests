@@ -8,6 +8,12 @@ table {
     border: 1px solid gray;
 }
 
+.table-head th .head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 td, th {
     text-align: left;
     border-bottom: 1px solid gray;
@@ -16,6 +22,10 @@ td, th {
 
 th {
     background-color: rgb(223, 54, 54);
+    border-right: 1px solid gray;
+}
+
+th .head div, th .head i{
     color: white;
 }
 

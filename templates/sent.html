@@ -41,25 +41,27 @@
                     </div>
         
                     <div class="filter-dropdown">
-                        <div>
-                            <label for="filter-type">Type</label><input id="filter-type">
+                        <div class="filter-row">
+                            <label for="filter-term">Term</label><input id="filter-term" name="filter-term">
                         </div>
-                        <div>
-                            <label for="filter-term">Term</label><input id="filter-term">
+                        <div class="filter-row">
+                            <label for="filter-type">Type</label><input id="filter-type" name="filter-type">
                         </div>
-                        <div>
-                            <label for="filter-from">From</label><input id="filter-from">
+                        <div class="filter-row">
+                            <label for="filter-subject">Subject</label><input id="filter-subject" name="filter-subject">
                         </div>
-                        <div>
-                            <label for="filter-subject">Subject</label><input id="filter-subject">
+                        <div class="filter-row">
+                            <label for="filter-course">Course Number</label><input id="filter-course" name="filter-course">
                         </div>
-                        <div>
-                            <label for="filter-course">Course Number</label><input id="filter-course">
+                        <div class="filter-row">
+                            <label for="filter-status">Status</label><input id="filter-status" name="filter-status">
                         </div>
-                        <div>
-                            <label for="filter-instructor">Instructor</label><input id="filter-instructor">
+                        <div class="filter-row">
+                            <label for="filter-from">From</label><input id="filter-from" name="filter-from">
                         </div>
-                        <div>
+                        <div class="filter-bottom">
+                            <input type="checkbox" id="filter-group" name="filter-group">
+                            <label for="filter-group">Submitted as Group</label>
                             <input type="submit" value="Search" id="filter-search">
                         </div> 
                     </div>
@@ -70,13 +72,48 @@
                 <table>
                     <thead>
                     <tr class="table-head">
-                        <th id="type">Type</th>
-                        <th id="course">Course</th>
-                        <th id="instructor">Instructor</th>
-                        <th id="from">From</th>
-                        <th id="status">Status</th>
-                        <th id="term">Term</th>
-                        <th id="date">Date</th>
+                        <th id="term">
+                            <div class="head">
+                                <div>Term</div>
+                                <div class="head-arrow head-arrow-up"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                        </th>
+                        <th id="type">
+                            <div class="head">
+                                <div>Type</div>
+                                <div class="head-arrow head-arrow-up"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                        </th>
+                        <th id="course">
+                            <div class="head">
+                                <div>Course</div>
+                                <div class="head-arrow"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                        </th>
+                        <th id="CRN">
+                            <div class="head">
+                                <div>CRN</div>
+                                <div class="head-arrow"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                        </th>
+                        <th id="status">
+                            <div class="head">
+                                <div>Status</div>
+                                <div class="head-arrow"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                        </th>
+                        <th id="from">
+                            <div class="head">
+                                <div>From</div>
+                                <div class="head-arrow"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                        </th>
+                        <th id="date" class="last-head">
+                            <div class="head">
+                                <div>Date</div>
+                                <div class="head-arrow"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                        </th>
                     </tr>
                     </thead>
 

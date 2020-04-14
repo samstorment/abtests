@@ -47,26 +47,35 @@
 }
 
 
-
-.filter-dropdown div {
+.filter-dropdown .filter-row {
     display: flex;
     justify-content: space-between;
     margin: 10px;
 }
 
-.filter-dropdown div label, input {
+.filter-dropdown .filter-row label, input {
     margin: 5px 8px;
 }
 
-.filter-dropdown div label {
+.filter-dropdown .filter-row label {
     width: 120px;
 }
 
-.filter-dropdown div input {
+.filter-dropdown .filter-row input {
     border: none;
     flex: 1;
     border-bottom: 1px solid rgb(206, 206, 206);
     width: 500px;
+}
+
+.filter-dropdown .filter-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.filter-dropdown .filter-bottom input {
+    border: none;
 }
 
 .filter-dropdown div input:focus {
@@ -96,3 +105,4 @@
 #filter-search:active {
     box-shadow: inset 0px 0px 5px gray;
 }
+
