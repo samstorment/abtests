@@ -75,6 +75,34 @@ function toggleActionContent(actionContainer) {
 }
 
 
+function commentAction(actionConatiner, id) {
+    let commentButton = actionConatiner.querySelector(".action-topbar .comment-button");
+    let commentDropdown = actionConatiner.querySelector(".comment-dropdown");
+    commentDropdown.style.display = "none";
+
+    commentButton.addEventListener("click", e => {
+        if (commentDropdown.style.display === "none") {
+            commentDropdown.style.display = "block";
+        } 
+    });
+
+    
+    window.addEventListener("click", e => {
+
+        let inDropdown = e.target.matches(`#comment-dropdown-${id}`);
+        let inComment = e.target.matches(`#comment-${id}`);
+        let inIcon = e.target.matches(`#comment-icon-${id}`);
+
+        console.log(id);
+
+        if (!e.target.matches(`#comment-button-${id}`)) {
+            console.log(inDropdown);
+            if (!inDropdown && !inComment && !inIcon) { commentDropdown.style.display = "none"; }
+        }
+    });
+}
+
+
 // delete button, delete the Add/drop/change when delete button is clicked
 function deleteAction(actions, actionContainer) {
     let deleteButton = actionContainer.querySelector(".action-topbar .delete-button");
@@ -82,6 +110,8 @@ function deleteAction(actions, actionContainer) {
         actions.removeChild(actionContainer);
     });
 }
+
+
 
 
 // Setup the toggle button for the contact container
@@ -186,6 +216,7 @@ window.onclick = e => {
         let dropdownContent = document.querySelector("#term-dropdown");
         dropdownContent.style.display = "none";
     }
+
 }
 
 // Event listeners for Spring, Summer, and Fall buttons
@@ -244,17 +275,25 @@ function printDate() {
     console.log(full);
 }
 
+
 // returns the inner html for the appropriate action. This is a damn mess, idk how to do it better
 function getActionHtml(action, id) {
     if (action === "add") {
         return `<div class="action-topbar">
                     <span>Add</span>
                     <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
-                    <button type="button" class="comment-button action-topbar-button" id="comment-button"><i class="fa fa-comment-o"></i></button>
+                    <button type="button" class="comment-button action-topbar-button" id="comment-button-${id}"><i class="fa fa-comment-o" id="comment-icon-${id}"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-up"><i class="fa fa-arrow-up"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-down"><i class="fa fa-arrow-down"></i></button>
                     <button type="button" class="toggle-button action-topbar-button"><i class="fa fa-chevron-up"></i></button>
                 </div>
+
+                <div>
+                    <div class="comment-dropdown" id="comment-dropdown-${id}">
+                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add some comments"></textarea>
+                    </div>
+                </div>
+
                 <div class="action-content-container">
                     <div class="action-descriptor">Enter new class info</div>
                     <div class="action-content">
@@ -287,11 +326,18 @@ function getActionHtml(action, id) {
         return `<div class="action-topbar">
                     <span>Change</span>
                     <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
-                    <button type="button" class="comment-button action-topbar-button" id="comment-button"><i class="fa fa-comment-o"></i></button>
+                    <button type="button" class="comment-button action-topbar-button" id="comment-button-${id}"><i class="fa fa-comment-o" id="comment-icon-${id}"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-up"><i class="fa fa-arrow-up"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-down"><i class="fa fa-arrow-down"></i></button>
                     <button type="button" class="toggle-button action-topbar-button"><i class="fa fa-chevron-up"></i></button>
                 </div>
+
+                <div>
+                    <div class="comment-dropdown" id="comment-dropdown-${id}">
+                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add some comments"></textarea>
+                    </div>
+                </div>
+                
                 <div class="action-content-container">
                     <div class="action-descriptor">Choose a class to change</div>
                     <div class="action-content">
@@ -333,11 +379,18 @@ function getActionHtml(action, id) {
         return `<div class="action-topbar">
                     <span>Cancel</span>
                     <button type="button" class="delete-button action-topbar-button"><i class="fa fa-trash-o"></i></button>
-                    <button type="button" class="comment-button action-topbar-button" id="comment-button"><i class="fa fa-comment-o"></i></button>
+                    <button type="button" class="comment-button action-topbar-button" id="comment-button-${id}"><i class="fa fa-comment-o" id="comment-icon-${id}"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-up"><i class="fa fa-arrow-up"></i></button>
                     <button type="button" class="move-button action-topbar-button" id="move-down"><i class="fa fa-arrow-down"></i></button>
                     <button type="button" class="toggle-button action-topbar-button"><i class="fa fa-chevron-up"></i></button>
                 </div>
+
+                <div>
+                    <div class="comment-dropdown" id="comment-dropdown-${id}">
+                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add some comments"></textarea>
+                    </div>
+                </div>
+
                 <div class="action-content-container">
                     <div class="action-descriptor">Choose a class to cancel</div>
                     <div class="action-content">
@@ -376,6 +429,7 @@ actions.forEach(action => {
 
         toggleActionContent(actionContainer);
         deleteAction(actions, actionContainer);
+        commentAction(actionContainer, contentCounter);
         moveUp(actionContainer);
         moveDown(actionContainer);
         setActionText(action.id, actionContainer);

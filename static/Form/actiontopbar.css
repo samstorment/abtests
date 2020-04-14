@@ -59,3 +59,17 @@
     to { background-color: white; }
 }
 
+.comment-dropdown {
+    position: absolute;
+    width: 400px;
+    right: 16px;
+}
+
+.comment {
+    padding: 5px;
+    resize: vertical;
+    width: 400px;
+    height: 67px;
+    max-height: 300px;
+}
+
