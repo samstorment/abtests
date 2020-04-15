@@ -26,7 +26,6 @@
     border: 1px solid gray;
     margin: 0px 5px 20px 5px;
     padding: 5px;
-    /* background-color: paleturquoise; */
     border-radius: 12px;
 }
 
@@ -37,18 +36,28 @@
     border-bottom: 1px solid gray;
 }
 
-.action-content div input {
+/* ADD THIS FOR ALT INPUT STYLES */
+/* .action-content div label {
+    width: 150px;
+    min-width: 50px;
+} */
+
+.action-content div input, .action-content div select  {
     flex: 1;
-    /* background-color: paleturquoise; */
     margin-left: 5px;
     padding-left: 10px;
     border: none;
+    text-align: right;
 }
 
-.action-content div .reason-input {
-    /* Does nothing, but i want to remember this class */
-    background-color: white;
+.action-content div input:focus {
+    text-align: left;
 }
+
+.action-content div input::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
 
 .action-content .last {
     border-bottom: none;
@@ -59,6 +68,9 @@
     background-color: lightblue;
 }
 
+.action-content div .subject-list {
+    width: 400px;
+}
 
 .divider-line {
     grid-column: 1 / -1;

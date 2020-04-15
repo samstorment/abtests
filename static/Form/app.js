@@ -74,7 +74,6 @@ function toggleActionContent(actionContainer) {
     });
 }
 
-
 function commentAction(actionConatiner, id) {
     let commentButton = actionConatiner.querySelector(".action-topbar .comment-button");
     let commentDropdown = actionConatiner.querySelector(".comment-dropdown");
@@ -86,17 +85,11 @@ function commentAction(actionConatiner, id) {
         } 
     });
 
-    
     window.addEventListener("click", e => {
-
         let inDropdown = e.target.matches(`#comment-dropdown-${id}`);
         let inComment = e.target.matches(`#comment-${id}`);
         let inIcon = e.target.matches(`#comment-icon-${id}`);
-
-        console.log(id);
-
         if (!e.target.matches(`#comment-button-${id}`)) {
-            console.log(inDropdown);
             if (!inDropdown && !inComment && !inIcon) { commentDropdown.style.display = "none"; }
         }
     });
@@ -111,13 +104,9 @@ function deleteAction(actions, actionContainer) {
     });
 }
 
-
-
-
 // Setup the toggle button for the contact container
 let contactContainer = document.querySelector("#contact-container");
 toggleActionContent(contactContainer);
-setInputTextRight(contactContainer);
 
 // adds the class info to the top of the Add, Change, Cancel container 1 second after user stops typing.
 // This function is currently a sloppy mess with some stupid use of if statements
@@ -157,20 +146,6 @@ function setActionText(type, actionContainer) {
     sectionInput.addEventListener("keyup", textChangeListener); 
 }
 
-// sets the text tp the right when user leaves the input field, sets it left when user clicks on a field
-function setInputTextRight(actionContainer) {
-    let inputs = actionContainer.querySelectorAll(".action-content-container .action-content div input")
-
-    inputs.forEach(input => {
-        input.addEventListener("focusout", e => {
-            input.style.textAlign = "right";
-        })
-        input.addEventListener("focus", e => {
-            input.style.textAlign = "left";
-        });
-    });
-}
-
 // scroll the page to the very bottom so that all of the new content is visible
 function scrollToBottom() {
     let scrollingElement = (document.scrollingElement || document.body);
@@ -184,7 +159,6 @@ newActionButton.addEventListener("click", e => {
 
     if (dropdownContent.style.display === "none") {
         dropdownContent.style.display = "flex";
-        scrollToBottom();
     }
 });
 
@@ -216,6 +190,9 @@ window.onclick = e => {
         let dropdownContent = document.querySelector("#term-dropdown");
         dropdownContent.style.display = "none";
     }
+
+    console.log(window.innerHeight);
+    
 
 }
 
@@ -290,7 +267,7 @@ function getActionHtml(action, id) {
 
                 <div>
                     <div class="comment-dropdown" id="comment-dropdown-${id}">
-                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add some comments"></textarea>
+                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add comments about this section"></textarea>
                     </div>
                 </div>
 
@@ -298,12 +275,21 @@ function getActionHtml(action, id) {
                     <div class="action-descriptor">Enter new class info</div>
                     <div class="action-content">
                         <h2>Section</h2>
-                        <div class="input"><label for="subject-${id}">Subject</label><input class="subject-input" id="subject-${id}" name="subject-${id}"></div>
+                        <div class="input">
+                            <datalist id="subject-list">
+                                <option>Art</option>
+                                <option>Computer Science</option>
+                                <option>English</option>
+                                <option>Math</option>
+                            </datalist>
+                            <label for="subject-${id}">Subject</label>
+                            <input class="subject-input" id="subject-${id}" name="subject-${id}" list="subject-list">
+                        </div>
                         <div class="input"><label for="course-${id}">Course Number</label><input class="course-input" id="course-${id}" name="course-${id}"></div>
                         <div class="input"><label for="section-${id}">Section Number</label><input class="section-input" id="section-${id}" name="section-${id}"></div>
                         <div class="input"><label for="schedule-type-${id}">Schedule Type</label><input id="schedule-type-${id}" name="schedule-type-${id}"></div>
                         <div class="input"><label for="instruction-method-${id}">Instruction Method</label><input id="instruction-method-${id}" name="instruction-method-${id}"></div>
-                        <div class="input last"><label for="special-topics-${id}">Special Topics Title</label><input id="special-topics-${id}" name="special-topics-${id}"></div>
+                        <div class="input last"><label for="special-topics-${id}">Special Topics Title</label><input id="special-topics-${id}" name="special-topics-${id}" placeholder="optional"></div>
                     </div>
                     <div class="action-content">
                         <h2>Enrollment</h2>
@@ -334,7 +320,7 @@ function getActionHtml(action, id) {
 
                 <div>
                     <div class="comment-dropdown" id="comment-dropdown-${id}">
-                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add some comments"></textarea>
+                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add comments about this section"></textarea>
                     </div>
                 </div>
                 
@@ -356,7 +342,7 @@ function getActionHtml(action, id) {
                         <div class="input"><label for="section-${id}">Section Number</label><input id="section-${id}" name="section-${id}"></div>
                         <div class="input"><label for="schedule-type-${id}">Schedule Type</label><input id="schedule-type-${id}" name="schedule-type-${id}"></div>
                         <div class="input "><label for="instruction-method-${id}">Instruction Method</label><input id="instruction-method-${id}" name="instruction-method-${id}"></div>
-                        <div class="input last"><label for="special-topics-${id}">Special Topics Title</label><input id="special-topics-${id}" name="special-topics-${id}"></div>
+                        <div class="input last"><label for="special-topics-${id}">Special Topics Title</label><input id="special-topics-${id}" name="special-topics-${id}" placeholder="optional"></div>
                     </div>
                     <div class="action-content">
                         <h2>Enrollment</h2>
@@ -387,7 +373,7 @@ function getActionHtml(action, id) {
 
                 <div>
                     <div class="comment-dropdown" id="comment-dropdown-${id}">
-                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add some comments"></textarea>
+                        <textarea form="ab-form" class="comment" id="comment-${id}" name="comment-${id}" placeholder="Add comments about this section"></textarea>
                     </div>
                 </div>
 
@@ -433,9 +419,7 @@ actions.forEach(action => {
         moveUp(actionContainer);
         moveDown(actionContainer);
         setActionText(action.id, actionContainer);
-        setInputTextRight(actionContainer);
-
-        scrollToBottom();
+        actionContainer.scrollIntoView();
     });
 });
 

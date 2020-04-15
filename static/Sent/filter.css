@@ -40,8 +40,6 @@
     position: absolute;
     list-style-type: none;
     background-color: white;
-    min-width: 80px;
-    max-width: 500px;
     border-radius: 0px 10px 10px 10px;
     box-shadow: 0px 0px 5px gray;
 }
@@ -49,7 +47,6 @@
 
 .filter-dropdown .filter-row {
     display: flex;
-    justify-content: space-between;
     margin: 10px;
 }
 
