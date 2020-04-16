@@ -127,7 +127,7 @@ filterSeasonDropdowns.forEach(season => {
 // Some dummy data for the table
 let fullTable = [
     {type: "Add",    subject: "CS", number: "445", section: "002", CRN: "52030", from: "Robinson, Frank", status: "pending dean", season: "Summer", year: 2020, date: "4/12/2020", id: 1, groupId: 1},
-    {type: "Add",    subject: "CS", number: "499", section: "002", CRN: "52189", from: "Gibson, Bob", status: "pending chair", season: "Summer", year: 2020, date: "4/12/2020", id: 5, groupId: 1},
+    {type: "Change",    subject: "CS", number: "499", section: "002", CRN: "52189", from: "Gibson, Bob", status: "pending chair", season: "Summer", year: 2020, date: "4/12/2020", id: 5, groupId: 1},
     {type: "Add",    subject: "CS", number: "145", section: "002", CRN: "52739", from: "Brett, George", status: "pending dean", season: "Summer", year: 2020, date: "4/12/2020", id: 9, groupId: 1},
     {type: "Change", subject: "Art", number: "240", section: "001", CRN: "55432", from: "Killebrew, Harmon", status: "Approved", season: "Summer", year: 2020, date: "4/08/2020", id: 13, groupId: 5},
     {type: "Cancel", subject: "Art", number: "200", section: "001", CRN: "55472", from: "Damon, Johnny", status: "Approved", season: "Summer", year: 2019, date: "4/08/2019", id: 14, groupId: 5},
@@ -148,6 +148,7 @@ let fullTable = [
 function loadTable(table) {
     const container = document.querySelector(".inbox-container");
     let containerHTML = `<div class="inbox-line"></div>`;
+    container.innerHTML = containerHTML;
 
     for (let course of table) {
 
@@ -159,20 +160,40 @@ function loadTable(table) {
         else if (course.type === "None") { message = "No classes found with the given filter(s)"; }
         else { message = `Your approval is required for CRN <strong>${course.CRN}</strong> submitted by ${course.from} in <strong>${course.season} ${course.year}</strong>`; dataExists = true; }
 
-        
+        let inboxRow = document.createElement("div");
+        inboxRow.setAttribute("class", "inbox-row");
+        inboxRow.setAttribute("id", `inbox-row-${course.id}`);
+        let rowHTML = "";
+
         if (dataExists) {
-            containerHTML += 
-            `<div id="inbox-row-${course.id}" class="inbox-row">
+            rowHTML = 
+                `<div class="inbox-icon"><i class="fa fa-star-o gray"></i></div>
                 <div class="inbox-item inbox-left"><strong>${course.type}</strong> ${course.subject} ${course.number}-${course.section}</div>
                 <div class="inbox-item inbox-middle">${message}</div>
-                <div class="inbox-item inbox-right">${course.date}</div>
-            </div>`;
+                <div class="inbox-item inbox-right">${course.date}</div>`;
         } else {
-            containerHTML += 
-            `<div id="inbox-row-${course.id}" class="inbox-row">
-                <div class="inbox-item inbox-middle">${message}</div>   
-            </div>`
+            rowHTML = `<div class="inbox-item inbox-middle">${message}</div>`; 
         }
+        inboxRow.innerHTML = rowHTML;
+        container.appendChild(inboxRow);
+
+        let star = inboxRow.querySelector(".inbox-row .inbox-icon");
+
+        star.addEventListener("click", e => {
+            e.stopPropagation();
+
+            if (star.classList.contains("starred")) {
+                star.innerHTML = `<i class="fa fa-star-o gray"></i>`;
+                star.classList.remove("starred");
+            } else {
+                star.innerHTML = `<i class="fa fa-star yellow"></i>`;
+                star.classList.add("starred");
+            }   
+        });
+
+
+        inboxRow.addEventListener("click", e => {
+            location.href = "summary.html";
+        });
     }
-    container.innerHTML = containerHTML;
 }

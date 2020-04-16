@@ -1,6 +1,7 @@
 .inbox-row {
     display: flex;
     padding: 0px 15px;
+    align-items: center;
     border-bottom: 1px solid gray;
     overflow: hidden;
 }
@@ -10,14 +11,43 @@
 }
 
 .inbox-row:hover {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(224, 224, 224);
     cursor: pointer;
+    box-shadow: 0px 0px 5px gray;
+}
+
+.inbox-row:active {
+    box-shadow: inset 0px 0px 5px gray;
 }
 
 .inbox-row .inbox-item {
     margin: 20px 0px;
     min-width: 0;
 }
+
+/* Star Icon */
+.inbox-row .inbox-icon {
+    margin-right: 5px;
+    padding: 15px 15px 15px 15px;
+}
+
+.inbox-row .inbox-icon:hover {
+    border-radius: 50px;
+    background-color: rgb(209, 209, 209);
+}
+
+.inbox-row .inbox-icon i {
+    font-size: 20px;
+}
+
+.inbox-row .inbox-icon .gray {
+    color: rgb(180, 180, 180);
+}
+
+.inbox-row .inbox-icon .yellow {
+    color: rgb(190, 176, 44);
+}
+/* End Star Icon */
 
 .inbox-left {
     padding-right: 25px;
