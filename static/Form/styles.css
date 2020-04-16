@@ -10,7 +10,6 @@
     grid-template-columns: 190px auto;
     grid-template-rows: 40px auto;
     height: 100%;
-    overflow: hidden;
 }
 
 .topbar {
@@ -18,8 +17,10 @@
 }
 
 .content {
-    overflow: hidden;
-    background-color: rgb(220, 220, 220);
+    min-width: 0px;
+    /* ORIG */
+    /* background-color: rgb(220, 220, 220); */
+    background-color: rgb(245, 245, 245);
     /* This is why the page scrolls when it seems like it shouldn't need to,
        but the comment text box overflows the window height without it */
     padding-bottom: 200px;

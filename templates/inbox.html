@@ -40,8 +40,15 @@
                     </div>
         
                     <div class="filter-dropdown">
-                        <div class="filter-row">
-                            <label for="filter-term">Term</label><input id="filter-term" name="filter-term">
+                        <div class="filter-row filter-term">
+                            <label for="filter-season">Term</label>
+                            <input type="search" class="filter-input-half" id="filter-season" name="filter-season" placeholder="Season">
+                            <div id="season-dropdown">
+                                <div class="season" id="Spring">Spring</div>
+                                <div class="season" id="Summer">Summer</div>
+                                <div class="season" id="Fall">Fall</div>
+                            </div>
+                            <input type="number" class="filter-input-half" id="filter-year" name="filter-term-year" placeholder="Year">
                         </div>
                         <div class="filter-row">
                             <label for="filter-type">Type</label><input id="filter-type" name="filter-type">

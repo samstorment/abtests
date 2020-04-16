@@ -14,6 +14,7 @@ filterButton.addEventListener("click", e => {
 window.addEventListener("click", e => {
 
     let inInput = e.target.matches(".filter-dropdown input");
+    let inSelect = e.target.matches(".filter-dropdown select");
     let inDropdown = e.target.matches(".filter-dropdown");
     let inLabel = e.target.matches(".filter-dropdown label");
     let inDiv = e.target.matches(".filter-dropdown div");
@@ -21,7 +22,7 @@ window.addEventListener("click", e => {
     let inX = e.target.matches("#clear-x")
 
     if (!e.target.matches("#filter-input")) {
-        if (!inInput && !inDropdown && !inLabel && !inDiv && !inClear && !inX) {
+        if (!inInput && !inDropdown && !inLabel && !inDiv && !inClear && !inX && !inSelect) {
             filterDropdown.style.display = "none";
         }
     }

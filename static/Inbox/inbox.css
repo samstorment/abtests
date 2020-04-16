@@ -5,8 +5,12 @@
     overflow: hidden;
 }
 
+.inbox-line {
+    border-bottom: 1px solid gray;
+}
+
 .inbox-row:hover {
-    background-color: white;
+    background-color: rgb(230, 230, 230);
     cursor: pointer;
 }
 
