@@ -220,11 +220,39 @@ function getActionHtml(action, id) {
                         <div class="input last"><label for="waitlist-seats-${id}">Waitlist Seats</label><input id="waitlist-seats-${id}" name="waitlist-seats-${id}"></div>
                     </div>
                     <div class="action-content">
-                        <h2>Location and Time</h2>
-                        <div class="input"><label for="session-length-${id}">Session Length</label><input id="session-length-${id}" name="session-length-${id}"></div>
-                        <div class="input last"><label for="meetings-${id}">Meetings</label><input id="meetings-${id}" name="meetings-${id}"></div>
+                        <h2>Day, Time and Location</h2>
+
+                        <div class="input">
+
+                        <label for="day-${id}">Day</label>
+                        <select id="day-${id}" name="day-${id}">
+                            <option
+                            value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                        </select>
+                        <label for="time-start-${id}">Time Start</label>
+                        <input type="time">
+
+                        <label for="time-end-${id}">Time End</label>
+                        <input type="time">
+
+                        <label for="location-${id}">Location</label>
+                        <select id="day-${id}" name="day-${id}">
+                            <option
+                            value="Engineering Building">Engineering Building</option>
+                            <option value="Peck Hall">Peck Hall</option>
+                            <option value="Founders Hall">Founders Hall</option>
+                            <option value="Science East">Science East</option>
+                            <option value="Science West">Science West</option>
+                            <option value="East Saint Louis Center">East Saint Louis Center</option>
+                        </select>
                     </div>
-                    <div class="action-content">
+                    </div>
+                <div class="action-content">
                         <h2>Instructor</h2>
                         <div class="input"><label for="instructor-name-${id}">Name</label><input id="instructor-name-${id}" name="instructor-name-${id}"></div>
                         <div class="input last"><label for="instructor-id-${id}">ID</label><input id="instructor-id-${id}" name="instructor-id-${id}"></div>
