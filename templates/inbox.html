@@ -1,86 +1,56 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/Form/styles.css">
-    <link rel="stylesheet" href="../static/Form/topbar.css">
-    <link rel="stylesheet" href="../static/Form/sidebar.css">
-    <link rel="stylesheet" href="../static/Sent/filter.css">
-    <link rel="stylesheet" href="../static/Sent/table.css">
-    <link rel="stylesheet" href="../static/Inbox/inbox.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../static/Inbox/inbox.js" defer></script>
-    <title>Inbox</title>
-</head>
-<body>
-    <div class="container">
+{{define "links"}}
+<link rel="stylesheet" href="../static/Sent/filter.css">
+<link rel="stylesheet" href="../static/Sent/table.css">
+<link rel="stylesheet" href="../static/Inbox/inbox.css">
+<script src="../static/Inbox/inbox.js" defer></script>
+{{end}}
 
-        <div class="topbar">
-            <span> <i class="fa fa-home home-span"></i> <div>AB Form</div></span>
-            <span>Profile</span>
-        </div>
-
-        <div class="sidebar">
-            <a href="/templates/form.html" class="new-button" type="button"><i class="fa fa-plus new-plus"></i> <div>New</div></a>
-            <a href="/templates/inbox.html" class="inbox"><i class="fa fa-inbox"></i> Inbox</a>
-            <a href="/templates/sent.html" class="sent"><i class="fa fa-send"></i> Sent</a>
-            <a href="/templates/drafts.html" class="drafts"><i class="fa fa-file"></i> Drafts</a>
-            <a href="/templates/Saved.html" class="inbox"><i class="fa fa-star-o"></i> Saved</a>
-        </div>
-
-        <div class="content">
-            
-            <form autocomplete="off">
-                <div class="filter-container">
-                    
-                    <div class="filter-button-container">
-                        <input autocomplete="false" class="filter-button" id="filter-input" placeholder="Add a filter"></input>
-                        <button type="button" class="filter-button" id="filter-clear">
-                            <i class="fa fa-close" id="clear-x"></i>
-                        </button>
-                    </div>
+{{define "content"}}
+<form autocomplete="off">
+    <div class="filter-container">
         
-                    <div class="filter-dropdown">
-                        <div class="filter-row filter-term">
-                            <label for="filter-season">Term</label>
-                            <input type="search" class="filter-input-half" id="filter-season" name="filter-season" placeholder="Season">
-                            <div id="season-dropdown">
-                                <div class="season" id="Spring">Spring</div>
-                                <div class="season" id="Summer">Summer</div>
-                                <div class="season" id="Fall">Fall</div>
-                                <div class="season" id="">None</div>
-                            </div>
-                            <input type="number" class="filter-input-half" id="filter-year" name="filter-term-year" placeholder="Year">
-                        </div>
-                        <div class="filter-row">
-                            <label for="filter-type">Type</label><input id="filter-type" name="filter-type">
-                        </div>
-                        <div class="filter-row">
-                            <label for="filter-subject">Subject</label><input id="filter-subject" name="filter-subject">
-                        </div>
-                        <div class="filter-row">
-                            <label for="filter-course">Course Number</label><input id="filter-course" name="filter-course">
-                        </div>
-                        <div class="filter-row">
-                            <label for="filter-status">Status</label><input id="filter-status" name="filter-status">
-                        </div>
-                        <div class="filter-row">
-                            <label for="filter-from">From</label><input id="filter-from" name="filter-from">
-                        </div>
-                        <div class="filter-bottom">
-                            <input type="checkbox" id="filter-group" name="filter-group">
-                            <label for="filter-group">Submitted as Group</label>
-                            <input type="submit" value="Search" id="filter-search">
-                        </div> 
-                    </div>
+        <div class="filter-button-container">
+            <input autocomplete="false" class="filter-button" id="filter-input" placeholder="Add a filter"></input>
+            <button type="button" class="filter-button" id="filter-clear">
+                <i class="fa fa-close" id="clear-x"></i>
+            </button>
+        </div>
+
+        <div class="filter-dropdown">
+            <div class="filter-row filter-term">
+                <label for="filter-season">Term</label>
+                <input type="search" class="filter-input-half" id="filter-season" name="filter-season" placeholder="Season">
+                <div id="season-dropdown">
+                    <div class="season" id="Spring">Spring</div>
+                    <div class="season" id="Summer">Summer</div>
+                    <div class="season" id="Fall">Fall</div>
+                    <div class="season" id="">None</div>
                 </div>
-            </form>
-
-            <div class="inbox-container">
-    
+                <input type="number" class="filter-input-half" id="filter-year" name="filter-term-year" placeholder="Year">
             </div>
-
+            <div class="filter-row">
+                <label for="filter-type">Type</label><input id="filter-type" name="filter-type">
+            </div>
+            <div class="filter-row">
+                <label for="filter-subject">Subject</label><input id="filter-subject" name="filter-subject">
+            </div>
+            <div class="filter-row">
+                <label for="filter-course">Course Number</label><input id="filter-course" name="filter-course">
+            </div>
+            <div class="filter-row">
+                <label for="filter-status">Status</label><input id="filter-status" name="filter-status">
+            </div>
+            <div class="filter-row">
+                <label for="filter-from">From</label><input id="filter-from" name="filter-from">
+            </div>
+            <div class="filter-bottom">
+                <input type="checkbox" id="filter-group" name="filter-group">
+                <label for="filter-group">Submitted as Group</label>
+                <input type="submit" value="Search" id="filter-search">
+            </div> 
         </div>
     </div>
-</body>
-</html>
+</form>
+
+<div class="inbox-container"></div>
+{{end}}
