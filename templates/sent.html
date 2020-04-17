@@ -48,7 +48,7 @@
         <thead>
         <tr class="table-head">
             {{range .Headers}}
-            <!-- Call the strings.ToLower function on the headers array element to set the id -->
+            <!-- Call the strings.ToLower function on the headers array element to set the id to the lowercase header value -->
             <th id="{{. | lower }}">
                 <div class="head">
                     <div>{{.}}</div>

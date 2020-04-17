@@ -1,3 +1,4 @@
+//$ go build -o bin/app.exe -v        // create the executable in the bin folder
 package main
 
 import (
