@@ -68,7 +68,7 @@ $ git add .                         // This will tell you some shit about CRLF w
 $ git commit -m "Added Dependency manager"
 $ git push heroku master
 
-$ heroku open                       // should open your browser with the app
+$ heroku open                       // should open the browser with the app
 
 // create .gitignore file. Add 'Procfile' to git ignore. Add bin to .gitignore? Seems like 'heroku open is working without the bin.
 // create Procfile with this content: web: bin\app.exe
