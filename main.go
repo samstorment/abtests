@@ -6,9 +6,15 @@ import (
 	"html/template"
 	"fmt"
 	"strings"
+	"os"
 )
 
 func main() {
+
+	port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080"
+	}
 
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/form", formHandler)
@@ -16,7 +22,7 @@ func main() {
 	http.HandleFunc("/sent", sentHandler)
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":" + port, nil)
 }
 
 type Page struct {
