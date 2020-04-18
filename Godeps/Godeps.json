@@ -1,9 +1,0 @@
-{
-	"ImportPath": "github.com/samstorment/abtests",
-	"GoVersion": "go1.14",
-	"GodepVersion": "v80",
-	"Packages": [
-		"./..."
-	],
-	"Deps": []
-}

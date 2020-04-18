@@ -113,3 +113,20 @@ $ git add .
 $ git commit -m "Message"
 $ git push heroku <branchname>
 $ heroku open
+
+
+
+
+
+-------------------------------------
+Take 2 with go mod instead of godeps
+-------------------------------------
+1. Create github repo on github
+2. clone the repo to directory of choice NOT in $GOPATH
+3. create /main.go
+4. create /templates/layout.html
+5. $ go mod init app
+6. $ go build
+7. $ go mod vendor
+8. $ PORT=5000 ./app
+9. view webpage on localhost:5000
