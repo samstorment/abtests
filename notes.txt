@@ -125,8 +125,8 @@ Take 2 with go mod instead of godeps
 2. clone the repo to directory of choice NOT in $GOPATH
 3. create /main.go
 4. create /templates/layout.html
-5. $ go mod init app
+5. $ go mod init abtests    // abtests is just a guess, but it works?
 6. $ go build
 7. $ go mod vendor
-8. $ PORT=5000 ./app
+8. $ go build; ./abtests
 9. view webpage on localhost:5000

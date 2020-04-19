@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/Login/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <form class="container" method="POST">
+        <div class="content">
+            <h2 class="cas">CAS Copy</h2>
+            <label for="username">Username</label><input name="username">
+            <label for="password">Password</label><input name="password">
+            <div class="bottom">
+                <button type="submit">Login</button>
+                {{ if . }}
+                    <div class="error">{{ . }}</div>
+                {{ end }}
+            </div>
+        </div>
+    </form>
+</body>
+</html>

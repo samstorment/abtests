@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#term-dropdown").style.display = "none";
 });
 
+
 // move the action container down
 function moveUp(actionContainer) {
 
@@ -187,6 +188,10 @@ window.onclick = e => {
         dropdownContent.style.display = "none";
     }
     if (!event.target.matches("#term-button")) {
+        let dropdownContent = document.querySelector("#term-dropdown");
+        dropdownContent.style.display = "none";
+    }
+    if (!event.target.matches("#username")) {
         let dropdownContent = document.querySelector("#term-dropdown");
         dropdownContent.style.display = "none";
     }

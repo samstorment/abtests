@@ -1,0 +1,55 @@
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.cas {
+    margin-bottom: 30px;
+}
+
+.content label, .content input, .content div {
+    width: 300px;
+    padding: 2px;
+}
+
+.content input {
+    margin-bottom: 5px;
+}
+
+.content button {
+    margin: 5px 0px;
+    padding: 5px;
+    background-color: rgb(97, 143, 243);
+    color: white;
+    border: blue;
+    border-radius: 4px;
+    width: 50px;
+}
+
+.content button:hover {
+    cursor: pointer;
+}
+
+.content .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.error {
+    color: red;
+    text-align: right;
+    font-weight: bold;
+}

@@ -9,7 +9,7 @@ import (
 )
 
 
-var Db *sql.DB
+var db *sql.DB
 
 func Init() error {
 	
@@ -19,7 +19,7 @@ func Init() error {
 		return err 
 	}
 	
-	Db, err = sql.Open("postgres", dbPath)
+	db, err = sql.Open("postgres", dbPath)
 	if err != nil { 
 		fmt.Println("Errror Open")
 		return err 
@@ -42,7 +42,7 @@ func getDbPath() (string, error) {
 
 		var configuration Config
 
-		file, err := os.Open("./config/config.development.json") 
+		file, err := os.Open("./config/config.development.json")
 		if err != nil {  return "open prob", err }  
 
 		decoder := json.NewDecoder(file) 

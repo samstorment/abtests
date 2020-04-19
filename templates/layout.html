@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../static/Form/topbar.css">
     <link rel="stylesheet" href="../static/Form/sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../static/Form/layout.js"></script>
 
     {{template "links" .}}
 
@@ -18,8 +19,12 @@
 
         <!-- topbar -->
         <div class="topbar">
-            <span> <i class="fa fa-home home-span"></i> <div>AB Form</div></span>
-            <span>{{.User}}</span>
+            <div class="bar-item"><i class="fa fa-home home-div"></i> <div>AB Form</div></div>
+            <div class="bar-item" id="profile">
+                <div id="user">{{ .User }}</div>
+                <a id="profile-dropdown" class="invisible" href="/logout">Logout</a>
+            </div>
+            
         </div>
 
         <!-- Sidebar -->

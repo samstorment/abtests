@@ -5,4 +5,5 @@ Procfile
 bin
 tutorial.sql
 vendor
-config/config.development.json
+config/config.database.json
+config/config.sessions.json

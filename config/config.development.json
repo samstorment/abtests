@@ -2,6 +2,6 @@
     "Host": "localhost",
 	"Port": 5432,
 	"User": "postgres",
-	"Password": "YOUR PASSWORD",
-	"Dbname": "YOUR DATABASE NAME"
+	"Password": "gabby777",
+	"Dbname": "ticks"
 }
