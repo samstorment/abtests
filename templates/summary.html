@@ -1,5 +1,6 @@
 {{define "links"}}
 <link rel="stylesheet" href="../static/Summary/summary.css">
+<link rel="stylesheet" href="../static/Summary/progress.css">
 {{end}}
 
 {{define "content"}} 
@@ -9,15 +10,107 @@
     <div class="course-topbar">
         <h2 class="course-info">Add CS 445 002</h2>
     </div>
-    <div class="waiting-on">Waiting on: Academic Scheduling</div>
-    <div class="progress-bar">
-        <div class="submit-approved approved progress-first">Submit</div>
-        <div class="chair-approved approved">Chair</div>
-        <div class="dean-approved approved">Dean</div>
-        <div class="scheduling-approved waiting">Academic Scheudling</div>
-        <div class="all-approved unreached progress-last">Approved</div>
-    </div>
+
     <div class="divider"></div>
+    <div class="waiting-on">Waiting on Dean</div>
+
+    <ul class="progress-bar icons">
+        <li>
+            <div class="progress-line good-line"></div>
+            <div class="icon submit-icon good-icon"><i class="fa fa-check good-text"></i></div>
+            <div class="progress-line good-line"></div>
+        </li>
+        <li>
+            <div class="progress-line good-line"></div>
+            <div class="icon chair-icon good-icon"><i class="fa fa-check good-text"></i></div>
+            <div class="progress-line good-line"></div>
+        </li>
+        <li >
+            <div class="progress-line good-line"></div>
+            <div class="icon dean-icon"><i class="fa fa-ellipsis-h"></i></div>
+            <div class="progress-line"></div>
+        </li>
+        <li >
+            <div class="progress-line"></div>
+            <div class="icon scheduling-icon"><i class="fa fa-ellipsis-h"></i></div>
+            <div class="progress-line"></div>
+        </li>
+        <li>
+            <div class="progress-line"></div>
+            <div class="icon approved-icon"><i class="fa fa-ellipsis-h"></i></div>
+            <div class="progress-line"></div>
+        </li>
+    </ul>
+    <ul class="progress-bar labels">
+        <li class="submit-approved good-text">Submit</li>
+        <li class="chair-approved good-text">Chair</li>
+        <li class="dean-approved">Dean</li>
+        <li class="scheduling-approved">Academic Scheudling</li>
+        <li class="all-approved">Approved</li>
+    </ul>
+
+    
+    <h2 class="contact">Contact</h2>
+    <div class="divider"></div>
+
+    <div class="summary-container">
+        <div class="summary-row">
+            <label for="contact-name">Name</label>
+            <div class="row-value" id="contact-name">Roger Clemens</div>
+        </div>
+        <div class="summary-row">
+            <label for="contact-department">Department</label>
+            <div class="row-value" id="contact-department">Computer Science</div>
+        </div>
+        <div class="summary-row">
+            <label for="contact-email">Email</label>
+            <div class="row-value" id="contact-email">rclemen@siue.edu</div>
+        </div>
+        <div class="summary-row">
+            <label for="contact-phone">Phone Extension</label>
+            <div class="row-value" id="contact-phone">55647</div>
+        </div>
+    </div>
+
+
+    <h2 class="contact">Course</h2>
+    <div class="divider"></div>
+
+    <div class="summary-container">
+        <div class="summary-row">
+            <label for="course-term">Term</label>
+            <div class="row-value" id="course-term">Spring 2020</div>
+        </div>
+        <div class="summary-row">
+            <label for="course-subject">Subject</label>
+            <div class="row-value" id="course-subject">Computer Science (CS)</div>
+        </div>
+        <div class="summary-row">
+            <label for="course-number">Course Number</label>
+            <div class="row-value" id="course-number">445</div>
+        </div>
+        <div class="summary-row">
+            <label for="course-section">Section Number</label>
+            <div class="row-value" id="course-section">002</div>
+        </div>
+        <div class="summary-row">
+            <label for="course-schedule-type">Schedule Type</label>
+            <div class="row-value" id="course-schedule-type">Lecture</div>
+        </div>
+        <div class="summary-row">
+            <label for="course-instruction-method">Instruction Method</label>
+            <div class="row-value" id="course-instruction-method">Traditional</div>
+        </div>
+        <div class="summary-row">
+            <label for="course-special-topics">Special Topics Title</label>
+            <div class="row-value" id="course-special-topics">...</div>
+        </div>
+        <div class="summary-row">
+            <label for="course-enrollment-max">Enrollment Max</label>
+            <div class="row-value" id="course-enrollment-max">99</div>
+        </div>
+    </div>
+
 
 </div>
 

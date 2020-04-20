@@ -1,0 +1,67 @@
+.waiting-on {
+    margin: 20px 0px 5px 0px;
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-bar li {
+  list-style-type: none;
+  width: 100%;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  font-size: small;
+}
+
+
+.icons li {
+    height: 50px;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 3px solid gray;
+}
+
+.icon i {
+    font-size: 15px;
+    color: gray;
+}
+
+
+.labels {
+    margin-bottom: 20px;
+}
+
+.labels li {
+    color: gray;
+}
+
+
+.progress-line {
+    flex: 1;
+    border-top: 3px solid gray;
+}
+
+.good-line {
+    border-top: 3px solid rgb(5, 194, 5);
+}
+
+.icon .good-text, .labels .good-text {
+    font-weight: bold;
+    color: rgb(5, 194, 5);
+}
+
+.good-icon {
+    border: 3px solid rgb(5, 194, 5);
+}
