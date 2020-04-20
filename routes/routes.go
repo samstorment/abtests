@@ -5,28 +5,31 @@ import (
 	"html/template"
 	"fmt"
 	"strings"
-	"os"
+	"github.com/gorilla/mux"
 	"abtests/models"
 	"abtests/sessions"
 	"abtests/middleware"
 )
 
-func NewRouter() {
-	port := os.Getenv("PORT")
-    if port == "" {
-        port = "8080"
-	}
+func NewRouter() *mux.Router {
 
-	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/form", formHandler)
-	http.HandleFunc("/inbox", middleware.AuthRequired(inboxHandler))
-	http.HandleFunc("/sent", sentHandler)
-	http.HandleFunc("/ticks", dbHandler)
-	http.HandleFunc("/login", loginHandler)
-	http.HandleFunc("/logout", logoutHandler)
+	router := mux.NewRouter()
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	http.ListenAndServe(":" + port, nil)
+
+	router.HandleFunc("/home", homeHandler)
+	router.HandleFunc("/form", formHandler)
+	router.HandleFunc("/", middleware.AuthRequired(inboxHandler))
+	router.HandleFunc("/sent", sentHandler)
+	router.HandleFunc("/ticks", dbHandler)
+	router.HandleFunc("/login", loginHandler)
+	router.HandleFunc("/logout", logoutHandler)
+
+	router.HandleFunc("/course/{courseId}", summaryHandler)
+
+	fileServer := http.FileServer(http.Dir("./static/"))
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static", fileServer))
+
+	return router
 }
 
 type Page struct {
@@ -56,14 +59,14 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 			session, _ := sessions.Store.Get(r, "session")
 			session.Values["user_id"] = userId
 			session.Save(r, w)
-			http.Redirect(w, r, "/inbox", 302)
+			http.Redirect(w, r, "/", 302)
 
 		} else if (username == "standard") {
 			userId := 2
 			session, _ := sessions.Store.Get(r, "session")
 			session.Values["user_id"] = userId
 			session.Save(r, w)
-			http.Redirect(w, r, "/inbox", 302)
+			http.Redirect(w, r, "/", 302)
 			
 		} else {
 			temp, err := template.ParseFiles("templates/login.html")
@@ -76,17 +79,8 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 // when a get request is made to /inbox
 func inboxHandler(w http.ResponseWriter, r *http.Request) {
 
-	// get the user's id from the session
-	session, _ := sessions.Store.Get(r, "session")
-	userId := session.Values["user_id"]
-
-	// this is where we SHOULD look up the username by the id in the database
-	var username string
-	if (userId == 1) {
-		username = "Babe Ruth"
-	} else if (userId == 2) {
-		username = "Mario Mendoza"
-	}
+	// get the username from the session. Normally we would get the id not the username, but we're testing
+	username := sessions.GetUsername(r)
 
 	// display the username in the inbox
 	page := Page{ "Inbox", username}
@@ -100,11 +94,13 @@ func logoutHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessions.Store.Get(r, "session")
 	delete(session.Values, "user_id")
 	session.Save(r, w)
-	http.Redirect(w, r, "/inbox", 302)
+	http.Redirect(w, r, "/login", 302)
 }
 
 
 func formHandler(w http.ResponseWriter, r *http.Request) {
+
+
 	page := Page{ "Inbox", "Profile"}
 	temp, err := template.New("").ParseFiles("templates/form.html", "templates/layout.html")
 	if err != nil { fmt.Println("Err", err) }
@@ -112,6 +108,8 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func sentHandler(w http.ResponseWriter, r *http.Request) {
+
+	username := sessions.GetUsername(r)
 
 	funcMap := template.FuncMap {
         "lower": strings.ToLower,
@@ -126,11 +124,32 @@ func sentHandler(w http.ResponseWriter, r *http.Request) {
 		Headers [] string
 	} {
 		"Sent",
-		"Profile",
+		username,
 		headers, 
 	})
 }
 
+
+func summaryHandler(w http.ResponseWriter, r *http.Request) {
+
+	// get the username from the session. Normally we would get the id not the username, but we're testing
+	username := sessions.GetUsername(r)
+
+	vars := mux.Vars(r)
+	courseId := vars["courseId"]
+
+	temp, err := template.New("").ParseFiles("templates/summary.html", "templates/layout.html")
+	if err != nil { fmt.Println("Err", err) }
+	temp.ExecuteTemplate(w, "layout", struct {
+		Title string
+		User string
+		CourseId string
+	} {
+		"Summary",
+		username,
+		courseId,
+	})
+}
 
 func dbHandler(w http.ResponseWriter, r *http.Request) {
 

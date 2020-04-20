@@ -20,6 +20,12 @@
     box-shadow: inset 0px 0px 2px gray;
 }
 
+
+.sidebar .active {
+    background-color: rgb(250, 211, 211);
+    border-radius: 0px 15px 15px 0px;
+}
+
 .sidebar a i {
     padding: 0px 15px;
 }

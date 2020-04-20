@@ -3,6 +3,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"net/http"
 	"abtests/models"
 	"abtests/routes"
 )
@@ -14,5 +16,13 @@ func main() {
 		fmt.Println("Error connecting to DB")
 	}
 
-	routes.NewRouter()
+	port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080"
+	}
+	
+	router := routes.NewRouter()
+
+	http.Handle("/", router)
+	http.ListenAndServe(":" + port, nil)
 }

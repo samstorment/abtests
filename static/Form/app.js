@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => { 
     document.querySelector("#new-dropdown").style.display = "none";
     document.querySelector("#term-dropdown").style.display = "none";
-});
+
 
 
 // move the action container down
@@ -428,3 +428,4 @@ actions.forEach(action => {
     });
 });
 
+});

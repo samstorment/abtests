@@ -19,17 +19,21 @@
         <div class="filter-dropdown">
             <div class="filter-row filter-term">
                 <label for="filter-season">Term</label>
-                <input type="search" class="filter-input-half" id="filter-season" name="filter-season" placeholder="Season">
-                <div id="season-dropdown">
-                    <div class="season" id="Spring">Spring</div>
-                    <div class="season" id="Summer">Summer</div>
-                    <div class="season" id="Fall">Fall</div>
-                    <div class="season" id="">None</div>
-                </div>
-                <input type="number" class="filter-input-half" id="filter-year" name="filter-term-year" placeholder="Year">
+                <datalist id="seasons">
+                    <option value="Spring"></option>
+                    <option value="Summer"></option>
+                    <option value="Fall"></option>
+                </datalist>
+                <input type="search" class="filter-input-half" id="filter-season" name="filter-season" placeholder="Season" list="seasons">
+                <input type="number" class="filter-input-half" id="filter-year" name="filter-term-year" placeholder="Year" min="2020">
             </div>
             <div class="filter-row">
-                <label for="filter-type">Type</label><input id="filter-type" name="filter-type">
+                <datalist id="types">
+                    <option value="Add"></option>
+                    <option value="Change"></option>
+                    <option value="Cancel"></option>
+                </datalist>
+                <label for="filter-type">Type</label><input type="search" id="filter-type" name="filter-type" list="types">
             </div>
             <div class="filter-row">
                 <label for="filter-subject">Subject</label><input id="filter-subject" name="filter-subject">
@@ -38,10 +42,20 @@
                 <label for="filter-course">Course Number</label><input id="filter-course" name="filter-course">
             </div>
             <div class="filter-row">
-                <label for="filter-status">Status</label><input id="filter-status" name="filter-status">
+                <datalist id="approvers">
+                    <option value="Chair"></option>
+                    <option value="Dean"></option>
+                    <option value="Academic Scheduling"></option>
+                </datalist>
+                <label for="filter-waiting">Waiting On</label><input type="search" id="filter-waiting" name="filter-waiting" list="approvers">
             </div>
             <div class="filter-row">
                 <label for="filter-from">From</label><input id="filter-from" name="filter-from">
+            </div>
+            <div class="filter-row filter-date">
+                <label for="filter-start-date">Date</label>
+                <input class="filter-input-half" id="filter-start-date" name="filter-start-date" placeholder="Earliest Day">
+                <input class="filter-input-half" id="filter-end-date" name="filter-end-date" placeholder="Latest Day">
             </div>
             <div class="filter-bottom">
                 <input type="checkbox" id="filter-group" name="filter-group">
