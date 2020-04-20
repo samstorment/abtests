@@ -1,7 +1,25 @@
 {{define "links"}}
+<link rel="stylesheet" href="../static/Summary/summary.css">
 {{end}}
 
 {{define "content"}} 
-<h1>{{.CourseId}}</h1>
-<h2>WOWOWOWOW</h2>
+
+
+<div class="course-container" id="course-container-{{.CourseId}}">
+    <div class="course-topbar">
+        <h2 class="course-info">Add CS 445 002</h2>
+    </div>
+    <div class="waiting-on">Waiting on: Academic Scheduling</div>
+    <div class="progress-bar">
+        <div class="submit-approved approved progress-first">Submit</div>
+        <div class="chair-approved approved">Chair</div>
+        <div class="dean-approved approved">Dean</div>
+        <div class="scheduling-approved waiting">Academic Scheudling</div>
+        <div class="all-approved unreached progress-last">Approved</div>
+    </div>
+    <div class="divider"></div>
+
+</div>
+
+
 {{end}}
