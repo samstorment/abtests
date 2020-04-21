@@ -32,7 +32,7 @@
 }
 
 .inbox-row .inbox-icon:hover {
-    border-radius: 50px;
+    border-radius: 50%;
     background-color: rgb(209, 209, 209);
 }
 

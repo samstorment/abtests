@@ -1,9 +1,9 @@
 // Set the flex dropdowns to display nothing
 document.addEventListener("DOMContentLoaded", () => { 
     document.querySelector("#new-dropdown").style.display = "none";
-    document.querySelector("#term-dropdown").style.display = "none";
+    // document.querySelector("#term-dropdown").style.display = "none";
 
-
+});
 
 // move the action container down
 function moveUp(actionContainer) {
@@ -166,9 +166,7 @@ newActionButton.addEventListener("click", e => {
 // Event listener for term button's dropdown content (Spring, summer, fall)
 let termButton = document.querySelector("#term-button");
 termButton.addEventListener("click", e => {
-
-    e.preventDefault();
-
+    
     let dropdownContent = document.querySelector("#term-dropdown");
 
     let terms = dropdownContent.querySelectorAll(".term");
@@ -177,7 +175,7 @@ termButton.addEventListener("click", e => {
     });
 
     if (dropdownContent.style.display === "none") {
-        dropdownContent.style.display = "flex";
+        dropdownContent.style.display = "block";
     }
 });
 
@@ -191,14 +189,6 @@ window.onclick = e => {
         let dropdownContent = document.querySelector("#term-dropdown");
         dropdownContent.style.display = "none";
     }
-    if (!event.target.matches("#username")) {
-        let dropdownContent = document.querySelector("#term-dropdown");
-        dropdownContent.style.display = "none";
-    }
-
-    console.log(window.innerHeight);
-    
-
 }
 
 // Event listeners for Spring, Summer, and Fall buttons
@@ -238,7 +228,6 @@ function getYearForTerm(term) {
     else { return fall; }
 }
 
-getYearForTerm("spring");
 
 // THIS DOES NOTHING, but it'll be useful in the future
 function printDate() {
@@ -426,6 +415,4 @@ actions.forEach(action => {
         setActionText(action.id, actionContainer);
         actionContainer.scrollIntoView();
     });
-});
-
 });
