@@ -1,7 +1,7 @@
 // Set the flex dropdowns to display nothing
 document.addEventListener("DOMContentLoaded", () => { 
     document.querySelector("#new-dropdown").style.display = "none";
-    // document.querySelector("#term-dropdown").style.display = "none";
+    document.querySelector("#term-dropdown").style.display = "none";
 
 });
 
