@@ -3,6 +3,42 @@
     height: 100%;
 }
 
+.course-topbar {
+    display: flex;
+}
+
+.toggle-button {
+    margin-left: auto;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: inherit;
+    border: none;
+}
+
+.toggle-button:hover {
+    background-color: rgb(250, 211, 211);
+    cursor: pointer;
+}
+
+.toggle-button i {
+    font-size: large;
+}
+
+.toggle-hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .25s, opacity .25s linear;
+    position: absolute;
+    width: 88%;
+    
+}
+
+.toggle-show {
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
 .divider {
     border-bottom: 1px solid gray;
     margin: 5px 0px 5px 0px;
@@ -10,7 +46,7 @@
 
 .summary-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 4fr 5fr 4fr;
     grid-template-rows: auto 1fr;
     margin: 5px 0px;
 }
@@ -18,8 +54,9 @@
 .summary-row {
     grid-column: 2 / 3;
     display: flex;
-    padding: 5px;
-    min-width: 250px;
+    padding: 5px 0px;
+    min-width: 300px;
+    border-bottom: 1px solid gray;
 }
 
 .summary-row .row-value {

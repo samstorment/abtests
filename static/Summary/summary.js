@@ -1,6 +1,21 @@
+let toggleButton = document.querySelector(".toggle-button");
+let toggleContent = document.querySelector(".toggle-content");
+toggleButton.addEventListener("click", e => {
+
+    if (toggleContent.classList.contains("toggle-hide")) {
+        toggleButton.innerHTML = `<i class="fa fa-chevron-up"></i>`;
+        toggleContent.classList.remove("toggle-hide");
+        toggleContent.classList.add("toggle-show");
+    } else {
+        toggleButton.innerHTML = `<i class="fa fa-chevron-down"></i>`;
+        toggleContent.classList.remove("toggle-show");
+        toggleContent.classList.add("toggle-hide");
+    }
+});
+
 let fullTable = [
     {type: "Add",    subject: "CS", number: "445", section: "002", CRN: "52030", from: "Robinson, Frank", waiting: "pending dean", season: "Summer", year: 2020, date: "4/12/2020", id: 1, groupId: 1},
-    {type: "Change",    subject: "CS", number: "499", section: "002", CRN: "52189", from: "Gibson, Bob", waiting: "pending chair", season: "Summer", year: 2020, date: "4/12/2020", id: 5, groupId: 1},
+    {type: "Change", subject: "CS", number: "499", section: "002", CRN: "52189", from: "Gibson, Bob", waiting: "pending chair", season: "Summer", year: 2020, date: "4/12/2020", id: 5, groupId: 1},
     {type: "Add",    subject: "CS", number: "145", section: "002", CRN: "52739", from: "Brett, George", waiting: "pending dean", season: "Summer", year: 2020, date: "4/12/2020", id: 9, groupId: 1},
     {type: "Change", subject: "Art", number: "240", section: "001", CRN: "55432", from: "Killebrew, Harmon", waiting: "Approved", season: "Summer", year: 2020, date: "4/08/2020", id: 13, groupId: 5},
     {type: "Cancel", subject: "Art", number: "200", section: "001", CRN: "55472", from: "Damon, Johnny", waiting: "Approved", season: "Summer", year: 2019, date: "4/08/2019", id: 14, groupId: 5},
